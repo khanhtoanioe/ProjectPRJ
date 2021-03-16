@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.itemDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,10 +87,11 @@
         <div class="small-container">
             <h2 class="title">Top categories</h2>
             <div class="row">
+                <% ResultSet rs = itemDAO.getAllItem();%>
+                <% while(rs.next()){ %>
                 <div class="col-4">
-                    <a href="products-details.html"><img src="../images/IP-12-red.jpg"></a>
-                    <a href="products-details.html"><strong>RED iPhone 12</strong></a><br>
-                    <a href="products-details.html"><h4>Swap: BLUE iPhone 12</h4></a>
+                    <a href="products-details.html"><img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1")) %>"></a>
+                    <a href="products-details.html"><strong><%= rs.getNString("name") %></strong></a><br>
 
                     <div class="rating">
                         <i class="fa fa-star"></i>
@@ -97,48 +100,8 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-o"></i>
                     </div>
-                    <p>Waiting</p>
                 </div>
-                <div class="col-4">
-                    <a href="product-details.html"><img src="../images/IP-12-blue.jpg"></a>
-                    <a href="product-details.html"><strong>BLUE iPhone 12</strong></a><br>
-                    <a href="product-details.html"><h4>Swap: RED iPhone 12</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>Waiting</p>
-                </div>
-                <div class="col-4">
-                    <a href="product-details.html"><img src="../images/LV.jpg"></a>
-                    <a href="product-details.html"><strong>Louis Vuitton T-shirt Size: 32</strong></a><br>
-                    <a href="product-details.html"><h4>Swap: Any LV shirt with size: 32</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                    </div>
-                    <p>Waiting</p>
-                </div>
-                <div class="col-4">
-                    <a href="product-details.html"><img src="../images/Logitech-G102.jpg"></a>
-                    <a href="product-details.html"><strong>Logitech G102 Black body</strong></a><br>
-                    <a href="product-details.html"><h4>Swap: Logitech G102 WHITE body</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>Waiting</p>
-                </div>
-            </div>
+                <% } %>            
             <h2 class="title">New item</h2>
             <div class="row">
                 <div class="col-4">

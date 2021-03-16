@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/assignment" user="root"  password=""/> 
+<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/group_assignment" user="root"  password=""/> 
 <sql:query dataSource="${db}" var="rs" >
     SELECT catName FROM `category`;
 </sql:query>

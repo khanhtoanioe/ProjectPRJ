@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
 
-<!--        <script type="text/javascript">
+        <script type="text/javascript">
             $().ready(function () {
                 $("#Form").validate({
                     rules: {
@@ -76,7 +76,7 @@
                     }
                 });
             });
-        </script>-->
+        </script>
         <style>
             <%@include file="css/style.css" %>
             .error{

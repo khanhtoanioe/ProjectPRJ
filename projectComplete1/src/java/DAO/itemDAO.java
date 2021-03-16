@@ -26,7 +26,7 @@ public class itemDAO {
     public static ResultSet getAllItem() {
         try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT itemID, ownerID, Name, status, description, category FROM iteminformation");
+            ResultSet rs = st.executeQuery("SELECT itemID, ownerID, Name, status, description,category,image1,image2,image3,image4 FROM iteminformation");
             return rs;
         } catch (SQLException ex) {
             Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -36,13 +36,13 @@ public class itemDAO {
 
     public static item getItemById(int id) {
         try {
-            PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category FROM iteminformation WHERE itemID=?");
+            PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category, image1,image2,image3,image4 FROM iteminformation WHERE itemID=?");
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
-            if(rs.next()){
-                item item = new item(rs.getInt(1),rs.getString(2),rs.getString(3),(rs.getInt(4)==1)?true:false,rs.getString(5),rs.getString(6));
+            if (rs.next()) {
+                item item = new item(rs.getInt(1), rs.getString(2), rs.getString(3), (rs.getInt(4) == 1) ? true : false, rs.getString(5), rs.getString(6));
                 return item;
-            }else{
+            } else {
                 return null;
             }
         } catch (SQLException ex) {
@@ -53,13 +53,17 @@ public class itemDAO {
 
     public static boolean addItem(item item) {
         try {
-            PreparedStatement st = conn.prepareStatement("INSERT INTO iteminformation VALUES(?,?,?,?,?,?)");
+            PreparedStatement st = conn.prepareStatement("INSERT INTO iteminformation VALUES(?,?,?,?,?,?,?,?,?,?)");
             st.setInt(1, item.getItemID());
             st.setString(2, item.getOwnerID());
             st.setString(3, item.getName());
             st.setInt(4, item.getStatus());
             st.setString(5, item.getDescription());
             st.setString(6, item.getCategory());
+            st.setBlob(7, item.getImage1());
+            st.setBlob(8, item.getImage2());
+            st.setBlob(9, item.getImage3());
+            st.setBlob(10, item.getImage4());
             st.execute();
             return true;
         } catch (SQLException ex) {
@@ -79,16 +83,20 @@ public class itemDAO {
         }
         return false;
     }
-    
-    public static boolean updateItem(item item){
+
+    public static boolean updateItem(item item) {
         try {
-            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET ownerID=?, Name=?, status=?, description=?, category=? WHERE itemID=?");
+            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET ownerID=?, Name=?, status=?, description=?, category=?,image1=?,image2=?,image3=?,image4=? WHERE itemID=?");
             st.setString(1, item.getOwnerID());
             st.setString(2, item.getName());
             st.setInt(3, item.getStatus());
             st.setString(4, item.getDescription());
             st.setString(5, item.getCategory());
             st.setInt(6, item.getItemID());
+            st.setBlob(7, item.getImage1());
+            st.setBlob(8, item.getImage2());
+            st.setBlob(9, item.getImage3());
+            st.setBlob(10, item.getImage4());
             st.execute();
             return true;
         } catch (SQLException ex) {

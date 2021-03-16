@@ -72,7 +72,7 @@
                     <div class="col-2" >
                         <h1>Trao đổi<br>Hàng hóa!</h1>
                         <p>Bạn đang có một món nào đó nhưng vì một lí do nào đó mà mình không dùng đến? Hãy đăng lên Mitto và gợi ý một sản phẩm mà mình muốn trao đổi.<br>Bạn sẽ có cơ hội giao lưu sản phẩm với nhừng người có cùng sở thích.</p>
-                        <a href="products.html" class="btn">Bắt đầu ngay &#8594;</a>
+                        <a href="${pageContext.request.contextPath}/customer/uploadItem" class="btn">Bắt đầu ngay &#8594;</a>
                     </div>
                     <div class="col-2" >
                         <img src="../images/front-page.png" alt="" width="555px" height="600px" >

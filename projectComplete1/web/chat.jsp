@@ -4,7 +4,6 @@
     Author     : Asus Vivobook
 --%>
 
-<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,6 +20,8 @@
         </style>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     </head>
     <body>
         <style>
@@ -31,15 +32,13 @@
                 border-radius: 5px;
                 padding: 10px;
                 margin: 10px 0;
-                max-width: 50%
+                max-width: 100%
             }
 
             /* Darker chat container */
             .darker {
                 border-color: #ccc;
                 background-color: #ddd;
-                /*                position: fixed;
-                                right: 20px*/
             }
 
             /* Clear floats */
@@ -77,26 +76,14 @@
                 color: #999;
             }
             .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+            
             .input_msg_write input {
                 background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
                 border: 2px solid black;
                 color: #4c4c4c;
                 font-size: 25px;
                 min-height: 100px;
-                width: 100%;
-            }
-            .msg_send_btn {
-                background: #05728f none repeat scroll 0 0;
-                border: medium none;
-                border-radius: 50%;
-                color: #fff;
-                cursor: pointer;
-                font-size: 17px;
-                height: 33px;
-                position: absolute;
-                right: 0;
-                top: 11px;
-                width: 33px;
+                /*width: 100%;*/
             }
 
         </style>
@@ -149,43 +136,38 @@
         <!-- NOTE: nếu là người gửi thì class của div là "container",class của img là rỗng, class của span là "time-right"
         Còn của người nhận thì class là "container darker", class của img là right, class của span là "time-left" -->
 
-        <%
-            ResultSet content = (ResultSet) session.getAttribute("content");
-            // String sendFrom = (String) content.getString("sendFrom");
-            String idCard = (String) session.getAttribute("IDcard");
 
-        %>
-        <%            while (content.next()) {
-                String sendFrom = (String) content.getString("sendFrom");
-                if ((sendFrom).equals(idCard)) {
-        %>
-        <div class="container darker">
-            <img src="images/receive.jpg" alt="Avatar" class="right">
-            <p style="text-align:right"><%= content.getString("content")%></p>
-            <span class="time-right"><%= content.getString("timeSendChat")%></span>
-        </div>
 
-        <%} else {%>
+
         <div class="container">
             <img src="images/send.jpg" alt="Avatar" class="">
-            <p><%= content.getString("content")%> </p>
-            <span class="time-left"><%= content.getString("timeSendChat")%> </span>
+            <p>Hello. How are you today?</p>
+            <span class="time-right">11:00</span>
         </div>
-        <%}%>
-        <%}%>
 
-        <div class="type_msg">
-            <form action="<%= getServletContext().getContextPath()%>/Chat" method="post">
-                <div class="input_msg_write">
-                    <input type="text" class="write_msg" placeholder="Type a message" name="txtChat" />
-                    <button class="msg_send_btn" type="button">
-                        <i class="fa fa-paper-plane-o" aria-hidden="true">
-                            <input type="submit" name="btnNewChat"/>
-                        </i>
-                    </button>
-                </div>
-            </form>
+        <div class="container">
+            <img src="images/send.jpg" alt="Avatar" class="">
+            <p>Sweet! So, what do you wanna do today?</p>
+            <span class="time-left">11:02</span>
         </div>
+
+        <div class="container darker">
+            <img src="images/receive.jpg" alt="Avatar" class="right">
+            <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+            <span class="time-right">11:05</span>
+        </div>
+        
+
+        <form action="" method="">
+            <div class="type_msg">
+                <div class="input_msg_write">
+                    <input type="text" class="write_msg" placeholder="Type a message" name="submit-mess" style="width:85%;" />
+                    
+                    <input type="submit" class="w3-button w3-blue w3-round-small" value="Send" style="width:10%;height: 10%;float: right; border-radius: 10px;">
+                </div>
+            </div>
+        </form>
+        
         <script>
             var MenuItems = document.getElementById('MenuItems');
             MenuItems.style.maxHeight = "0px";

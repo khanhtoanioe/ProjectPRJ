@@ -38,7 +38,7 @@ public class ProfileController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileController</title>");            
+            out.println("<title>Servlet ProfileController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProfileController at " + request.getContextPath() + "</h1>");
@@ -60,13 +60,13 @@ public class ProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String URI = request.getRequestURI();
-        String URISplit []= URI.split("/");
-        String id = URISplit[URISplit.length-1];
-        customer user= customerDAO.getCustomerByID(id);
+        String URISplit[] = URI.split("/");
+        String id = URISplit[URISplit.length - 1];
+        customer user = customerDAO.getCustomerByID(id);
         HttpSession ss = request.getSession();
         ss.setAttribute("user", user);
         request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-        
+
     }
 
     /**
@@ -80,7 +80,21 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String btn = null;
+        String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
+        btn = request.getParameter("btnEdit");
+        if (btn != null) {
+            IDCard = request.getParameter("txtID");
+            passWord = request.getParameter("txtPwd");
+            name = request.getParameter("txtName");
+            phoneNumber = request.getParameter("txtPhone");
+            address = request.getParameter("txtAddress");
+            dateOfBirth = request.getParameter("txtBirth");
+            email = request.getParameter("txtEmail");
+            customer cus = new customer(IDCard, passWord, name, phoneNumber, address, dateOfBirth, email);
+            customerDAO.editCustomerInfor(cus);
+            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+        }
     }
 
     /**

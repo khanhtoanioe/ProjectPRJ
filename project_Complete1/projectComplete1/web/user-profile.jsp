@@ -98,31 +98,31 @@
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Full name</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="<%=user.getName()%>" name="txtName">
+                                                <input class="form-control" type="text" value="<%=user.getName()%>" name="txtName"<%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="email" value="<%=user.getEmail()%>" name="txtEmail">
+                                                <input class="form-control" type="email" value="<%=user.getEmail()%>" name="txtEmail" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Phone number</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="tel" value="<%=user.getPhoneNumber()%>" name="txtPhone">
+                                                <input class="form-control" type="tel" value="<%=user.getPhoneNumber()%>" name="txtPhone" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Date of Birth</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="date" value="<%=user.getDateOfBirth()%>" name="txtBirth">
+                                                <input class="form-control" type="date" value="<%=user.getDateOfBirth()%>" name="txtBirth" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Address</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="<%=user.getAddress()%>" name="txtAddress">
+                                                <input class="form-control" type="text" value="<%=user.getAddress()%>" name="txtAddress"<%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
                                             </div>
                                         </div>                                 
                                                 <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%> >

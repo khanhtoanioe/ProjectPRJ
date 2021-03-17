@@ -52,17 +52,7 @@
                             <li><a href="homePage.html">Home</a></li>
                             <li><a href="products.html">Products</a></li>
                             <li><a href="account.html">Account</a></li>
-                            <li><a href="compad.html">Login/Register</a></li>   
-                            <li>
-                                <div class="wrap">
-                                    <div class="search">
-                                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                                        <button type="submit" class="searchButton">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>       
+                            <li><a href="compad.html">Login/Register</a></li>        
                         </ul>
                     </nav>
                     <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
@@ -266,17 +256,6 @@
                     MenuItems.style.maxHeight = "0px";
                 }
             }
-        </script>
-        <script type="text/javascript">
-            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-            (function () {
-                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-                s1.async = true;
-                s1.src = 'https://embed.tawk.to/601955e4a9a34e36b972fda3/1ethff1oi';
-                s1.charset = 'UTF-8';
-                s1.setAttribute('crossorigin', '*');
-                s0.parentNode.insertBefore(s1, s0);
-            })();
         </script>
     </body>
 </html>

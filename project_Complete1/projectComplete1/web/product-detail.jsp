@@ -49,16 +49,7 @@
                 <li><a href="products.html">Products</a></li>
                 <li><a href="account.html">Account</a></li>
                 <li><a href="compad.html">Login/Register</a></li>
-                <li>
-                    <div class="wrap">
-                     <div class="search">
-                      <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                      <button type="submit" class="searchButton">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </li>          
+         
     </ul>
 </nav>
         <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>

@@ -4,6 +4,8 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="models.item"%>
+<%@page import="DAO.itemDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,7 @@
 
 </head>
 <body>
-    <h1><%= request.getParameter("itemID") %></h1>
+    <% item item = itemDAO.getItemById(Integer.parseInt(request.getParameter("itemID"))); %>
     <style>
         .btn{
             margin: 10px 0;
@@ -89,8 +91,8 @@
             </div>
         </div>
         <div class="col-2">
-            <h4>Logitech G102 Black body</h4><br>
-            <strong>Swap: Logitech G102 WHITE body</strong><br>
+            <h4><%= item.getName() %></h4><br>
+
              
             <a href="#" class="btn">Chat with owner</a> <!-- nhảy qua chat -->
             <a href="#" class="btn">User profile</a>
@@ -100,8 +102,7 @@
             <!--Description-->
             <strong>Description: </strong><br>
 
-            <p>I just bought it, never use it. Overall, it's new 99%. Warranty 12 months.
-                I can trade it with the one with the white body. Send me a message and we can talk more about this.</p>
+            <p><%= item.getDescription() %></p>
 
 
             </div>

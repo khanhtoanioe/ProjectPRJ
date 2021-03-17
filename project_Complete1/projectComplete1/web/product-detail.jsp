@@ -19,6 +19,11 @@
 
 </head>
 <body>
+    <style>
+        .btn{
+            margin: 10px 0;
+        }
+    </style>
     <div class="header">
         <div class="container">
 
@@ -84,13 +89,11 @@
         <div class="col-2">
             <h4>Logitech G102 Black body</h4><br>
             <strong>Swap: Logitech G102 WHITE body</strong><br>
-            
-            <!--Status món hàng-->
-            <p><strong>Status:</strong> Waiting</p> 
-
-
+             
             <a href="#" class="btn">Chat with owner</a> <!-- nhảy qua chat -->
-            <a href="#" class="btn">See user transaction history</a> <!--nhảy qua trang history để xem lịch sử và rate -->
+            <a href="#" class="btn">User profile</a>
+            <a href="#" class="btn"><strong>Status:</strong> Waiting<br>Click to begin dealing</a> <!--chuyển đổi status món hàng -->
+            
             <br>
             <!--Description-->
             <strong>Description: </strong><br>

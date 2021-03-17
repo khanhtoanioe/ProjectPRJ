@@ -57,7 +57,8 @@
          
     </ul>
 </nav>
-        <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
+        <a href="#"><img src="../images/cart.png" width="30px" height="30px"></a>
+        <a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
         <img src="../images/menu.png" class="menu-icon"
         onclick="menutoggle()">
 

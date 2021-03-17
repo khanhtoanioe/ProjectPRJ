@@ -15,6 +15,10 @@
         <servlet-name>ChatController</servlet-name>
         <servlet-class>controller.ChatController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>controller.ProfileController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/</url-pattern>
@@ -46,6 +50,10 @@
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/Profile/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

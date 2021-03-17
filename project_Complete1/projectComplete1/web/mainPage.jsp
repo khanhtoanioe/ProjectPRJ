@@ -85,14 +85,6 @@
                     <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
                         <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
                     <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><strong><%= rs.getNString("name")%></strong></a><br>
-
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
                 </div>
                 <% } %>
                 <% }%>
@@ -105,13 +97,6 @@
                             </strong></a><br>
                         <a href="product-details.html"><h4>Swap: Nike shoes Size: 39</h4></a>
 
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
                         <p>Waiting</p>
                     </div>
                     <div class="col-4">
@@ -120,13 +105,6 @@
                             </strong></a><br>
                         <a href="products-details.html"><h4>Swap: Apple Airpod 3</h4></a>
 
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
                         <p>DONE</p>
                     </div>
                     <div class="col-4">
@@ -135,13 +113,6 @@
                             </strong></a><br>
                         <a href="products-details.html"><h4>Swap: And other headphone</h4></a>
 
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                        </div>
                         <p>Waiting</p>
                     </div>
                     <div class="col-4">
@@ -149,13 +120,6 @@
                         <a href="products-details.html"><strong>LEVI Jeans
                             </strong></a><br>
                         <a href="products-details.html"><h4>Swap: Other brand jean</h4></a>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
                         <p>Waiting</p>
                     </div>
                 </div>
@@ -165,14 +129,6 @@
                         <a href="products-details.html"><strong>Nike shoes Size: 39
                             </strong></a><br>
                         <a href="products-details.html"><h4>Swap: Nike shoes Size: 41</h4></a>
-
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
                         <p>Waiting</p>
                     </div>
                     <div class="col-4">
@@ -180,13 +136,7 @@
                         <a href="products-details.html"><strong>Pepsi, 355mL Cans, 24 Pack
                             </strong></a><br>
                         <a href="products-details.html"><h4>Swap: COCA COLA</h4></a>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
+
                         <p>Waiting</p>
                     </div>
                     <div class="col-4">
@@ -195,13 +145,6 @@
                             </strong></a><br>
                         <a href="products-details.html"><h4>BLACK SamSung A12 2020</h4></a>
 
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                        </div>
                         <p>Waiting</p>
                     </div>
                     <div class="col-4">
@@ -209,14 +152,6 @@
                         <a href="products-details.html"><strong>I Am Gifted, So Are You!
                             </strong></a><br>
                         <a href="products-details.html"><h4>Swap: Any kind of book</h4></a>
-
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
                         <p>Waiting</p>
                     </div>
                 </div>

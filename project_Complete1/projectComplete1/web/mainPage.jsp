@@ -81,7 +81,8 @@
                 <% while (rs.next()) { %>
                 <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
                 <div class="col-4"   >
-                    <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
+                    <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
+                        <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
                     <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><strong><%= rs.getNString("name")%></strong></a><br>
 
                     <div class="rating">

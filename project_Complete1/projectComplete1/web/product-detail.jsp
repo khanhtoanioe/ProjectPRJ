@@ -77,10 +77,10 @@
             <div class="small-img-row ">
 
                 <div class="small-img-col">
-                    <img src="../images/Logitech-G102-1.jpg" width="100%" class="small-img">
+                    <img src="data:image/jpg;base64,<%= itemDAO.getImageString(item.getImage1()) %>" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="../images/Logitech-G102-2.jpg" width="100%" class="small-img">
+                    <img src="data:image/jpg;base64,<%= itemDAO.getImageString(item.getImage2()) %>" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
                     <img src="../images/Logitech-G102-3.jpg" width="100%" class="small-img">

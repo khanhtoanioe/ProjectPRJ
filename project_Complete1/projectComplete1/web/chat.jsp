@@ -91,7 +91,7 @@
         <div class="header">
             <div class="navbar" id="mynavbar">
                 <div class="logo">
-                    <a href="homePage.html"><img src="images/logo.png" width="225px"></a>
+                    <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                 </div>
                 <nav>
                     <ul id="MenuItems">
@@ -118,7 +118,7 @@
                         <li><a href="compad.html">Login/Register</a></li>        
                     </ul>
                 </nav>
-                <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
                 <img src="../images/menu.png" class="menu-icon"
                      onclick="menutoggle()">
             </div>
@@ -159,9 +159,9 @@
         <form action="<%= getServletContext().getContextPath()%>/Chat" method="post">
             <div class="type_msg">
                 <div class="input_msg_write">
-                    <input type="text" class="write_msg" placeholder="Type a message" name="submit-mess" style="width:85%;" />
+                    <input type="text" class="write_msg" placeholder="Type a message" name="txtChat" style="width:85%;" />
                     
-                    <input type="submit" class="w3-button w3-blue w3-round-small" value="Send" style="width:10%;height: 10%;float: right; border-radius: 10px;">
+                    <input type="submit" name="btnNewChat" class="w3-button w3-blue w3-round-small" value="Send" style="width:10%;height: 10%;float: right; border-radius: 10px;">
                 </div>
             </div>
         </form>

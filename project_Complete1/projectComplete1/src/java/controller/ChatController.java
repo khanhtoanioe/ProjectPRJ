@@ -74,20 +74,18 @@ public class ChatController extends HttpServlet {
             session = request.getSession();
             String idCard1 = (String) session.getAttribute("IDcard");
             idCard2 = URISplit[URISplit.length - 1];
-            try {
-                chatID = chatSessionDAO.checkChatExist(idCard1, idCard2).getString("sessionID");
-            } catch (SQLException ex) {
-                Logger.getLogger(ChatController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
+            chatID = chatSessionDAO.checkChatExist(idCard1, idCard2);
+
             if (chatID == null) {
                 count = chatSessionDAO.addNewChat(idCard1, idCard2);
-                try {
-                    chatID = chatSessionDAO.checkChatExist(idCard1, idCard2).getString("sessionID");
-                } catch (SQLException ex) {
-                    Logger.getLogger(ChatController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                chatID = chatSessionDAO.checkChatExist(idCard1, idCard2);
+                ResultSet csd = ChatSessionDetailDAO.getChatContent(chatID);
+                HttpSession ss = request.getSession();
+                ss.setAttribute("content", csd);
                 request.getRequestDispatcher("/chat.jsp").forward(request, response);
-            } else {
+            } else 
+            {
                 ResultSet csd = ChatSessionDetailDAO.getChatContent(chatID);
                 HttpSession ss = request.getSession();
                 ss.setAttribute("content", csd);
@@ -128,7 +126,7 @@ public class ChatController extends HttpServlet {
         btn = request.getParameter("btnNewChat");
         if (btn != null) {
             content = request.getParameter("txtChat");
-            if (content.isEmpty()) {
+            if (content==null) {
                 response.sendRedirect("/Chat/" + idCard2);
             } else {
                 sendFrom = (String) session.getAttribute("IDcard");

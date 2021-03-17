@@ -129,26 +129,33 @@
 
 
 
-        <div class="container">
-            <img src="images/send.jpg" alt="Avatar" class="">
-            <p>Hello. How are you today?</p>
-            <span class="time-right">11:00</span>
-        </div>
+        <%
+            ResultSet content = (ResultSet) session.getAttribute("content");
+            // String sendFrom = (String) content.getString("sendFrom");
+            String idCard = (String) session.getAttribute("IDcard");
 
-        <div class="container">
-            <img src="images/send.jpg" alt="Avatar" class="">
-            <p>Sweet! So, what do you wanna do today?</p>
-            <span class="time-left">11:02</span>
-        </div>
-
+        %>
+        <%            while (content.next()) {
+                String sendFrom = (String) content.getString("sendFrom");
+                if ((sendFrom).equals(idCard)) {
+        %>
         <div class="container darker">
             <img src="images/receive.jpg" alt="Avatar" class="right">
-            <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-            <span class="time-right">11:05</span>
+            <p style="text-align:right"><%= content.getString("content")%></p>
+            <span class="time-right"><%= content.getString("timeSendChat")%></span>
         </div>
+
+        <%} else {%>
+        <div class="container">
+            <img src="images/send.jpg" alt="Avatar" class="">
+            <p><%= content.getString("content")%> </p>
+            <span class="time-left"><%= content.getString("timeSendChat")%> </span>
+        </div>
+        <%}%>
+        <%}%>
         
 
-        <form action="" method="">
+        <form action="<%= getServletContext().getContextPath()%>/Chat" method="post">
             <div class="type_msg">
                 <div class="input_msg_write">
                     <input type="text" class="write_msg" placeholder="Type a message" name="submit-mess" style="width:85%;" />

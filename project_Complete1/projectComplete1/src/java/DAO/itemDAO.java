@@ -28,7 +28,7 @@ public class itemDAO {
 
     public static Connection conn = DBconnection.getConnection();
 
-    public static String getImageString (Blob blob) throws IOException, SQLException { 
+    public static String getImageString(Blob blob) throws IOException, SQLException {
         InputStream inputStream = blob.getBinaryStream();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[4096];
@@ -54,13 +54,27 @@ public class itemDAO {
         return null;
     }
 
+    public static ResultSet getItemByCategory(String cat) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category, image1,image2,image3,image4 FROM iteminformation WHERE category=?");
+            st.setString(1, cat);
+            ResultSet rs = st.executeQuery();
+            
+                return rs;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public static item getItemById(int id) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category, image1,image2,image3,image4 FROM iteminformation WHERE itemID=?");
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                item item = new item(rs.getInt(1), rs.getString(2), rs.getString(3), (rs.getInt(4) == 1) ? true : false, rs.getString(5), rs.getString(6),rs.getBlob(7),rs.getBlob(8),rs.getBlob(9),rs.getBlob(10));
+                item item = new item(rs.getInt(1), rs.getString(2), rs.getString(3), (rs.getInt(4) == 1) ? true : false, rs.getString(5), rs.getString(6), rs.getBlob(7), rs.getBlob(8), rs.getBlob(9), rs.getBlob(10));
                 return item;
             } else {
                 return null;

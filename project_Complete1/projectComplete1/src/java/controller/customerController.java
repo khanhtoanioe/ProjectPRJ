@@ -89,6 +89,9 @@ public class customerController extends HttpServlet {
         if (URI.endsWith("/customer/uploadItem")) {
             request.getRequestDispatcher("/uploadItem.jsp").forward(request, response);
         }
+        if (URI.startsWith( getServletContext().getContextPath() +"/customer/viewProduct" )){
+            request.getRequestDispatcher("/product-detail.jsp?itemID="+request.getParameter("itemID")).forward(request, response);
+        }
     }
 
     /**

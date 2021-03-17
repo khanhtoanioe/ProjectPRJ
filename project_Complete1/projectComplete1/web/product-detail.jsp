@@ -19,6 +19,7 @@
 
 </head>
 <body>
+    <h1><%= request.getParameter("itemID") %></h1>
     <style>
         .btn{
             margin: 10px 0;

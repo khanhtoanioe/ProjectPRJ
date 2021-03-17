@@ -125,7 +125,7 @@
                                                 <input class="form-control" type="text" value="<%=user.getAddress()%>" name="txtAddress"<%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
                                             </div>
                                         </div>                                 
-                                                <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%> >
+                                        <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%> >
                                             <label class="col-lg-3 col-form-label form-control-label">ID Card</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" type="text" value="<%=user.getIDCard()%>" name="txtID" >

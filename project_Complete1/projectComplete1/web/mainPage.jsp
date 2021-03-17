@@ -75,6 +75,7 @@
         </div>
 
         <div class="small-container">
+            <div>
             <h2 class="title">Top categories</h2>
             <div class="row">
                 <% ResultSet rs = itemDAO.getAllItem();%>
@@ -94,7 +95,8 @@
                     </div>
                 </div>
                 <% } %>
-                <% }%>            
+                <% }%>
+                </div>
                 <h2 class="title">New item</h2>
                 <div class="row">
                     <div class="col-4">

@@ -10,16 +10,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 
-<c:if test="${param.btnSendDeal != null}">
-    <sql:setDataSource driver="com.mysql.jdbc.Driver" var="db" url="jdbc:mysql://localhost/group_assignment" password="" user="root"/>
-    <sql:update dataSource="${db}"  >
-        INSERT INTO `dealinglist` (`senderItem`, `recieverItem`, `reciever`, `status`) VALUES(?,?,?,?);
-        <sql:param value="${param.itemID}"/>
-        <sql:param value="${param.senderItem}"/>
-        <sql:param value="${param.reciever}"/>
-        <sql:param value="0"/>
-    </sql:update>
-</c:if>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,7 +35,7 @@
                 <div class="row">
                     <% ResultSet rs = itemDAO.getAllItem();%>
                     <% while (rs.next()) { %>
-                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
+                    <% if (rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
                     <div class="col-4"   >
                         <label for="senderItem"></label>
                         <input type="radio" name="senderItem" id="senderItem" value="<%= rs.getInt("itemID") %>">

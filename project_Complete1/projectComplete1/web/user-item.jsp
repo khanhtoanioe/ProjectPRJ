@@ -4,6 +4,7 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -77,7 +78,9 @@
                 </div>
             </div>
         </div>
-
+        <%
+            ResultSet userItem =(ResultSet) session.getAttribute("rsUserItem");
+        %>
         <div class="container">
             <h2>Item manager</h2>
             <table id="example" class="display" style="width:100%">
@@ -87,43 +90,25 @@
                         <th>Name</th>
                         <th>Status</th>
                         <th>Category</th>
-                        <th>Age</th>
-                        <th>Trade with user</th>
+                        <th>Description</th>
                         <th>Option 1</th>
                         <th>Option 2</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <%
+                        while(userItem.next()){
+                    %>
                     <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
+                        <td><%=userItem.getInt("itemID")%></td>
+                        <td><%=userItem.getString("Name")%></td>
+                        <td><%=userItem.getInt("status")%></td>
+                        <td><%=userItem.getString("category")%></td>
+                        <td><%=userItem.getString("description")%></td>
+                        <td><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/<%=userItem.getInt("itemID"%>" onclick="return Confirm('Are you sure to delete <%=userItem.getString("Name")%> ?');">Delete</a></button></td>
                         <td><button class="btn"><a href="#">Edit</a></button></td>
                     </tr>
-                    <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                        <td><button class="btn"><a href="#">Edit</a></button></td>
-                    </tr>
-                    <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                        <td><button class="btn"><a href="#">Edit</a></button></td>
-                    </tr>
+                    <%}%>
                 </tbody>
             </table>
         </div>

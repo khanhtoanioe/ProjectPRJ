@@ -33,7 +33,7 @@ public class chatSessionDAO {
         return 0;
     }
 
-    public static String checkChatExist(String id1, String id2) {
+    public static int checkChatExist(String id1, String id2) {
         ResultSet check = null;
         try {
             PreparedStatement st = conn.prepareCall("Select sessionID from chatsession where IDCard1=? and IDCard2=? or IDCard1=? and IDCard2=?");
@@ -43,11 +43,11 @@ public class chatSessionDAO {
             st.setString(3, id2);
             check = st.executeQuery();
             if (check.next()) {
-                return check.getString("sessionID");
+                return check.getInt("sessionID");
             }
         } catch (SQLException ex) {
             Logger.getLogger(chatSessionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return 0;
     }
 }

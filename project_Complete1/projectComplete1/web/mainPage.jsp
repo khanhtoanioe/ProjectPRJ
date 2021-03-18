@@ -22,7 +22,6 @@
         </style>
     </head>
     <body>
-        <a href="/Chat/1111">test message</a>
         <div class="header">
             <div class="container">
 

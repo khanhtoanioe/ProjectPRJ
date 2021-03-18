@@ -25,7 +25,7 @@ public class ChatSessionDetailDAO {
     public static int addNewChatContent(ChatSessionDetail c) {
         try {
             PreparedStatement st = conn.prepareStatement("Insert into chatsessiondetail(sessionID,content,sendFrom) values (?,?,?)");
-            st.setString(1, c.getChatID());
+            st.setInt(1, c.getChatID());
             st.setString(2, c.getContent());
             st.setString(3, c.getSendFrom());
             int count = st.executeUpdate();
@@ -33,18 +33,19 @@ public class ChatSessionDetailDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
+        return 35;
     }
-    public static ResultSet getChatContent(String sessionID){
+
+    public static ResultSet getChatContent(int sessionID) {
         try {
-            PreparedStatement st=conn.prepareStatement("Select sessionID,timeSendChat,content,sendFrom from chatsessiondetail where sessionID = ? order by timeSendChat");
-            st.setString(1, sessionID);
-            ResultSet rs= st.executeQuery();
-           // rs.next();
+            PreparedStatement st = conn.prepareStatement("Select sessionID,timeSendChat,content,sendFrom from chatsessiondetail where sessionID = ? order by timeSendChat");
+            st.setInt(1, sessionID);
+            ResultSet rs = st.executeQuery();
+            // rs.next();
             return rs;
         } catch (SQLException ex) {
             Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;   
+        return null;
     }
 }

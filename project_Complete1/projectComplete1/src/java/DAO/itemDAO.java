@@ -59,9 +59,21 @@ public class itemDAO {
             PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category, image1,image2,image3,image4 FROM iteminformation WHERE category=?");
             st.setString(1, cat);
             ResultSet rs = st.executeQuery();
-            
-                return rs;
-            
+
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static ResultSet getUserItem(int userId) {
+        try {
+            PreparedStatement st = conn.prepareStatement("Select itemID,ownerID, Name,status, description, category from iteminformation where ownerID =? and status = 0 ");
+            st.setInt(1, userId);
+            ResultSet rs = st.executeQuery();
+            return rs;
         } catch (SQLException ex) {
             Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

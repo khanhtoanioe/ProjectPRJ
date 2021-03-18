@@ -141,14 +141,12 @@
                 if ((sendFrom).equals(idCard)) {
         %>
         <div class="container darker">
-            <img src="images/receive.jpg" alt="Avatar" class="right">
             <p style="text-align:right"><%= content.getString("content")%></p>
             <span class="time-right"><%= content.getString("timeSendChat")%></span>
         </div>
 
         <%} else {%>
         <div class="container">
-            <img src="images/send.jpg" alt="Avatar" class="">
             <p><%= content.getString("content")%> </p>
             <span class="time-left"><%= content.getString("timeSendChat")%> </span>
         </div>

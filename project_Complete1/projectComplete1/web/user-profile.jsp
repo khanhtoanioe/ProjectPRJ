@@ -119,52 +119,53 @@
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Full name</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="<%=user.getName()%>" name="txtName" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
+                                                <input class="form-control" type="text" value="<%=user.getName()%>" name="txtName" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
+                                                
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="email" value="<%=user.getEmail()%>" name="txtEmail" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
+                                                <input class="form-control" type="email" value="<%=user.getEmail()%>" name="txtEmail" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Phone number</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="tel" value="<%=user.getPhoneNumber()%>" name="txtPhone" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
+                                                <input class="form-control" type="tel" value="<%=user.getPhoneNumber()%>" name="txtPhone" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Date of Birth</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="date" value="<%=user.getDateOfBirth()%>" name="txtBirth" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
+                                                <input class="form-control" type="date" value="<%=user.getDateOfBirth()%>" name="txtBirth" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Address</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="<%=user.getAddress()%>" name="txtAddress" <%if (idCard != user.getIDCard()) {%>readonly=""<%}%>>
+                                                <input class="form-control" type="text" value="<%=user.getAddress()%>" name="txtAddress" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
                                             </div>
                                         </div>                                 
-                                                <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%> >
+                                                <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%> >
                                             <label class="col-lg-3 col-form-label form-control-label">ID Card</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" type="text" value="<%=user.getIDCard()%>" name="txtID" >
                                             </div>
                                         </div>
-                                        <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%>>
+                                        <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%>>
                                             <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" type="password" value="<%=user.getPassWord()%>" name="txtPwd">
                                             </div>
                                         </div>
-                                        <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%> >
+                                        <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%> >
                                             <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" type="password" value="<%=user.getPassWord()%>" name="txtPwdConfirm">
                                             </div>
                                         </div>
-                                        <div class="form-group row" <%if (idCard != user.getIDCard()) {%>style="display: none"<%}%>>
+                                        <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%>>
                                             <label class="col-lg-3 col-form-label form-control-label"></label>
                                             <div class="col-lg-9">
                                                 <!-- SUBMIT -->

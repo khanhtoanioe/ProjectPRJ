@@ -86,7 +86,8 @@
                 </div>
             </div>
 
-        </div>   
+        </div>  
+        
         <div class="container">
             <div class="row my-2">
                 <div class="col-lg-8 order-lg-2">
@@ -174,8 +175,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>          
 
 
                     <!-- RATING -->
@@ -391,10 +391,8 @@
                         </div>
 
                     </div>
-
+                    </div>
                 </div>
-            </div>
-        </div>
             <div class="col-lg-4 order-lg-1 text-center">
                 <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             </div>

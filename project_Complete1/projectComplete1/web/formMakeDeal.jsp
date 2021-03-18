@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
+        <form action="<%= getServletContext().getContextPath() %>/formMakeDeal.jsp" >
         <div class="small-container">
             <div>
                 <h2 class="title">CHOOSE ITEM YOU WANT TO TRADE</h2>
@@ -34,7 +35,7 @@
                     <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
                     <div class="col-4"   >
                         <label for="senderItem"></label>
-                        <input type="radio" name="senderItem" id="senderItem">
+                        <input type="radio" name="senderItem" id="senderItem" value="<%= rs.getInt("itemID") %>">
                        
                             <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>">
                         <strong><%= rs.getNString("name")%></strong>
@@ -49,8 +50,10 @@
                     </div>
                     <% } %>
                     <% }%>
+                    <input type="submit" value="SEND DEAL" name="btnSendDeal">
                 </div>
             </div>
         </div>
+        </form>
     </body>
 </html>

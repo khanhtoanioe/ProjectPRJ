@@ -22,18 +22,31 @@ public class ChatSessionDetailDAO {
 
     private static Connection conn = DB.DBconnection.getConnection();
 
-    public static int addNewChatContent(ChatSessionDetail c) {
+//    public static int addNewChatContent(ChatSessionDetail c) {
+//        try {
+//            PreparedStatement st = conn.prepareStatement("Insert into chatsessiondetail(sessionID,content,sendFrom) values (?,?,?)");
+//            st.setInt(1, c.getChatID());
+//            st.setString(2, c.getContent());
+//            st.setString(3, c.getSendFrom());
+//            int count = st.executeUpdate();
+//            return count;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return 35;
+//    }
+    public static int addNewChatContent(int chatID1, String content, String sendFrom) {
         try {
             PreparedStatement st = conn.prepareStatement("Insert into chatsessiondetail(sessionID,content,sendFrom) values (?,?,?)");
-            st.setInt(1, c.getChatID());
-            st.setString(2, c.getContent());
-            st.setString(3, c.getSendFrom());
+            st.setInt(1, chatID1);
+            st.setString(2, content);
+            st.setString(3, sendFrom);
             int count = st.executeUpdate();
             return count;
         } catch (SQLException ex) {
             Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 35;
+        return 0;
     }
 
     public static ResultSet getChatContent(int sessionID) {

@@ -92,6 +92,11 @@ public class customerController extends HttpServlet {
         if (URI.startsWith( getServletContext().getContextPath() +"/customer/viewProduct" )){
             request.getRequestDispatcher("/product-detail.jsp?itemID="+request.getParameter("itemID")).forward(request, response);
         }
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/sendDeal")){
+            int recieverItem = Integer.parseInt(request.getParameter("itemID"));
+            String reciever = itemDAO.getItemById(recieverItem).getOwnerID();
+            request.getRequestDispatcher("/formMakeDeal.jsp?recieverItem="+recieverItem+"&reciever="+reciever).forward(request, response);
+        }
     }
 
     /**

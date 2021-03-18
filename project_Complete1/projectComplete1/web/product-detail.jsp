@@ -97,7 +97,7 @@
 
                     <a href="<%=getServletContext().getContextPath()%>/Chat/<%=item.getOwnerID()%>" class="btn">Chat with owner</a> <!-- nhảy qua chat -->
                     <a href="<%=getServletContext().getContextPath()%>/Profile/<%=item.getOwnerID()%>" class="btn">User profile</a>
-                    <a href="#" class="btn"><strong>Status:</strong> Waiting<br>Click to begin dealing</a> <!--chuyển đổi status món hàng -->
+                    <a href="<%= getServletContext().getContextPath() %>/customer/sendDeal?itemID=<%= item.getItemID() %>" class="btn"><strong>Status:</strong> Waiting<br>Click to begin dealing</a> <!--chuyển đổi status món hàng -->
 
                     <br>
                     <!--Description-->

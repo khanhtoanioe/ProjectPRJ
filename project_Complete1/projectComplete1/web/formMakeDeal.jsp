@@ -7,6 +7,19 @@
 <%@page import="DAO.itemDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
+<c:if test="${param.btnSendDeal != null}">
+    <sql:setDataSource driver="com.mysql.jdbc.Driver" var="db" url="jdbc:mysql://localhost/group_assignment" password="" user="root"/>
+    <sql:update dataSource="${db}"  >
+        INSERT INTO `dealinglist` (`senderItem`, `recieverItem`, `reciever`, `status`) VALUES(?,?,?,?);
+        <sql:param value="${param.itemID}"/>
+        <sql:param value="${param.senderItem}"/>
+        <sql:param value="${param.reciever}"/>
+        <sql:param value="0"/>
+    </sql:update>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

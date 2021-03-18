@@ -10,19 +10,20 @@ package models;
  * @author Asus
  */
 public class ChatSessionDetail {
-    String chatID, timeSendChat, content,sendFrom;
+    String timeSendChat, content,sendFrom;
+    int chatID;
 
-    public ChatSessionDetail(String chatID, String content, String sendFrom) {
+    public ChatSessionDetail(int chatID, String content, String sendFrom) {
         this.chatID = chatID;
         this.content = content;
         this.sendFrom = sendFrom;
     }
 
-    public String getChatID() {
+    public int getChatID() {
         return chatID;
     }
 
-    public void setChatID(String chatID) {
+    public void setChatID(int chatID) {
         this.chatID = chatID;
     }
 

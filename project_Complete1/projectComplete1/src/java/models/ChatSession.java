@@ -10,12 +10,13 @@ package models;
  * @author Asus
  */
 public class ChatSession {
-    private String IDCard1, IDCard2, chatID;
+    private String IDCard1, IDCard2;
+    int chatID;
 
     public ChatSession() {
     }
 
-    public ChatSession(String IDCard1, String IDCard2, String chatID) {
+    public ChatSession(String IDCard1, String IDCard2, int chatID) {
         this.IDCard1 = IDCard1;
         this.IDCard2 = IDCard2;
         this.chatID = chatID;
@@ -37,11 +38,11 @@ public class ChatSession {
         this.IDCard2 = IDCard2;
     }
 
-    public String getChatID() {
+    public int getChatID() {
         return chatID;
     }
 
-    public void setChatID(String chatID) {
+    public void setChatID(int chatID) {
         this.chatID = chatID;
     }
     

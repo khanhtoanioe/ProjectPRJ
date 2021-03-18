@@ -6,8 +6,10 @@
 package controller;
 
 import DAO.customerDAO;
+import DAO.itemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,13 +62,21 @@ public class ProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String URI = request.getRequestURI();
-        String URISplit[] = URI.split("/");
-        String id = URISplit[URISplit.length - 1];
-        customer user = customerDAO.getCustomerByID(id);
-        HttpSession ss = request.getSession();
-        ss.setAttribute("user", user);
-        request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-
+        if (URI.endsWith("/UserItem")) {
+            String URISplit[]= URI.split("/");
+            String userId = URISplit[URISplit.length-2];
+            ResultSet rsUserItem= itemDAO.getUserItem(Integer.parseInt(userId));
+            HttpSession ss1= request.getSession();
+            ss1.setAttribute("rsUserItem", rsUserItem);
+            request.getRequestDispatcher("/user-item.jsp").forward(request, response);
+        } else if (URI.startsWith("/Profile/")) {
+            String URISplit[] = URI.split("/");
+            String id = URISplit[URISplit.length - 1];
+            customer user = customerDAO.getCustomerByID(id);
+            HttpSession ss2 = request.getSession();
+            ss2.setAttribute("user", user);
+            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+        }
     }
 
     /**

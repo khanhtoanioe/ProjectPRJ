@@ -27,7 +27,8 @@ import models.ChatSessionDetail;
 public class ChatController extends HttpServlet {
 
     HttpSession session;
-    String chatID, idCard2;
+    String  idCard2;
+    int chatID;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,15 +78,14 @@ public class ChatController extends HttpServlet {
 
             chatID = chatSessionDAO.checkChatExist(idCard1, idCard2);
 
-            if (chatID == null) {
+            if (chatID != 0) {
                 count = chatSessionDAO.addNewChat(idCard1, idCard2);
                 chatID = chatSessionDAO.checkChatExist(idCard1, idCard2);
                 ResultSet csd = ChatSessionDetailDAO.getChatContent(chatID);
                 HttpSession ss = request.getSession();
                 ss.setAttribute("content", csd);
                 request.getRequestDispatcher("/chat.jsp").forward(request, response);
-            } else 
-            {
+            } else {
                 ResultSet csd = ChatSessionDetailDAO.getChatContent(chatID);
                 HttpSession ss = request.getSession();
                 ss.setAttribute("content", csd);
@@ -122,20 +122,37 @@ public class ChatController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String btn = null;
-        String chatID1, sendFrom, content;
+        String  sendFrom, content;
+        int chatID1;
         btn = request.getParameter("btnNewChat");
         if (btn != null) {
             content = request.getParameter("txtChat");
-            if (content==null) {
+            if (content.isEmpty()) {
                 response.sendRedirect("/Chat/" + idCard2);
             } else {
                 sendFrom = (String) session.getAttribute("IDcard");
-                chatID1 = chatID;
+                chatID1 =chatID ;
                 ChatSessionDetail dt = new ChatSessionDetail(chatID1, content, sendFrom);
                 int count = ChatSessionDetailDAO.addNewChatContent(dt);
-                response.sendRedirect("/Chat/" + idCard2);
+                response.setContentType("text/html;charset=UTF-8");
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>Servlet ChatController</title>");
+                    out.println("</head>");
+                    out.println("<body>");
+//                out.println("<h1>" + idCard1 + "<h1>");
+                    out.println("<h1>" + idCard2 + "<h1>");
+                    out.println("<h1>" + chatID + "<h1>");
+                    out.println("<h1>" + count + "<h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+
+//                response.sendRedirect("/Chat/" + idCard2);
             }
-//            request.getRequestDispatcher("/chat.jsp").forward(request, response);
         }
     }
 

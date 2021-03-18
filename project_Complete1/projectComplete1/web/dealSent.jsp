@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Deal has been sent</h1>
+         <a href="<%=getServletContext().getContextPath()%>/customer/home"> Click here to back to home page</a>
     </body>
 </html>

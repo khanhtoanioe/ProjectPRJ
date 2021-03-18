@@ -69,7 +69,7 @@ public class ProfileController extends HttpServlet {
             HttpSession ss1= request.getSession();
             ss1.setAttribute("rsUserItem", rsUserItem);
             request.getRequestDispatcher("/user-item.jsp").forward(request, response);
-        } else if (URI.startsWith("/Profile/")) {
+        } else if (URI.startsWith(getServletContext().getContextPath()+"/Profile/")) {
             String URISplit[] = URI.split("/");
             String id = URISplit[URISplit.length - 1];
             customer user = customerDAO.getCustomerByID(id);

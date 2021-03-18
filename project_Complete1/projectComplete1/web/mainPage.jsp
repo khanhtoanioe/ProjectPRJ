@@ -50,7 +50,7 @@
                             </li>  
                             <li><a href="homePage.html">Home</a></li>
                             <li><a href="products.html">Products</a></li>
-                            <li><a href="account.html">Account</a></li>
+                            <li><a href="/Profile/<%=(String)session.getAttribute("IDcard")%>">Account</a></li>
                             <li><a href="compad.html">Login/Register</a></li>        
                         </ul>
                     </nav>

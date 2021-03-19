@@ -386,8 +386,6 @@
                                         <th>Image 2</th>
                                         <th>Image 3</th>
                                         <th>Image 4</th>
-                                        <th>Age</th>
-                                        <th>Trade with user</th>
                                         <th>Option 1</th>
                                         <th>Option 2</th>
                                     </tr>

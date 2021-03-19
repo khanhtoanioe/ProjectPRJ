@@ -80,7 +80,7 @@
 
 
 <div class="row">
-	<div class="col-12 col-sm-8 col-lg-5">
+	<div>
 		<h6 class="text-muted">Notification</h6>
 
 		<ul class="list-group">

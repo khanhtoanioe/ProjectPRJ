@@ -1,6 +1,6 @@
 <%-- 
-    Document   : notification
-    Created on : Mar 19, 2021, 7:16:56 PM
+    Document   : upload-successful
+    Created on : Mar 19, 2021, 9:48:21 PM
     Author     : Asus Vivobook
 --%>
 
@@ -26,11 +26,6 @@
 			color: #fff;
 			background-color: #198754;
 			border-color: #198754;
-		}
-		.btn-danger{
-			color: #fff;
-			background-color: #dc3545;
-			border-color: #dc3545;
 		}
 	</style>
 </head>
@@ -79,52 +74,17 @@
 
 
 
-<div class="row">
-	<div>
-		<h6 class="text-muted">Notification</h6>
-
-		<ul class="list-group">
-			<!-- Row 1 -->
-			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<div> Tên sản phẩm </div>
-				Tên user 1
-				<div class="image-parent">
-					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
-				</div>
-				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
-					<button class="btn btn-success" type="submit" name="accept">Accept</button>
-				</div>
-			</li>
-			<!-- Row 2 -->
-			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<div> Tên sản phẩm </div>
-				Tên user 2
-				<div class="image-parent">
-					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
-				</div>
-				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
-					<button class="btn btn-success" type="submit" name="accept">Accept</button>
-				</div>
-			</li>
-			<!-- Row 3 -->
-			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<div> Tên sản phẩm </div>  
-				Tên user 3
-				<div class="image-parent">
-					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
-				</div>
-				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
-					<button class="btn btn-success" type="submit" name="accept">Accept</button>
-				</div>
-			</li>
-
-		</ul>
-	</div>
+<div class="jumbotron text-center">
+  <h1 class="display-3">Upload Successful</h1>
+  <p class="lead">Thank you for using our website, you item will be reviewed soon.</p>
+  <hr>
+  <p>
+    câu gì vui vui
+  </p>
+  <p class="lead">
+    <a class="btn btn-success btn-sm" href="" role="button">Continue to homepage</a>
+  </p>
 </div>
-
 
 
 

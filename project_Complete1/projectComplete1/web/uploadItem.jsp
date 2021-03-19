@@ -32,19 +32,19 @@
                 $("#Form").validate({
                     rules: {
                         "image1": {
-                            required: true,
+                            required: true
                         },
                         "image2": {
-                            required: true,
+                            required: true
                         },
                         "image3": {
-                            required: true,
+                            required: true
                         },
                         "image4": {
-                            required: true,
+                            required: true
                         },
                         "name": {
-                            required: true,
+                            required: true
                             maxlength: 50
                         },
                         "description": {

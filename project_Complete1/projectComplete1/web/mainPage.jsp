@@ -50,12 +50,20 @@
                             </li>  
                             <li><a href="homePage.html">Home</a></li>
                             <li><a href="products.html">Products</a></li>
-                            <li><a href="/Profile/<%=(String)session.getAttribute("IDcard")%>">Account</a></li>
+                            <li><a href="/Profile/<%=(String) session.getAttribute("IDcard")%>">Account</a></li>
                             <li><a href="compad.html">Login/Register</a></li>        
                         </ul>
                     </nav>
                     <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                    <a href="#"><img src="../images/cart2.png" width="30px" height="30px" style="display:none"></a>
+                        <% ResultSet resultset = DAO.DealingListDAO.getReciever(); %>
+                        <% while (resultset.next()) {
+                            if (resultset.getString("reciever").equals(session.getAttribute("IDcard"))) {%>
+                    <a href="<%= getServletContext().getContextPath() %>/customer/notiDeal"><img src="../images/cart2.png" width="30px" height="30px"></a>
+
+                    <% break;
+                            }
+                        } %>
+
                     <img src="../images/menu.png" class="menu-icon"
                          onclick="menutoggle()">
                 </div>
@@ -76,18 +84,18 @@
 
         <div class="small-container">
             <div>
-            <h2 class="title">Top categories</h2>
-            <div class="row">
-                <% ResultSet rs = itemDAO.getAllItem();%>
-                <% while (rs.next()) { %>
-                <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
-                <div class="col-4"   >
-                    <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
-                        <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
-                    <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><strong><%= rs.getNString("name")%></strong></a><br>
-                </div>
-                <% } %>
-                <% }%>
+                <h2 class="title">Top categories</h2>
+                <div class="row">
+                    <% ResultSet rs = itemDAO.getAllItem();%>
+                    <% while (rs.next()) { %>
+                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
+                    <div class="col-4"   >
+                        <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
+                            <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
+                        <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><strong><%= rs.getNString("name")%></strong></a><br>
+                    </div>
+                    <% } %>
+                    <% }%>
                 </div>
                 <h2 class="title">New item</h2>
                 <div class="row">

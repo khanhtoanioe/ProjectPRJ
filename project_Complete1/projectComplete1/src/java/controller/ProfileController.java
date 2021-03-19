@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.customer;
+import models.item;
 
 /**
  *
@@ -61,22 +62,33 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession ss1, ss2;
         String URI = request.getRequestURI();
-        if (URI.endsWith("/UserItem")) {
-            String URISplit[]= URI.split("/");
-            String userId = URISplit[URISplit.length-2];
-            ResultSet rsUserItem= itemDAO.getUserItem(Integer.parseInt(userId));
-            HttpSession ss1= request.getSession();
-            ss1.setAttribute("rsUserItem", rsUserItem);
-            request.getRequestDispatcher("/user-item.jsp").forward(request, response);
-        } else if (URI.startsWith(getServletContext().getContextPath()+"/Profile/")) {
+        if (URI.contains("/UserItem/Delete")) {
+            String URISplit[] = URI.split("/");
+            String id = URISplit[URISplit.length - 1];
+            itemDAO.deleteById(Integer.parseInt(id));
+            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+        } else if (URI.contains("/UserItem/Edit")) {
+            String URISplit[] = URI.split("/");
+            String id = URISplit[URISplit.length - 1];
+            item it = itemDAO.getItemById(Integer.parseInt(id));
+            if (it == null) {
+                response.sendRedirect("/Profile");
+            } else {
+                ss1 = request.getSession();
+                ss1.setAttribute("item", it);
+                request.getRequestDispatcher("/editItem.jsp").forward(request, response);
+            }
+        } else if (URI.startsWith(getServletContext().getContextPath() + "/Profile/")) {
             String URISplit[] = URI.split("/");
             String id = URISplit[URISplit.length - 1];
             customer user = customerDAO.getCustomerByID(id);
-            HttpSession ss2 = request.getSession();
+            ss2 = request.getSession();
             ss2.setAttribute("user", user);
             request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
         }
+
     }
 
     /**

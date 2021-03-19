@@ -70,7 +70,7 @@ public class itemDAO {
 
     public static ResultSet getUserItem(int userId) {
         try {
-            PreparedStatement st = conn.prepareStatement("Select itemID,ownerID, Name,status, description, category from iteminformation where ownerID =? and status = 0 ");
+            PreparedStatement st = conn.prepareStatement("Select itemID,ownerID, Name,status, description, category, image1,image2,image3,image4 from iteminformation where ownerID =? and status = 0 ");
             st.setInt(1, userId);
             ResultSet rs = st.executeQuery();
             return rs;
@@ -151,4 +151,14 @@ public class itemDAO {
         return false;
     }
 
+    public static ResultSet getAllCategory() {
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT catName FROM category");
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

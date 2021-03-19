@@ -87,7 +87,7 @@
             </div>
 
         </div>  
-        
+
         <div class="container">
             <div class="row my-2">
                 <div class="col-lg-8 order-lg-2">
@@ -120,7 +120,7 @@
                                             <label class="col-lg-3 col-form-label form-control-label">Full name</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" type="text" value="<%=user.getName()%>" name="txtName" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -147,7 +147,7 @@
                                                 <input class="form-control" type="text" value="<%=user.getAddress()%>" name="txtAddress" <%if (!idCard.equals(user.getIDCard())) {%>readonly=""<%}%>>
                                             </div>
                                         </div>                                 
-                                                <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%> >
+                                        <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%> >
                                             <label class="col-lg-3 col-form-label form-control-label">ID Card</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" type="text" value="<%=user.getIDCard()%>" name="txtID" >
@@ -179,242 +179,267 @@
                         </div>          
 
 
-                    <!-- RATING -->
-                    <div class="tab-pane" id="rating">
+                        <!-- RATING -->
+                        <div class="tab-pane" id="rating">
 
-                        <div class="container">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <th>Name</th>
+                            <div class="container">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <th>Name</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Comment</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Rate</th>
+                                        </div>
                                     </div>
-                                    <div class="col-sm">
-                                        <th>Comment</th>
-                                    </div>
-                                    <div class="col-sm">
-                                        <th>Rate</th>
-                                    </div>
-                                </div>
-                                </tr>
-                                </thead>
+                                    </tr>
+                                    </thead>
 
-                                <tbody>
-                                    <!-- Row 1 -->
-                                    <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Ho Kha Minh</td>
+                                    <tbody>
+                                        <!-- Row 1 -->
+                                        <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td>Ho Kha Minh</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Very good, bla bla bla</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div> </td>
+                                        </div>
                                     </div>
-                                    <div class="col-sm">
-                                        <td>Very good, bla bla bla</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div> </td>
-                                    </div>
-                                </div>
-                                </tr>
-                                <!-- Row 2 -->
-                                <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Tieu Anh Tho</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Not so good, late</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div> </td>
-                                    </div>
-                                </div>
-                                </tr>
-                                <!-- Row 3 -->
-                                <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Tran Khanh Toan</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Suck</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div> </td>
-                                    </div>
-                                </div>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- History -->
-                    <div class="tab-pane" id="history">
-                        <div class="container">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <th>Time</th>
-                                    </div>
-                                    <div class="col-sm">
-                                        <th>Status</th>
-                                    </div>
-                                    <div class="col-sm">
-                                        <th>Trader</th>
-                                    </div>
-                                    <div class="col-sm">
-                                        <th>First Item</th>
-                                    </div>
-                                    <div class="col-sm">
-                                        <th>Second Item</th>
-                                    </div>
-                                </div>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Row 1 -->
-                                    <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Last month</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Done</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Tran Khanh Toan</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Blue iPhone 12</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Red iPhone 12</td>
-                                    </div>
-                                </div>
-                                </tr>
-                                <!-- Row 2 -->
-                                <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Last year</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Cancel</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Tieu Anh Tho</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Nike Shoes</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Adidas Shoes</td>
-                                    </div>
-                                </div>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane" id="upload">
-                        <div class="container">
-                            <h2>Item manager</h2>
-                            <table id="example" class="display" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Category</th>
-                                        <th>Age</th>
-                                        <th>Trade with user</th>
-                                        <th>Option 1</th>
-                                        <th>Option 2</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    <!-- Row 2 -->
                                     <tr>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                                        <td><button class="btn"><a href="#">Edit</a></button></td>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td>Tieu Anh Tho</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Not so good, late</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div> </td>
+                                        </div>
+                                    </div>
                                     </tr>
+                                    <!-- Row 3 -->
                                     <tr>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                                        <td><button class="btn"><a href="#">Edit</a></button></td>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td>Tran Khanh Toan</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Suck</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div> </td>
+                                        </div>
+                                    </div>
                                     </tr>
-                                    <tr>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                                        <td><button class="btn"><a href="#">Edit</a></button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
-                    </div>
+                        <!-- History -->
+                        <div class="tab-pane" id="history">
+                            <div class="container">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <th>Time</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Status</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Trader</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>First Item</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Second Item</th>
+                                        </div>
+                                    </div>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Row 1 -->
+                                        <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td>Last month</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Done</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Tran Khanh Toan</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Blue iPhone 12</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Red iPhone 12</td>
+                                        </div>
+                                    </div>
+                                    </tr>
+                                    <!-- Row 2 -->
+                                    <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td>Last year</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Cancel</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Tieu Anh Tho</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Nike Shoes</td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td>Adidas Shoes</td>
+                                        </div>
+                                    </div>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="container bg-info">
+                                <!-- nếu chưa giao dịch với người này thì thêm display: none; vô style="#"-->
+                                <form style="#"> 
+                                    <h2 class="display-3 text-center">Rate this User </h2>
+                                    <div class="mb-3">
+                                        <label for="comment" class="form-label">Comment</label>
+                                        <input type="text" class="form-control" id="comment" aria-describedby="comment">
+                                        <div id="comment" class="form-text">Give opinion about this user.</div>
+                                    </div>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Choose stars</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">Four</option>
+                                        <option value="5">Five</option>
+                                    </select>
+
+
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="upload">
+                            <div class="container">
+                                <h2>Item manager</h2>
+                                <table id="example" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Status</th>
+                                            <th>Category</th>
+                                            <th>Age</th>
+                                            <th>Trade with user</th>
+                                            <th>Option 1</th>
+                                            <th>Option 2</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
+                                            <td><button class="btn"><a href="#">Edit</a></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
+                                            <td><button class="btn"><a href="#">Edit</a></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td>test</td>
+                                            <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
+                                            <td><button class="btn"><a href="#">Edit</a></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            <div class="col-lg-4 order-lg-1 text-center">
-                <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                <div class="col-lg-4 order-lg-1 text-center">
+                    <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                </div>
+
+
+
+
+
             </div>
-
-
-
-
-
         </div>
-    </div>
-    <script>
-        var MenuItems = document.getElementById('MenuItems');
-        MenuItems.style.maxHeight = "0px";
-        function menutoggle() {
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "500px";
-            } else {
-                MenuItems.style.maxHeight = "0px";
+        <script>
+            var MenuItems = document.getElementById('MenuItems');
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "500px";
+                } else {
+                    MenuItems.style.maxHeight = "0px";
+                }
             }
-        }
-    </script>
-</body>
+        </script>
+    </body>
 </html>
 

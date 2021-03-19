@@ -1,28 +1,13 @@
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification</title>
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="../css/style.css">
-    <script type="text/javascript">
-
+<%-- 
+    Document   : uploadItem
+    Created on : Mar 15, 2021, 9:05:13 AM
+    Author     : Admin
+--%>
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DAO.itemDAO"%>
 <%@page import="models.item"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -46,21 +31,20 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
 
         <script type="text/javascript">
-
             $().ready(function () {
                 $("#Form").validate({
                     rules: {
                         "image1": {
-                            required: true
+                            required: true,
                         },
                         "image2": {
-                            required: true
+                            required: true,
                         },
                         "image3": {
-                            required: true
+                            required: true,
                         },
                         "image4": {
-                            required: true
+                            required: true,
                         },
                         "name": {
                             required: true,
@@ -96,24 +80,6 @@
                 });
             });
         </script>
-
-    <style type="text/css">
-        .btn-success{
-            color: #fff;
-            background-color: #198754;
-            border-color: #198754;
-        }
-                   .error{
-                color: red;
-            }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <div class="container">
-
-
         <style>
             <%@include file="css/style.css" %>
             .error{
@@ -123,7 +89,6 @@
     </head>
     <body>
         <div class="header">
-
             <div class="navbar" id="mynavbar">
                 <div class="logo">
                     <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
@@ -131,57 +96,6 @@
                 <nav>
                     <ul id="MenuItems">
                         <li><div class="dropdown">
-
-                            <button class="dropbtn">Category</button>
-                            <div class="dropdown-content">
-                                <a href="#">Electronic</a>
-                                <a href="#">Computer 2</a>
-                                <a href="#">Women's Fashion</a>
-                                <a href="#">Men's Fashion</a>
-                                <a href="#">Baby</a>
-                                <a href="#">Toys and Games</a>
-                                <a href="#">Tool</a>
-                                <a href="#">Sport and Outdoor</a>
-                                <a href="#">Home and Kitchen</a>
-                                <a href="#">Health and Household</a>
-                                <a href="#">Beauty and personal care</a>
-                            </div>
-                        </div> 
-                    </li>  
-                    <li><a href="homePage.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="account.html">Account</a></li>
-                    <li><a href="compad.html">Login/Register</a></li>         
-                </ul>
-            </nav>
-            <a href="#"><img src="../images/cart.png" width="30px" height="30px"></a>
-            <a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
-            <img src="../images/menu.png" class="menu-icon"
-            onclick="menutoggle()">
-        </div>
-    </div>
-</div>
-
-
-
-        <div class="col-md-6 offset-md-3 mt-5">
-            <h3 class="display-3">Edit item</h3>
-            <form action="" method="post" id="Form" enctype="multipart/form-data">
-                <label for="customFile">Edit Picture </label>
-                <input type="file" class="form-control" id="customFile" style="height: auto;" value="" name="image1" >
-
-
-                <input type="file" class="form-control" id="customFile" style="height: auto;" value="" name="image2" >
-
-
-                <input type="file" class="form-control" id="customFile" style="height: auto;" value="" name="image3" >
-
-
-                <input type="file" class="form-control" id="customFile" style="height: auto;" value="" name="image4" >
-
-                <label for="product-name">Product Name</label>
-                <input type="text" class="form-control" id="product-name" placeholder="Enter product name" value="" name="name" >
-
                                 <button class="dropbtn">Category</button>
                                 <div class="dropdown-content">
                                     <c:forEach var="category" items="${rs.rows}" >
@@ -230,16 +144,10 @@
                 <label for="product-name">Product Name</label>
                 <input type="text" class="form-control" id="product-name" placeholder="Enter product name" name="name" value='<%=i.getName()%>' >
 
-
                 <div class="form-group">
                     <label for="category">Category</label>
                     <select class="form-control" id="category" name="category">
-
-                        <c:forEach var="category" items="#" >
-                            <option><c:out value="" /></option>
-                        </c:forEach>
-
-                       <%
+                        <%
                             ResultSet rs = itemDAO.getAllCategory();
                             while (rs.next()) {
                         %>
@@ -247,20 +155,12 @@
                         <%
                             }
                         %>
-
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="description" required="required">Description</label>
-
                     <!-- <input type="text"  class="form-control" id="description" placeholder="Enter description" name="description"> -->
                     <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" name="description"></textarea>
-
-                    <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" value="" name="description"></textarea>
-
-                    <!-- <input type="text"  class="form-control" id="description" placeholder="Enter description" name="description"> -->
-                    <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" name="description"></textarea>
-
                 </div>
 
                 <div class="btn-toolbar" role="toolbar" >
@@ -270,59 +170,6 @@
                     </div>
 
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="edit" value="submit"> </button>
-                    </div>
-
-                </div>
-            </form>
-        </div> 
-
-
-
-<!--footer-->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col-1">
-                <img src="../images/logo.png">
-                <p>Our Purpose Is To Sustainably Make the Pleasure and
-                Benefits of Sports Accessible to the Many.</p>
-            </div>
-            <div class="footer-col-2">
-                <h3>Useful links</h3>
-                <ul>
-                    <li>Coupons</li>
-                    <li>Blog Post</li>
-                    <li>Return Policy</li>
-                    <li>Join Affiliate</li>
-                </ul>
-            </div>
-            <div class="footer-col-3">
-                <h3>Follow us</h3>
-                <ul>
-                    <li><a href="https://www.facebook.com/">Facebook</a></li>
-                    <li><a href="https://www.youtube.com/">YouTube</a></li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <p class="copyright">Copyright 2021</p>
-    </div>
-</div>
-<script>
-    var MenuItems = document.getElementById('MenuItems');
-    MenuItems.style.maxHeight = "0px";
-    function menutoggle() {
-    if (MenuItems.style.maxHeight == "0px") {
-        MenuItems.style.maxHeight = "500px";
-    }else {
-        MenuItems.style.maxHeight = "0px";
-    }
-}
-</script>
-
-</body>
-
                         <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnUploadItem" value="submit"> </button>
                     </div>
 
@@ -345,5 +192,4 @@
 
 
     </body>
-
 </html>

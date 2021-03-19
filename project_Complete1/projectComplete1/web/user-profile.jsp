@@ -487,8 +487,6 @@
                         <%
                             ResultSet userItem = itemDAO.getUserItem(Integer.parseInt(user.getIDCard()));
 
-
-
                         %>
                         <div class="tab-pane" id="upload">
                             <div class="container">
@@ -512,7 +510,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%                                            while (userItem.next()) {
+                                        <%                                            
+                                            while (userItem.next()) {
+                                            
                                         %>
                                         <tr>
                                             <td><%=userItem.getInt("itemID")%></td>
@@ -528,36 +528,6 @@
                                             <td><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Edit/<%=userItem.getInt("itemID")%>">Edit</a></button></td>
                                         </tr>
                                         <%}%>
-                                        <tr>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                                            <td><button class="btn"><a href="#">Edit</a></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                                            <td><button class="btn"><a href="#">Edit</a></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td>test</td>
-                                            <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
-                                            <td><button class="btn"><a href="#">Edit</a></button></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -568,9 +538,6 @@
                 <!--            <div class="col-lg-4 order-lg-1 text-center">
                                 <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
                             </div>-->
-                <div class="col-lg-4 order-lg-1 text-center">
-                    <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                </div>
 
 
             </div>

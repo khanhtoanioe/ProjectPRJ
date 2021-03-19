@@ -107,6 +107,7 @@
                             <a href="" data-target="#upload" data-toggle="tab" class="nav-link">Uploaded</a>
                         </li>
                     </ul>
+                
                     <%
                         customer user = (customer) session.getAttribute("user");
                         String idCard = (String) session.getAttribute("IDcard");
@@ -222,7 +223,6 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div> </td>
                                         </div>
-<<<<<<< HEAD
                                     </div>
                                     </tr>
                                     <!-- Row 2 -->
@@ -340,7 +340,6 @@
                                     </tr>
                                     </tbody>
                                 </table>
-=======
                                     </div>
                                     </tr>
                                     <!-- Row 2 -->
@@ -483,17 +482,14 @@
                                     </div>
 
                                 </form>
->>>>>>> 1b619bb926ee02c12134d3a0343d3907d21569fc
                             </div>
                         </div>
                         <%
                             ResultSet userItem = itemDAO.getUserItem(Integer.parseInt(user.getIDCard()));
 
-<<<<<<< HEAD
+
 
                         %>
-=======
->>>>>>> 1b619bb926ee02c12134d3a0343d3907d21569fc
                         <div class="tab-pane" id="upload">
                             <div class="container">
                                 <h2>Item manager</h2>
@@ -504,22 +500,18 @@
                                             <th>Name</th>
                                             <th>Status</th>
                                             <th>Category</th>
-<<<<<<< HEAD
                                             <th>Description</th>
                                             <th>Image 1</th>
                                             <th>Image 2</th>
                                             <th>Image 3</th>
                                             <th>Image 4</th>
-=======
                                             <th>Age</th>
                                             <th>Trade with user</th>
->>>>>>> 1b619bb926ee02c12134d3a0343d3907d21569fc
                                             <th>Option 1</th>
                                             <th>Option 2</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-<<<<<<< HEAD
                                         <%                                            while (userItem.next()) {
                                         %>
                                         <tr>
@@ -536,7 +528,6 @@
                                             <td><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Edit/<%=userItem.getInt("itemID")%>">Edit</a></button></td>
                                         </tr>
                                         <%}%>
-=======
                                         <tr>
                                             <td>test</td>
                                             <td>test</td>
@@ -567,7 +558,6 @@
                                             <td><button class="btn"><a href="#" onclick="return Confirm('Are you sure?');">Delete</a></button></td>
                                             <td><button class="btn"><a href="#">Edit</a></button></td>
                                         </tr>
->>>>>>> 1b619bb926ee02c12134d3a0343d3907d21569fc
                                     </tbody>
                                 </table>
                             </div>
@@ -575,18 +565,12 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <!--            <div class="col-lg-4 order-lg-1 text-center">
                                 <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
                             </div>-->
-=======
                 <div class="col-lg-4 order-lg-1 text-center">
                     <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
                 </div>
->>>>>>> 1b619bb926ee02c12134d3a0343d3907d21569fc
-
-
-
 
 
             </div>

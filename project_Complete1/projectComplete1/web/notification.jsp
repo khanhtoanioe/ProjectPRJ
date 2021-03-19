@@ -4,6 +4,7 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -85,42 +86,23 @@
 
 		<ul class="list-group">
 			<!-- Row 1 -->
+                        
+                        
 			<li class="list-group-item d-flex justify-content-between align-items-center">
 				<div> Tên sản phẩm </div>
 				Tên user 1
 				<div class="image-parent">
 					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
 				</div>
+                                <div>
+                                    TRADE WITH YOUR <br>
+                                    test
+                                </div>
 				<div>
 					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
 					<button class="btn btn-success" type="submit" name="accept">Accept</button>
 				</div>
 			</li>
-			<!-- Row 2 -->
-			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<div> Tên sản phẩm </div>
-				Tên user 2
-				<div class="image-parent">
-					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
-				</div>
-				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
-					<button class="btn btn-success" type="submit" name="accept">Accept</button>
-				</div>
-			</li>
-			<!-- Row 3 -->
-			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<div> Tên sản phẩm </div>  
-				Tên user 3
-				<div class="image-parent">
-					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
-				</div>
-				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
-					<button class="btn btn-success" type="submit" name="accept">Accept</button>
-				</div>
-			</li>
-
 		</ul>
 	</div>
 </div>

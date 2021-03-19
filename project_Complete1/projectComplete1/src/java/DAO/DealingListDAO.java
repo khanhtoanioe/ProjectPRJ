@@ -31,4 +31,16 @@ public class DealingListDAO {
         }
         return null;
     }
+    
+    public static ResultSet getDealByReciever(String reciever ){
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT senderItem,recieverItem WHERE reciever=?");
+            st.setString(1, reciever);
+            ResultSet rs = st.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(DealingListDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

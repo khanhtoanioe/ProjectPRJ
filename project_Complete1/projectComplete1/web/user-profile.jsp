@@ -535,9 +535,7 @@
                         </div>
                     </div>
                 </div>
-                <!--            <div class="col-lg-4 order-lg-1 text-center">
-                                <img src="../images/logo.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                            </div>-->
+               
 
 
             </div>

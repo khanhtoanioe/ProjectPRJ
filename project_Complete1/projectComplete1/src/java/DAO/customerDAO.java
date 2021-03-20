@@ -33,7 +33,7 @@ public class customerDAO {
             st.setString(5, cus.getAddress());
             st.setString(6, cus.getDateOfBirth());
             st.setString(7, cus.getEmail());
-            
+
             st.execute();
             return true;
         } catch (SQLException ex) {
@@ -69,8 +69,8 @@ public class customerDAO {
         }
         return null;
     }
-    
-    public static boolean editCustomerInfor(customer cus ){
+
+    public static boolean editCustomerInfor(customer cus) {
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE customer SET passWord=?,name=?,phoneNumber=?,address=?,dateOfBirth=?,email=? where IDCard=?");
             st.setString(1, cus.getPassWord());
@@ -88,4 +88,17 @@ public class customerDAO {
         return false;
     }
 
+    public static String getName(String IDCard) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT name from customer where IDCard=?");
+            st.setString(1, IDCard);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(customerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

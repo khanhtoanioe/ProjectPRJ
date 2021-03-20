@@ -30,6 +30,7 @@
                         <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                     </div>
                     <nav>
+                        <a href="chat-history.jsp" class="btn" type="button" name="accept" style="padding:10px; background: #e58679"><i class="fa fa-weixin" aria-hidden="true"></i></a>
                         <ul id="MenuItems">
                             <li><div class="dropdown">
                                     <button class="dropbtn">Category</button>

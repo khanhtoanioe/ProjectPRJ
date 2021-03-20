@@ -7,6 +7,7 @@ package controller;
 
 import DAO.customerDAO;
 import DAO.itemDAO;
+import DAO.tranferHistoryDAO;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -112,9 +113,13 @@ public class customerController extends HttpServlet {
         }
         if(URI.startsWith(getServletContext().getContextPath() + "/customer/AcceptDeal")){
             DAO.DealingListDAO.deleteItemDealed(Integer.parseInt(request.getParameter("senderItem")), Integer.parseInt( request.getParameter("recieverItem")));
-            itemDAO.changeItemState(Integer.parseInt(request.getParameter("senderItem")));
-            itemDAO.changeItemState(Integer.parseInt( request.getParameter("recieverItem")));
             
+            int senderItem =Integer.parseInt(request.getParameter("senderItem"));
+            int recieverItem = Integer.parseInt( request.getParameter("recieverItem"));
+            
+            itemDAO.changeItemState(senderItem);
+            itemDAO.changeItemState(recieverItem);           
+            tranferHistoryDAO.addHistory(itemDAO.getItemById(senderItem).getOwnerID(), senderItem, itemDAO.getItemById(recieverItem).getOwnerID() , recieverItem);                   
         }
     }
 

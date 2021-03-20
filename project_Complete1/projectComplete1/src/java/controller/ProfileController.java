@@ -109,10 +109,10 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
         String itemName, des, cat;
-        Blob image1, image2, image3;
+        Blob image1, image2, image3,image4;
 
         if (request.getParameter("btnEdit") != null) {
             IDCard = request.getParameter("txtID");
@@ -125,7 +125,8 @@ public class ProfileController extends HttpServlet {
             customer cus = new customer(IDCard, passWord, name, phoneNumber, address, dateOfBirth, email);
             customerDAO.editCustomerInfor(cus);
             request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-        } else if (request.getParameter("btnEditItem") != null) {
+        }
+        if (request.getParameter("btnEditItem") != null) {
             item item = new item();
 
             item.setName(request.getParameter("name"));
@@ -173,10 +174,9 @@ public class ProfileController extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            itemDAO.updateItem(item);
-            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-
+                itemDAO.updateItem(item);
+                request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+         
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
@@ -190,6 +190,7 @@ public class ProfileController extends HttpServlet {
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
+
         }
     }
 

@@ -7,6 +7,11 @@ package DAO;
 
 import DB.DBconnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,7 +20,18 @@ import java.sql.Connection;
 public class tranferHistoryDAO {
     public static Connection conn = DBconnection.getConnection();
     
-    public static boolean addHistory(){
-        return true;
+    public static boolean addHistory(String firstCus, int firsItem, String secondCus, int secondItem){
+        try {
+            PreparedStatement st = conn.prepareStatement("INSERT INTO tranferhistory (firstCustomer, secondCustomer, firstItem, secondItem) VALUES(?,?,?,?) ");
+            st.setString(1, firstCus);
+            st.setInt(2, firsItem);
+            st.setString(3, secondCus);
+            st.setInt(4, secondItem);
+            st.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(tranferHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

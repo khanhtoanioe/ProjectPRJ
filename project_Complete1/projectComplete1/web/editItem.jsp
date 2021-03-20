@@ -57,16 +57,16 @@
                     },
                     messages: {
                         "image1": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "image2": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "image3": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "image4": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "name": {
                             required: "The name of item is required",
@@ -127,6 +127,7 @@
                 <div>
                     <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage1())%>" width="50" >
                     <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image1">
+
                 </div>
 
                 <div>
@@ -170,7 +171,7 @@
                     </div>
 
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnUploadItem" value="submit"> </button>
+                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnEditItem" value="submit"> </button>
                     </div>
 
                 </div>

@@ -4,6 +4,9 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="DAO.customerDAO"%>
+<%@page import="models.item"%>
+<%@page import="DAO.itemDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -86,23 +89,25 @@
 
 		<ul class="list-group">
 			<!-- Row 1 -->
-                        
-                        
+                        <% ResultSet rs = DAO.DealingListDAO.getDealByReciever(session.getAttribute("IDcard").toString()); %>
+                        <% while(rs.next()){ %>
+                        <% item senderItem = itemDAO.getItemById(rs.getInt("senderItem")); %>
 			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<div> Tên sản phẩm </div>
-				Tên user 1
+                            <div>  <a href="<%= getServletContext().getContextPath() %>/Profile/<%= senderItem.getOwnerID() %>" style="color: #0c63e4"> <%= customerDAO.getCustomerByID(senderItem.getOwnerID()).getName()   %>  </a> with item </div>
+                            <a style="color: #0c63e4" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= senderItem.getItemID()  %>"><%= senderItem.getName() %></a>
 				<div class="image-parent">
-					<img src="../images/adidas.jpg" class="img-thumbnail" width="100px">
+                                    <img src="data:image/jpg;base64,<%= DAO.itemDAO.getImageString(senderItem.getImage1()) %>" class="img-thumbnail" width="100px">
 				</div>
                                 <div>
-                                    TRADE WITH YOUR <br>
-                                    test
+                                    WANT TO TRADE WITH YOUR <br>
+                                    <%= itemDAO.getItemById(rs.getInt("recieverItem")).getName() %>
                                 </div>
 				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
+                                    <a href="#"><button class="btn btn-danger" type="submit" name="reject">Reject</button></a>
 					<button class="btn btn-success" type="submit" name="accept">Accept</button>
 				</div>
 			</li>
+                        <%}%>
 		</ul>
 	</div>
 </div>

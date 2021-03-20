@@ -34,7 +34,7 @@ public class DealingListDAO {
     
     public static ResultSet getDealByReciever(String reciever ){
         try {
-            PreparedStatement st = conn.prepareStatement("SELECT senderItem,recieverItem WHERE reciever=?");
+            PreparedStatement st = conn.prepareStatement("SELECT senderItem,recieverItem FROM dealinglist WHERE reciever=?");
             st.setString(1, reciever);
             ResultSet rs = st.executeQuery();
             return rs;

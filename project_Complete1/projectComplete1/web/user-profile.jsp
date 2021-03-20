@@ -343,7 +343,7 @@
                         </div>
                         <div class="container bg-info">
                             <!-- nếu chưa giao dịch với người này thì thêm display: none; vô style="#"-->
-                            <form style="#"> 
+                            <form style="#" action=""> 
                                 <h2 class="display-3 text-center">Rate this User </h2>
                                 <div class="mb-3">
                                     <label for="comment" class="form-label">Comment</label>
@@ -358,7 +358,6 @@
                                     <option value="4">Four</option>
                                     <option value="5">Five</option>
                                 </select>
-
 
                                 <div class="d-grid gap-2 col-6 mx-auto">
                                     <button class="btn btn-primary" type="submit">Submit</button>

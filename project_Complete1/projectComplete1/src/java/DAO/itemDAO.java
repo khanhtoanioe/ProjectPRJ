@@ -132,17 +132,15 @@ public class itemDAO {
 
     public static boolean updateItem(item item) {
         try {
-            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET ownerID=?, Name=?, status=?, description=?, category=?,image1=?,image2=?,image3=?,image4=? WHERE itemID=?");
-            st.setString(1, item.getOwnerID());
-            st.setString(2, item.getName());
-            st.setInt(3, item.getStatus());
-            st.setString(4, item.getDescription());
-            st.setString(5, item.getCategory());
-            st.setInt(6, item.getItemID());
-            st.setBlob(7, item.getImage1());
-            st.setBlob(8, item.getImage2());
-            st.setBlob(9, item.getImage3());
-            st.setBlob(10, item.getImage4());
+            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=?,image1=?,image2=?,image3=?,image4=? WHERE itemID=?");
+            st.setString(1, item.getName());
+            st.setString(2, item.getDescription());
+            st.setString(3, item.getCategory());
+            st.setBlob(4, item.getImage1());
+            st.setBlob(5, item.getImage2());
+            st.setBlob(6, item.getImage3());
+            st.setBlob(7, item.getImage4());
+            st.setInt(8, item.getItemID());
             st.execute();
             return true;
         } catch (SQLException ex) {

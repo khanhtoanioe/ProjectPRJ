@@ -8,6 +8,7 @@ package DAO;
 import DB.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -35,4 +36,16 @@ public class tranferHistoryDAO {
         }
         return false;
     }
+
+    public static ResultSet getAllHistory() {
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT DealID, timeDeal, firstCustomer,secondCustomer,firstItem,secondItem FROM tranferhistory");
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(tranferHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }

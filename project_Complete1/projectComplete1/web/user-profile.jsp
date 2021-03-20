@@ -4,6 +4,7 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="DAO.tranferHistoryDAO"%>
 <%@page import="DAO.itemDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="models.customer"%>
@@ -272,145 +273,167 @@
                             </div>
                         </div>                     
 
-                    <!-- History -->
-                    <div class="tab-pane" id="history">
-                        <div class="container">
-                            <table class="table table-hover table-striped">
-                                <thead>
+                        <!-- History -->
+                        <div class="tab-pane" id="history">
+                            <div class="container">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <th>Time</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Have</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Trade with trader</th>
+                                        </div>
+                                        <div class="col-sm">
+                                            <th>Trade with item</th>
+                                        </div>
+                                    </div>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <% String id = user.getIDCard(); %>
+                                        <!-- Row 1 -->
+                                        <% ResultSet rs = tranferHistoryDAO.getAllHistory(); %>
+                                        <% while (rs.next()) { %>
+                                        <% if (rs.getString("firstCustomer").equals(id)) {%>
+                                        <tr>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("timeDeal")%></td>
+                                        </div>
+
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("firstItem")%></td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("secondCustomer")%></td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("secondItem")%></td>
+                                        </div>
+                                    </div>
+                                    </tr>
+                                    <% } %>
+                                    <% if (rs.getString("secondCustomer").equals(id)) { %>
                                     <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <th>Time</th>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("timeDeal")%></td>
+                                        </div>
+
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("secondItem")%></td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("firstCustomer")%></td>
+                                        </div>
+                                        <div class="col-sm">
+                                            <td><%= rs.getString("firstItem")%></td>
+                                        </div>
                                     </div>
-                                    <div class="col-sm">
-                                        <th>Status</th>
+                                    </tr>
+
+                                    <% } %>
+                                    <% } %>
+                                    <!-- Row 2 -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="container bg-info">
+                                <!-- nếu chưa giao dịch với người này thì thêm display: none; vô style="#"-->
+                                <form style="#" action=""> 
+                                    <h2 class="display-3 text-center">Rate this User </h2>
+                                    <div class="mb-3">
+                                        <label for="comment" class="form-label">Comment</label>
+                                        <input type="text" class="form-control" id="comment" aria-describedby="comment">
+                                        <div id="comment" class="form-text">Give opinion about this user.</div>
                                     </div>
-                                    <div class="col-sm">
-                                        <th>Have</th>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Choose stars</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">Four</option>
+                                        <option value="5">Five</option>
+                                    </select>
+
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
                                     </div>
-                                    <div class="col-sm">
-                                        <th>Trade with trader</th>
-                                    </div>
-                                    <div class="col-sm">
-                                        <th>Trade with item</th>
-                                    </div>
-                                </div>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Row 1 -->
-                                    <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Last month</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Done</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Blue iPhone 12</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Tran Khanh Toan</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Red iPhone 12</td>
-                                    </div>
-                                </div>
-                                </tr>
-                                <!-- Row 2 -->
-                                
-                                </tbody>
-                            </table>
+
+                                </form>
+                            </div>
                         </div>
-                        <div class="container bg-info">
-                            <!-- nếu chưa giao dịch với người này thì thêm display: none; vô style="#"-->
-                            <form style="#" action=""> 
-                                <h2 class="display-3 text-center">Rate this User </h2>
-                                <div class="mb-3">
-                                    <label for="comment" class="form-label">Comment</label>
-                                    <input type="text" class="form-control" id="comment" aria-describedby="comment">
-                                    <div id="comment" class="form-text">Give opinion about this user.</div>
-                                </div>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Choose stars</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                    <option value="4">Four</option>
-                                    <option value="5">Five</option>
-                                </select>
+                        <%
+                            ResultSet userItem = itemDAO.getUserItem(Integer.parseInt(user.getIDCard()));
 
-                                <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                </div>
+                        %>
+                        <div class="tab-pane" id="upload">
+                            <div class="container">
+                                <h2>Item manager</h2>
+                                <table id="example" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Status</th>
+                                            <th>Category</th>
+                                            <th>Description</th>
+                                            <th>Image 1</th>
+                                            <th>Image 2</th>
+                                            <th>Image 3</th>
+                                            <th>Image 4</th>
+                                            <!--                                        <th></th>
+                                                                                    <th></th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%                                            while (userItem.next()) {
 
-                            </form>
+                                        %>
+                                        <tr>
+                                            <td><%=userItem.getInt("itemID")%></td>
+                                            <td><%=userItem.getString("Name")%></td>
+                                            <td><%=userItem.getInt("status")%></td>
+                                            <td><%=userItem.getString("category")%></td>
+                                            <td><%=userItem.getString("description")%></td>
+                                            <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image1"))%>"></td>
+                                            <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image2"))%>"></td>
+                                            <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image3"))%>"></td>
+                                            <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image4"))%>"></td>
+                                            <td <%if (Integer.parseInt(idCard) != userItem.getInt("ownerID")) {%>style="display: none"<%}%>><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Delete/<%=userItem.getInt("itemID")%>" onclick="return Confirm('Are you sure to delete <%=userItem.getString("Name")%> ?');">Delete</a></button></td>
+                                            <td <%if (Integer.parseInt(idCard) != userItem.getInt("ownerID")) {%>style="display: none"<%}%>><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Edit/<%=userItem.getInt("itemID")%>">Edit</a></button></td>
+                                        </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
-                    <%
-                        ResultSet userItem = itemDAO.getUserItem(Integer.parseInt(user.getIDCard()));
 
-                    %>
-                    <div class="tab-pane" id="upload">
-                        <div class="container">
-                            <h2>Item manager</h2>
-                            <table id="example" class="display" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
-                                        <th>Image 1</th>
-                                        <th>Image 2</th>
-                                        <th>Image 3</th>
-                                        <th>Image 4</th>
-<!--                                        <th></th>
-                                        <th></th>-->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%                                            while (userItem.next()) {
 
-                                    %>
-                                    <tr>
-                                        <td><%=userItem.getInt("itemID")%></td>
-                                        <td><%=userItem.getString("Name")%></td>
-                                        <td><%=userItem.getInt("status")%></td>
-                                        <td><%=userItem.getString("category")%></td>
-                                        <td><%=userItem.getString("description")%></td>
-                                        <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image1"))%>"></td>
-                                        <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image2"))%>"></td>
-                                        <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image3"))%>"></td>
-                                        <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image4"))%>"></td>
-                                        <td <%if (Integer.parseInt(idCard)!=userItem.getInt("ownerID")) {%>style="display: none"<%}%>><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Delete/<%=userItem.getInt("itemID")%>" onclick="return Confirm('Are you sure to delete <%=userItem.getString("Name")%> ?');">Delete</a></button></td>
-                                        <td <%if (Integer.parseInt(idCard)!=userItem.getInt("ownerID")) {%>style="display: none"<%}%>><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Edit/<%=userItem.getInt("itemID")%>">Edit</a></button></td>
-                                    </tr>
-                                    <%}%>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
                 </div>
-               
-
             </div>
         </div>
-    </div>
-    <script>
-        var MenuItems = document.getElementById('MenuItems');
-        MenuItems.style.maxHeight = "0px";
-        function menutoggle() {
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "500px";
-            } else {
-                MenuItems.style.maxHeight = "0px";
+        <script>
+            var MenuItems = document.getElementById('MenuItems');
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "500px";
+                } else {
+                    MenuItems.style.maxHeight = "0px";
+                }
             }
-        }
-    </script>
-</body>
+        </script>
+    </body>
 </html>
 

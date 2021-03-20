@@ -117,9 +117,10 @@ public class customerController extends HttpServlet {
             int senderItem =Integer.parseInt(request.getParameter("senderItem"));
             int recieverItem = Integer.parseInt( request.getParameter("recieverItem"));
             
+            tranferHistoryDAO.addHistory(itemDAO.getItemById(senderItem).getOwnerID(), senderItem, itemDAO.getItemById(recieverItem).getOwnerID() , recieverItem); 
+            
             itemDAO.changeItemState(senderItem);
-            itemDAO.changeItemState(recieverItem);           
-            tranferHistoryDAO.addHistory(itemDAO.getItemById(senderItem).getOwnerID(), senderItem, itemDAO.getItemById(recieverItem).getOwnerID() , recieverItem);      
+            itemDAO.changeItemState(recieverItem);               
             request.getRequestDispatcher("/notification.jsp").forward(request, response);
         }
     }

@@ -71,6 +71,12 @@ public class item {
     public item() {
     }
 
+    public item(String Name, String description, String category) {
+        this.Name = Name;
+        this.description = description;
+        this.category = category;
+    }
+
     public item(int itemID, String ownerID, String Name, boolean status, String description, String category) {
         this.itemID = itemID;
         this.ownerID = ownerID;

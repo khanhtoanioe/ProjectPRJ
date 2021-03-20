@@ -4,6 +4,10 @@
     Author     : Admin
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="javax.sql.rowset.serial.SerialBlob"%>
+<%@page import="java.sql.Blob"%>
+<%@page import="java.io.InputStream"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DAO.itemDAO"%>
 <%@page import="models.item"%>
@@ -116,13 +120,63 @@
             </div>
         </div>
         <%
-            item i = (item) session.getAttribute("item");
+//            if (request.getParameter("btnEditItem") != null) {
+//                item item = new item();
+//
+//                item.setName(request.getParameter("name"));
+//                item.setCategory(request.getParameter("category"));
+//                item.setDescription(request.getParameter("description"));
+//
+//                Part filePart1 = request.getPart("image1");
+//                InputStream fileContent1 = filePart1.getInputStream();
+//
+//                Part filePart2 = request.getPart("image2");
+//                InputStream fileContent2 = filePart2.getInputStream();
+//
+//                Part filePart3 = request.getPart("image3");
+//                InputStream fileContent3 = filePart3.getInputStream();
+//
+//                Part filePart4 = request.getPart("image4");
+//                InputStream fileContent4 = filePart4.getInputStream();
+//
+//                byte[] imageBytes1 = new byte[(int) filePart1.getSize()];
+//                fileContent1.read(imageBytes1, 0, imageBytes1.length);
+//                fileContent1.close();
+//
+//                byte[] imageBytes2 = new byte[(int) filePart2.getSize()];
+//                fileContent2.read(imageBytes2, 0, imageBytes2.length);
+//                fileContent2.close();
+//
+//                byte[] imageBytes3 = new byte[(int) filePart3.getSize()];
+//                fileContent3.read(imageBytes3, 0, imageBytes3.length);
+//                fileContent3.close();
+//
+//                byte[] imageBytes4 = new byte[(int) filePart4.getSize()];
+//                fileContent4.read(imageBytes4, 0, imageBytes4.length);
+//                fileContent4.close();
+//
+//                Blob imageBlob1 = new SerialBlob(imageBytes1);
+//                Blob imageBlob2 = new SerialBlob(imageBytes2);
+//                Blob imageBlob3 = new SerialBlob(imageBytes3);
+//                Blob imageBlob4 = new SerialBlob(imageBytes4);
+//
+//                item.setImage1(imageBlob1);
+//                item.setImage2(imageBlob2);
+//                item.setImage3(imageBlob3);
+//                item.setImage4(imageBlob4);
+//
+//                itemDAO.updateItem(item);
+//                request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+//
+//            }
+        %>
+        <%            item i = (item) session.getAttribute("item");
 
         %>
 
 
         <div class="col-md-6 offset-md-3 mt-5">
-            <form action="<%= getServletContext().getContextPath()%>/Profile" method="post" id="Form" enctype="multipart/form-data">
+            <form action="<%= getServletContext().getContextPath()%>/Item" method="post" id="Form" >
                 <label for="customFile">Upload Your picture (you can upload 4 picture) </label>
                 <div>
                     <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage1())%>" width="50" >
@@ -161,7 +215,7 @@
                 <div class="form-group">
                     <label for="description" required="required">Description</label>
                     <!-- <input type="text"  class="form-control" id="description" placeholder="Enter description" name="description"> -->
-<!--          textarea khong co attribute value-->
+                    <!--          textarea khong co attribute value-->
                     <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" name="description"  value="<%=i.getDescription()%>"></textarea>
                 </div>
 
@@ -176,8 +230,6 @@
                     </div>
 
                 </div>
-
-
             </form>
         </div> 
         <script>

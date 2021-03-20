@@ -19,6 +19,10 @@
         <servlet-name>ProfileController</servlet-name>
         <servlet-class>controller.ProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ItemController</servlet-name>
+        <servlet-class>controller.ItemController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/</url-pattern>
@@ -54,6 +58,10 @@
     <servlet-mapping>
         <servlet-name>ProfileController</servlet-name>
         <url-pattern>/Profile/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemController</servlet-name>
+        <url-pattern>/Item/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

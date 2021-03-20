@@ -173,7 +173,7 @@
                                             <div class="col-lg-9">
                                                 <!-- SUBMIT -->
                                                 <input type="reset" class="btn btn-secondary" value="Cancel">
-                                                <input type="button" class="btn btn-primary" value="Save Changes" name="btnEdit">
+                                                <input type="submit" class="btn btn-primary" value="Save Changes" name="btnEdit">
                                             </div>
                                         </div>
                                     </form>

@@ -82,7 +82,7 @@
     câu gì vui vui
   </p>
   <p class="lead">
-    <a class="btn btn-success btn-sm" href="" role="button">Continue to homepage</a>
+    <a class="btn btn-success btn-sm" href="mainPage.jsp" role="button">Continue to homepage</a>
   </p>
 </div>
 

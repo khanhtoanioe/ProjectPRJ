@@ -251,7 +251,7 @@ public class customerController extends HttpServlet {
             }
             try{
                 itemDAO.addItem(item);
-                request.getRequestDispatcher("/success.jsp").forward(request, response);
+                request.getRequestDispatcher("/upload-successful.jsp").forward(request, response);
             }catch(Exception e){
                 
             }

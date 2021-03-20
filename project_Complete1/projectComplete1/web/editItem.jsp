@@ -161,7 +161,8 @@
                 <div class="form-group">
                     <label for="description" required="required">Description</label>
                     <!-- <input type="text"  class="form-control" id="description" placeholder="Enter description" name="description"> -->
-                    <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" name="description"></textarea>
+<!--          textarea khong co attribute value-->
+                    <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" name="description"  value="<%=i.getDescription()%>"></textarea>
                 </div>
 
                 <div class="btn-toolbar" role="toolbar" >

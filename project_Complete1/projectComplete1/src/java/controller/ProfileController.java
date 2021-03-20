@@ -109,92 +109,103 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String btn1, btn2 = null;
-        String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
-        String itemName, des, cat;
-        Blob image1, image2, image3;
-        btn1 = request.getParameter("btnEdit");
-        btn2 = request.getParameter("btnEditItem");
-        if (btn1 != null) {
-            IDCard = request.getParameter("txtID");
-            passWord = request.getParameter("txtPwd");
-            name = request.getParameter("txtName");
-            phoneNumber = request.getParameter("txtPhone");
-            address = request.getParameter("txtAddress");
-            dateOfBirth = request.getParameter("txtBirth");
-            email = request.getParameter("txtEmail");
-            customer cus = new customer(IDCard, passWord, name, phoneNumber, address, dateOfBirth, email);
-            customerDAO.editCustomerInfor(cus);
-            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-        }
-        if (btn2 != null) {
-            item item = new item();
 
-            item.setName(request.getParameter("name"));
-            item.setCategory(request.getParameter("category"));
-            item.setDescription(request.getParameter("description"));
-
-            Part filePart1 = request.getPart("image1");
-            InputStream fileContent1 = filePart1.getInputStream();
-
-            Part filePart2 = request.getPart("image2");
-            InputStream fileContent2 = filePart2.getInputStream();
-
-            Part filePart3 = request.getPart("image3");
-            InputStream fileContent3 = filePart3.getInputStream();
-
-            Part filePart4 = request.getPart("image4");
-            InputStream fileContent4 = filePart4.getInputStream();
-
-            byte[] imageBytes1 = new byte[(int) filePart1.getSize()];
-            fileContent1.read(imageBytes1, 0, imageBytes1.length);
-            fileContent1.close();
-
-            byte[] imageBytes2 = new byte[(int) filePart2.getSize()];
-            fileContent2.read(imageBytes2, 0, imageBytes2.length);
-            fileContent2.close();
-
-            byte[] imageBytes3 = new byte[(int) filePart3.getSize()];
-            fileContent3.read(imageBytes3, 0, imageBytes3.length);
-            fileContent3.close();
-
-            byte[] imageBytes4 = new byte[(int) filePart4.getSize()];
-            fileContent4.read(imageBytes4, 0, imageBytes4.length);
-            fileContent4.close();
-
-            try {
-                Blob imageBlob1 = new SerialBlob(imageBytes1);
-                Blob imageBlob2 = new SerialBlob(imageBytes2);
-                Blob imageBlob3 = new SerialBlob(imageBytes3);
-                Blob imageBlob4 = new SerialBlob(imageBytes4);
-
-                item.setImage1(imageBlob1);
-                item.setImage2(imageBlob2);
-                item.setImage3(imageBlob3);
-                item.setImage4(imageBlob4);
-            } catch (SQLException ex) {
-                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try{
-                itemDAO.updateItem(item);
-                request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-            }catch(Exception e){
-                
-            }
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ProfileController</title>");
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>"+ btn2+ "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
+//        String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
+//        String itemName, des, cat;
+//        Blob image1, image2, image3;
+//        if (request.getParameter("btnEdit") != null) {
+//            IDCard = request.getParameter("txtID");
+//            passWord = request.getParameter("txtPwd");
+//            name = request.getParameter("txtName");
+//            phoneNumber = request.getParameter("txtPhone");
+//            address = request.getParameter("txtAddress");
+//            dateOfBirth = request.getParameter("txtBirth");
+//            email = request.getParameter("txtEmail");
+//            customer cus = new customer(IDCard, passWord, name, phoneNumber, address, dateOfBirth, email);
+//            customerDAO.editCustomerInfor(cus);
+//            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
 //        }
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ProfileController</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>" + "hello" + "</h1>");
+            out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+        if (true) {
+//            item item = new item();
+//
+//            item.setName(request.getParameter("name"));
+//            item.setCategory(request.getParameter("category"));
+//            item.setDescription(request.getParameter("description"));
+//
+//            Part filePart1 = request.getPart("image1");
+//            InputStream fileContent1 = filePart1.getInputStream();
+//
+//            Part filePart2 = request.getPart("image2");
+//            InputStream fileContent2 = filePart2.getInputStream();
+//
+//            Part filePart3 = request.getPart("image3");
+//            InputStream fileContent3 = filePart3.getInputStream();
+//
+//            Part filePart4 = request.getPart("image4");
+//            InputStream fileContent4 = filePart4.getInputStream();
+//
+//            byte[] imageBytes1 = new byte[(int) filePart1.getSize()];
+//            fileContent1.read(imageBytes1, 0, imageBytes1.length);
+//            fileContent1.close();
+//
+//            byte[] imageBytes2 = new byte[(int) filePart2.getSize()];
+//            fileContent2.read(imageBytes2, 0, imageBytes2.length);
+//            fileContent2.close();
+//
+//            byte[] imageBytes3 = new byte[(int) filePart3.getSize()];
+//            fileContent3.read(imageBytes3, 0, imageBytes3.length);
+//            fileContent3.close();
+//
+//            byte[] imageBytes4 = new byte[(int) filePart4.getSize()];
+//            fileContent4.read(imageBytes4, 0, imageBytes4.length);
+//            fileContent4.close();
+//
+//            try {
+//                Blob imageBlob1 = new SerialBlob(imageBytes1);
+//                Blob imageBlob2 = new SerialBlob(imageBytes2);
+//                Blob imageBlob3 = new SerialBlob(imageBytes3);
+//                Blob imageBlob4 = new SerialBlob(imageBytes4);
+//
+//                item.setImage1(imageBlob1);
+//                item.setImage2(imageBlob2);
+//                item.setImage3(imageBlob3);
+//                item.setImage4(imageBlob4);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            try{
+//                itemDAO.updateItem(item);
+//                request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+//            }catch(Exception e){
+//                
+//            }
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                /* TODO output your page here. You may use following sample code. */
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet ProfileController</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>" + "hello" + "</h1>");
+                out.println("</body>");
+                out.println("</html>");
+            }
         }
     }
 

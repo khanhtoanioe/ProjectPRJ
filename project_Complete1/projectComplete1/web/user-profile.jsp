@@ -286,13 +286,13 @@
                                         <th>Status</th>
                                     </div>
                                     <div class="col-sm">
-                                        <th>Trader</th>
+                                        <th>Have</th>
                                     </div>
                                     <div class="col-sm">
-                                        <th>First Item</th>
+                                        <th>Trade with trader</th>
                                     </div>
                                     <div class="col-sm">
-                                        <th>Second Item</th>
+                                        <th>Trade with item</th>
                                     </div>
                                 </div>
                                 </tr>
@@ -308,10 +308,10 @@
                                         <td>Done</td>
                                     </div>
                                     <div class="col-sm">
-                                        <td>Tran Khanh Toan</td>
+                                        <td>Blue iPhone 12</td>
                                     </div>
                                     <div class="col-sm">
-                                        <td>Blue iPhone 12</td>
+                                        <td>Tran Khanh Toan</td>
                                     </div>
                                     <div class="col-sm">
                                         <td>Red iPhone 12</td>
@@ -319,25 +319,7 @@
                                 </div>
                                 </tr>
                                 <!-- Row 2 -->
-                                <tr>
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <td>Last year</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Cancel</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Tieu Anh Tho</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Nike Shoes</td>
-                                    </div>
-                                    <div class="col-sm">
-                                        <td>Adidas Shoes</td>
-                                    </div>
-                                </div>
-                                </tr>
+                                
                                 </tbody>
                             </table>
                         </div>

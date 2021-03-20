@@ -130,11 +130,14 @@
                         <div><%=rsChat.getString("timeSendChat")%></div>
                         <div><%=rsChat.getString("content")%></div> 
                         <div>
-                            <a href="/Chat/<%if(IDCard.equals(rs.getString("IDCard1"))){%>
-                               <%=rs.getString("IDCard2")%>
-                               <%} else {%>
-                               <%=rs.getString("IDCard1")%>
-                               <%}%>" class="btn btn-success" type="submit" name="accept"><i class="fa fa-arrow-right" aria-hidden="true"></i> Chat now</a>
+                            <%  String id;
+                                if (IDCard.equals(rs.getString("IDCard1"))) {
+                                    id = rs.getString("IDCard2");
+                                } else {
+                                    id = rs.getString("IDCard1");
+                                } 
+                            %>
+                            <a href="/Chat/<%=id%>" class="btn btn-success" type="submit" name="accept"><i class="fa fa-arrow-right" aria-hidden="true"></i> Chat now</a>
                         </div>
                     </li>
                     <%}%>

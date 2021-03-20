@@ -109,13 +109,12 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String btn1, btn2 = null;
+        
         String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
         String itemName, des, cat;
         Blob image1, image2, image3;
-        btn1 = request.getParameter("btnEdit");
-        btn2 = request.getParameter("btnEditItem");
-        if (btn1 != null) {
+
+        if (request.getParameter("btnEdit") != null) {
             IDCard = request.getParameter("txtID");
             passWord = request.getParameter("txtPwd");
             name = request.getParameter("txtName");
@@ -127,7 +126,7 @@ public class ProfileController extends HttpServlet {
             customerDAO.editCustomerInfor(cus);
             request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
         }
-        if (btn2 != null) {
+        if (request.getParameter("btnEditItem") != null) {
             item item = new item();
 
             item.setName(request.getParameter("name"));

@@ -120,7 +120,7 @@ public class customerController extends HttpServlet {
             itemDAO.changeItemState(senderItem);
             itemDAO.changeItemState(recieverItem);           
             tranferHistoryDAO.addHistory(itemDAO.getItemById(senderItem).getOwnerID(), senderItem, itemDAO.getItemById(recieverItem).getOwnerID() , recieverItem);      
-            request.getRequestDispatcher("notification.jsp").forward(request, response);
+            request.getRequestDispatcher("/notification.jsp").forward(request, response);
         }
     }
 

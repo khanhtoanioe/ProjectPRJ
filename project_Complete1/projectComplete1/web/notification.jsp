@@ -103,7 +103,7 @@
                                     <%= itemDAO.getItemById(rs.getInt("recieverItem")).getName() %>
                                 </div>
 				<div>
-					<button class="btn btn-danger" type="submit" name="reject">Reject</button>
+                                    <a href="#"><button class="btn btn-danger" type="submit" name="reject">Reject</button></a>
 					<button class="btn btn-success" type="submit" name="accept">Accept</button>
 				</div>
 			</li>

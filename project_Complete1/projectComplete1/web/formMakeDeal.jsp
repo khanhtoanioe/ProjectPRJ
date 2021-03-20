@@ -13,7 +13,7 @@
 <c:if test="${param.btnSendDeal != null}">
     <sql:setDataSource driver="com.mysql.jdbc.Driver" var="db" url="jdbc:mysql://localhost/group_assignment" password="" user="root"/>
     <sql:update dataSource="${db}"  >
-        INSERT INTO `dealinglist` (`senderItem`, `recieverItem`, `reciever`) VALUES(?,?,?,?);
+        INSERT INTO `dealinglist` (`senderItem`, `recieverItem`, `reciever`) VALUES(?,?,?);
         <sql:param value="${param.senderItem}"/>
         <sql:param value="${param.recieverItem}"/>
         <sql:param value="${param.reciever}"/>

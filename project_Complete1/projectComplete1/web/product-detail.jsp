@@ -147,7 +147,7 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col-1">
-                        <img src="images/logo.png">
+                        <img src="../images/logo.png">
                         <p>Our Purpose Is To Sustainably Make the Pleasure and
                             Benefits of Sports Accessible to the Many.</p>
                     </div>

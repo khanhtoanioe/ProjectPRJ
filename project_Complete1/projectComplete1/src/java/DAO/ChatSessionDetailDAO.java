@@ -61,4 +61,29 @@ public class ChatSessionDetailDAO {
         }
         return null;
     }
+    public static ResultSet getChatBox(int IDCard) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT sessionID, IDCard1,IDCard2 from chatsession where IDCard1=? or IDCard2=?");
+            st.setInt(1, IDCard);
+            st.setInt(2,IDCard);
+            ResultSet rs = st.executeQuery();
+            // rs.next();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    } 
+    public static ResultSet getContentPerBox(int sessionID){
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT sessionID, timeSendChat,sendFrom,content  FROM `chatsessiondetail` WHERE chatsessiondetail.sessionID=? and timeSendChat=(SELECT max(timeSendChat) from chatsessiondetail WHERE sessionID=?)");
+            st.setInt(1, sessionID);
+            st.setInt(2, sessionID);
+            ResultSet rs= st.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

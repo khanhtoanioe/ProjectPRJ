@@ -79,7 +79,7 @@ public class ChatController extends HttpServlet {
 
             chatID = chatSessionDAO.checkChatExist(idCard1, idCard2);
 
-            if (chatID != 0) {
+            if (chatID == 0) {
                 count = chatSessionDAO.addNewChat(idCard1, idCard2);
                 chatID = chatSessionDAO.checkChatExist(idCard1, idCard2);
                 ResultSet csd = ChatSessionDetailDAO.getChatContent(chatID);

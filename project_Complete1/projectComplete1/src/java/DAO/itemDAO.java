@@ -161,4 +161,16 @@ public class itemDAO {
         }
         return null;
     }
+
+    public static boolean changeItemState(int itemID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET status = 1 WHERE iteminformation.itemID = ? ");
+            st.setInt(1, itemID);
+            st.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

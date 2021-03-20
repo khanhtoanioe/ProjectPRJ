@@ -103,8 +103,8 @@
                                     <%= itemDAO.getItemById(rs.getInt("recieverItem")).getName() %>
                                 </div>
 				<div>
-                                    <a href="#"><button class="btn btn-danger" type="submit" name="reject">Reject</button></a>
-					<button class="btn btn-success" type="submit" name="accept">Accept</button>
+                                    <a href="<%= getServletContext().getContextPath() %>/customer/RejectDeal?senderItem=<%= rs.getInt("senderItem") %>&recieverItem=<%= rs.getInt("recieverItem") %>"><button class="btn btn-danger" type="submit" name="reject">Reject</button></a>
+                                    <a href="<%= getServletContext().getContextPath() %>/customer/AcceptDeal"><button class="btn btn-success" type="submit" name="accept">Accept</button></a>
 				</div>
 			</li>
                         <%}%>

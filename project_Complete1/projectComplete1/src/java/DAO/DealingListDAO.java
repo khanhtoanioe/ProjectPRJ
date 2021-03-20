@@ -18,10 +18,10 @@ import java.util.logging.Logger;
  * @author Admin
  */
 public class DealingListDAO {
-    
+
     private static Connection conn = DB.DBconnection.getConnection();
-    
-    public static ResultSet getReciever(){
+
+    public static ResultSet getReciever() {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT reciever FROM dealinglist");
@@ -31,8 +31,8 @@ public class DealingListDAO {
         }
         return null;
     }
-    
-    public static ResultSet getDealByReciever(String reciever ){
+
+    public static ResultSet getDealByReciever(String reciever) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT senderItem,recieverItem FROM dealinglist WHERE reciever=?");
             st.setString(1, reciever);
@@ -42,5 +42,18 @@ public class DealingListDAO {
             Logger.getLogger(DealingListDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public static boolean deleteItemDealed(int senderItem, int recieverItem) {
+        try {
+            PreparedStatement st = conn.prepareStatement("DELETE FROM dealinglist WHERE senderItem=? or recieverItem=?");
+            st.setInt(1, senderItem);
+            st.setInt(2, recieverItem);
+            ResultSet rs = st.executeQuery();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DealingListDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

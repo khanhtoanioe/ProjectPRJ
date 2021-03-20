@@ -76,13 +76,10 @@
 
 <div class="jumbotron text-center">
   <h1 class="display-3">Upload Successful</h1>
-  <p class="lead">Thank you for using our website, you item will be reviewed soon.</p>
+  <p class="lead">Thank you for using our website, you item is now online.</p>
   <hr>
-  <p>
-    câu gì vui vui
-  </p>
   <p class="lead">
-    <a class="btn btn-success btn-sm" href="mainPage.jsp" role="button">Continue to homepage</a>
+    <a class="btn btn-success btn-sm" href="<%=getServletContext().getContextPath()%>/customer/home" role="button">Continue to homepage</a>
   </p>
 </div>
 

@@ -130,23 +130,26 @@ public class itemDAO {
         return false;
     }
 
-    public static boolean updateItem(item item) {
+    public static int updateItem(item item) {
         try {
-            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=?,image1=?,image2=?,image3=?,image4=? WHERE itemID=?");
+            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=? WHERE itemID=?");
             st.setString(1, item.getName());
             st.setString(2, item.getDescription());
             st.setString(3, item.getCategory());
-            st.setBlob(4, item.getImage1());
-            st.setBlob(5, item.getImage2());
-            st.setBlob(6, item.getImage3());
-            st.setBlob(7, item.getImage4());
-            st.setInt(8, item.getItemID());
-            st.execute();
-            return true;
+//            ,image1=?,image2=?,image3=?,image4=?
+//            st.setBlob(4, item.getImage1());
+//            st.setBlob(5, item.getImage2());
+//            st.setBlob(6, item.getImage3());
+//            st.setBlob(7, item.getImage4());
+            st.setInt(4, item.getItemID());
+            int count = st.executeUpdate();
+            if (count > 0) {
+                return count;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return 36;
     }
 
     public static ResultSet getAllCategory() {

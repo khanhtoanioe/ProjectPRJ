@@ -106,6 +106,10 @@ public class customerController extends HttpServlet {
         if(URI.startsWith(getServletContext().getContextPath() + "/customer/notiDeal")){
             request.getRequestDispatcher("/notification.jsp").forward(request, response);
         }
+        if(URI.startsWith(getServletContext().getContextPath() + "/customer/RejectDeal")){
+            DAO.DealingListDAO.deleteItemReject(Integer.parseInt(request.getParameter("senderItem")), Integer.parseInt( request.getParameter("recieverItem")));
+            request.getRequestDispatcher( getServletContext().getContextPath() + "/customer/notiDeal").forward(request, response);
+        }
     }
 
     /**

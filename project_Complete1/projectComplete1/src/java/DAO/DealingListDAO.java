@@ -49,11 +49,25 @@ public class DealingListDAO {
             PreparedStatement st = conn.prepareStatement("DELETE FROM dealinglist WHERE senderItem=? or recieverItem=?");
             st.setInt(1, senderItem);
             st.setInt(2, recieverItem);
-            ResultSet rs = st.executeQuery();
+            st.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(DealingListDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
+
+    public static boolean deleteItemReject(int senderItem, int recieverItem) {
+        try {
+            PreparedStatement st = conn.prepareStatement("DELETE FROM dealinglist WHERE senderItem=? AND recieverItem=?");
+            st.setInt(1, senderItem);
+            st.setInt(2, recieverItem);
+            st.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DealingListDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
 }

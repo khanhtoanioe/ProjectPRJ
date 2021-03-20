@@ -93,8 +93,8 @@
                         <% while(rs.next()){ %>
                         <% item senderItem = itemDAO.getItemById(rs.getInt("senderItem")); %>
 			<li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>  <a href="#" style="color: #0c63e4"> <%= customerDAO.getCustomerByID(senderItem.getOwnerID()).getName()   %>  </a> with item </div>
-                                <%= senderItem.getName() %>
+                            <div>  <a href="<%= getServletContext().getContextPath() %>/Profile/<%= senderItem.getOwnerID() %>" style="color: #0c63e4"> <%= customerDAO.getCustomerByID(senderItem.getOwnerID()).getName()   %>  </a> with item </div>
+                            <a style="color: #0c63e4" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= senderItem.getItemID()  %>"><%= senderItem.getName() %></a>
 				<div class="image-parent">
                                     <img src="data:image/jpg;base64,<%= DAO.itemDAO.getImageString(senderItem.getImage1()) %>" class="img-thumbnail" width="100px">
 				</div>

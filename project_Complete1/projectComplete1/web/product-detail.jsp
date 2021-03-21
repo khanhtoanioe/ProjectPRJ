@@ -119,7 +119,7 @@
                         <% ResultSet rs = itemDAO.getItemByCategory(item.getCategory()); %>
                         <% int flag = 1; %>
                         <% while (flag <= 4 && rs.next()) {%>
-                        <% if (rs.getInt("itemID") != item.getItemID()) {%>
+                        <% if (rs.getInt("itemID") != item.getItemID() && rs.getInt("status") != 1 ) {%>
                         <div class="col-4">
                             <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
                             <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><h4><%= rs.getString("Name")%></h4></a>

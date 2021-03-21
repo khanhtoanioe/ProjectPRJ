@@ -89,7 +89,7 @@
                 <div class="row">
                     <% ResultSet rs = itemDAO.getAllItem();%>
                     <% while (rs.next()) { %>
-                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
+                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") != 1 ) {%>
                     <div class="col-4"   >
                         <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
                             <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>

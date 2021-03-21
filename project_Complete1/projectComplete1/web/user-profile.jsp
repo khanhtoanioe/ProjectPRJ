@@ -53,8 +53,8 @@
     <body>
         <div class="header">
             <div class="container">
-
-                <div class="navbar" id="mynavbar">
+<%@include file="navigate.jsp" %>
+<!--                <div class="navbar" id="mynavbar">
                     <div class="logo">
                         <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                     </div>
@@ -88,7 +88,7 @@
                     <img src="../images/menu.png" class="menu-icon"
                          onclick="menutoggle()">
 
-                </div>
+                </div>-->
             </div>
 
         </div>  
@@ -302,7 +302,7 @@
                                             <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("secondItem")%>" ><%= itemDAO.getNameByID(rs.getInt("secondItem")) %></a></td>
                                         </div>
                                         <div class="col-sm">
-                                            <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("firstCustomer") %>"> <%= customerDAO.getName(rs.getString("firstCustomer")) %></a></td>
+                                            <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("firstCustomer") %>"> <%= customerDAO.getName(rs.getString("firstCustomer")) %> </a></td>
                                         </div>
                                         <div class="col-sm">
                                             <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("firstItem")%>" ><%= itemDAO.getNameByID(rs.getInt("firstItem"))%></a></td>

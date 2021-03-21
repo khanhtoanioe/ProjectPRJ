@@ -79,73 +79,7 @@
                 </div>
                 <% }%>
 
-                <h2 class="title">New item</h2>
-                <div class="row">
-                    <div class="col-4">
-                        <a href="product-details.html"><img src="../images/adidas.jpg"></a>
-                        <a href="product-details.html"><strong>Adidas shoes Size: 41
-                            </strong></a><br>
-                        <a href="product-details.html"><h4>Swap: Nike shoes Size: 39</h4></a>
-
-                        <p>Waiting</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="../images/airpod.jpg">
-                        <a href="products-details.html"><strong>Apple Airpod 2
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>Swap: Apple Airpod 3</h4></a>
-
-                        <p>DONE</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="../images/headphone.jpg">
-                        <a href="products-details.html"><strong>Sony headphone
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>Swap: And other headphone</h4></a>
-
-                        <p>Waiting</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="../images/levi-jean.jpg">
-                        <a href="products-details.html"><strong>LEVI Jeans
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>Swap: Other brand jean</h4></a>
-                        <p>Waiting</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <img src="../images/nike.jpg">
-                        <a href="products-details.html"><strong>Nike shoes Size: 39
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>Swap: Nike shoes Size: 41</h4></a>
-                        <p>Waiting</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="../images/pepsi.jpg">
-                        <a href="products-details.html"><strong>Pepsi, 355mL Cans, 24 Pack
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>Swap: COCA COLA</h4></a>
-
-                        <p>Waiting</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="../images/samsung-a12.jpg">
-                        <a href="products-details.html"><strong>BLUE SamSung A12 2020
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>BLACK SamSung A12 2020</h4></a>
-
-                        <p>Waiting</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="../images/book.jpg">
-                        <a href="products-details.html"><strong>I Am Gifted, So Are You!
-                            </strong></a><br>
-                        <a href="products-details.html"><h4>Swap: Any kind of book</h4></a>
-                        <p>Waiting</p>
-                    </div>
-                </div>
-            </div>
+                
             <!--footer-->
             <div class="footer">
                 <div class="container">

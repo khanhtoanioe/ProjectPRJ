@@ -174,4 +174,19 @@ public class itemDAO {
         }
         return false;
     }
+    
+    public static String getNameByID(int itemID){
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT name FORM iteminformation WHERE itemID=?");
+            st.setInt(1, itemID);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                return rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(itemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
+    
 }

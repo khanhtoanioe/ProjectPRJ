@@ -299,13 +299,13 @@
                                         </div>
 
                                         <div class="col-sm">
-                                            <td><%= rs.getString("secondItem")%></td>
+                                            <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("secondItem")%>" ><%= rs.getString("secondItem")%></a></td>
                                         </div>
                                         <div class="col-sm">
                                             <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("firstCustomer") %>"> <%= rs.getString("firstCustomer")%></a></td>
                                         </div>
                                         <div class="col-sm">
-                                            <td><%= rs.getString("firstItem")%></td>
+                                            <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("firstItem")%>" ><%= rs.getString("firstItem")%></a></td>
                                         </div>
                                     </div>
                                     </tr>

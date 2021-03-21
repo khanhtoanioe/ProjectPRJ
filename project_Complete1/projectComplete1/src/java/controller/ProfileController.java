@@ -77,13 +77,13 @@ public class ProfileController extends HttpServlet {
             String URISplit[] = URI.split("/");
             String id = URISplit[URISplit.length - 1];
             itemDAO.deleteById(Integer.parseInt(id));
-            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+            response.sendRedirect("/Profile/"+URISplit[URISplit.length - 4]);
         } else if (URI.contains("/UserItem/Edit")) {
             String URISplit[] = URI.split("/");
             String id = URISplit[URISplit.length - 1];
             item it = itemDAO.getItemById(Integer.parseInt(id));
             if (it == null) {
-                response.sendRedirect("/Profile");
+                response.sendRedirect("/Profile/"+URISplit[URISplit.length - 4]);
             } else {
                 ss1 = request.getSession();
                 ss1.setAttribute("item", it);
@@ -97,7 +97,7 @@ public class ProfileController extends HttpServlet {
             ss2.setAttribute("user", user);
             request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
         }
-        
+
     }
 
     /**
@@ -109,10 +109,10 @@ public class ProfileController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        //đang test cái edit, làm hoài vẫn ko đc
+    //đang test cái edit, làm hoài vẫn ko đc
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
         String itemName, des, cat;
         Blob image1, image2, image3;
@@ -223,7 +223,7 @@ public class ProfileController extends HttpServlet {
 //                out.println("</html>");
 //            }
 //        }
-        if(request.getParameter("btnRate")!=null){
+        if (request.getParameter("btnRate") != null) {
             HttpSession session = request.getSession();
             String rater = (String) session.getAttribute("IDcard");
             rate r = new rate(request.getParameter("id"), rater, request.getParameter("txtRate"), request.getParameter("txtCmt"));
@@ -233,7 +233,7 @@ public class ProfileController extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 out.write("<h1>you have rate this trader, you can not rate again</h1>");
             }
-        
+
         }
     }
 

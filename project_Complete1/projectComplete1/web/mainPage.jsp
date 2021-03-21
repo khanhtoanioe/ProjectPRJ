@@ -31,42 +31,7 @@
         <div class="header">
             <div class="container">
 
-                <div class="navbar" id="mynavbar">
-                    <div class="logo">
-                        <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                    </div>
-                    <nav>
-                        <a href="chat-history.jsp" class="btn" type="button" name="accept" style="padding:10px; background: #e58679"><i class="fa fa-weixin" aria-hidden="true"></i></a>
-                        <ul id="MenuItems">
-                            <li><div class="dropdown">
-                                    <button class="dropbtn">Category</button>
-                                    <div class="dropdown-content">
-                                        <c:forEach var="category" items="${rs.rows}" >
-                                            <a href="<%= getServletContext().getContextPath() %>/customer/search?category=${category.catName}" ><c:out value="${category.catName}" /></a>
-                                        </c:forEach>
-                                        <a href="#">Electronic</a>
-                                    </div>
-                                </div> 
-                            </li>  
-                            <li><a href="homePage.html">Home</a></li>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="/Profile/<%=(String) session.getAttribute("IDcard")%>">Account</a></li>
-                            <li><a href="compad.html">Login/Register</a></li>        
-                        </ul>
-                    </nav>
-                    <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                        <% ResultSet resultset = DAO.DealingListDAO.getReciever(); %>
-                        <% while (resultset.next()) {
-                                if (resultset.getString("reciever").equals(session.getAttribute("IDcard"))) {%>
-                    <a href="<%= getServletContext().getContextPath()%>/customer/notiDeal"><img src="../images/cart2.png" width="30px" height="30px"></a>
-
-                    <% break;
-                            }
-                        } %>
-
-                    <img src="../images/menu.png" class="menu-icon"
-                         onclick="menutoggle()">
-                </div>
+                <%@include file="navigate.jsp" %>
 
                 <div class="row">
                     <div class="col-2" >

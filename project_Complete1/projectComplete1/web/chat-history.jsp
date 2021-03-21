@@ -50,13 +50,13 @@
 
         <div class="header">
             <div class="container">
-
-                <div class="navbar" id="mynavbar">
+<%@include file="navigate.jsp" %>
+<!--                <div class="navbar" id="mynavbar">
                     <div class="logo">
                         <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                     </div>
                     <nav>
-                        <!--Button to chat page-->
+                        Button to chat page
                         <a class="btn" type="button" name="accept" style="padding:10px; background: #e58679"><i class="fa fa-weixin" aria-hidden="true"></i></a>
                         <ul id="MenuItems">
                             <li><div class="dropdown">
@@ -85,7 +85,7 @@
                     <a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
                     <img src="../images/menu.png" class="menu-icon"
                          onclick="menutoggle()">
-                </div>
+                </div>-->
             </div>
         </div>
 

@@ -3,7 +3,15 @@
     Created on : Mar 20, 2021, 8:45:34 PM
     Author     : Asus Vivobook
 --%>
+<%--<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.itemDAO"%>
 
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/group_assignment" user="root"  password=""/> 
+<sql:query dataSource="${db}" var="rs" >
+    SELECT catName FROM `category`;
+</sql:query>--%>
 <%@page import="DAO.customerDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DAO.ChatSessionDetailDAO"%>
@@ -50,13 +58,13 @@
 
         <div class="header">
             <div class="container">
-<%--<%@include file="navigate.jsp" %>--%>
-                <div class="navbar" id="mynavbar">
+
+                <%@include file="navigate.jsp" %>
+<!--                <div class="navbar" id="mynavbar">
                     <div class="logo">
                         <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                     </div>
                     <nav>
-                        <!--Button to chat page-->
                         <a class="btn" type="button" name="accept" style="padding:10px; background: #e58679"><i class="fa fa-weixin" aria-hidden="true"></i></a>
                         <ul id="MenuItems">
                             <li><div class="dropdown">
@@ -85,16 +93,14 @@
                     <a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
                     <img src="../images/menu.png" class="menu-icon"
                          onclick="menutoggle()">
-                </div>
+                </div>-->
             </div>
         </div>
 
         <div class="container">
             <div class="row">
                 <h6 class="text-muted">Notification</h6>
-
                 <ul class="list-group">
-
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div>Message</div>
                         <div>From</div>
@@ -135,14 +141,12 @@
                                     id = rs.getString("IDCard2");
                                 } else {
                                     id = rs.getString("IDCard1");
-                                } 
+                                }
                             %>
                             <a href="/Chat/<%=id%>" class="btn btn-success" type="submit" name="accept"><i class="fa fa-arrow-right" aria-hidden="true"></i> Chat now</a>
                         </div>
                     </li>
                     <%}%>
-
-
                 </ul>
             </div>
         </div>

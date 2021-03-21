@@ -228,7 +228,7 @@
                                                     <i class="fa fa-star"></i>
                                                     <%}%>
                                                     <%
-                                                        for (int i = 5; i <= 5 - Integer.parseInt(rsRate.getString("rateStar")); i++) {
+                                                        for (int i = Integer.parseInt(rsRate.getString("rateStar")); i <5 ; i++) {
 
                                                     %>
                                                     <i class="fa fa-star-o"></i>

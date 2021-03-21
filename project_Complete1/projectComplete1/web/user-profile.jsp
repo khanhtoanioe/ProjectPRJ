@@ -4,6 +4,8 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="DAO.customerDAO"%>
+<%@page import="DAO.rateDAO"%>
 <%@page import="DAO.tranferHistoryDAO"%>
 <%@page import="DAO.itemDAO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -174,7 +176,7 @@
                                             <div class="col-lg-9">
                                                 <!-- SUBMIT -->
                                                 <input type="reset" class="btn btn-secondary" value="Cancel">
-                                                <input type="submit" class="btn btn-primary" value="Save Changes" name="btnEdit">
+                                                <input type="submit" class="btn btn-primary" value="Save Changes" name="btnEditUser">
                                             </div>
                                         </div>
                                     </form>
@@ -205,69 +207,38 @@
                                     </thead>
 
                                     <tbody>
+                                        <%
+                                            ResultSet rsRate = rateDAO.getAllInforByIDRated(user.getIDCard());
+                                            while (rsRate.next()) {
+                                        %>
                                         <!-- Row 1 -->
                                         <tr>
                                     <div class="row">
                                         <div class="col-sm">
-                                            <td>Ho Kha Minh</td>
+                                            <td><%= customerDAO.getName(rsRate.getString("IDRater"))%></td>
                                         </div>
                                         <div class="col-sm">
-                                            <td>Very good, bla bla bla</td>
-                                        </div>
-                                        <div class="col-sm">
-                                            <td>
-                                                <div class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div> </td>
-                                        </div>
-                                    </div>
-                                    </tr>
-                                    <!-- Row 2 -->
-                                    <tr>
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <td>Tieu Anh Tho</td>
-                                        </div>
-                                        <div class="col-sm">
-                                            <td>Not so good, late</td>
+                                            <td><%= rsRate.getString("rateComment")%></td>
                                         </div>
                                         <div class="col-sm">
                                             <td>
                                                 <div class="rating">
+                                                    <%
+                                                        for (int i = 1; i <= Integer.parseInt(rsRate.getString("rateStar")); i++) {%>
                                                     <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    <%}%>
+                                                    <%
+                                                        for (int i = 5; i <= 5 - Integer.parseInt(rsRate.getString("rateStar")); i++) {
+
+                                                    %>
                                                     <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div> </td>
+                                                    <%}%>
+                                                </div>
+                                            </td>
                                         </div>
                                     </div>
                                     </tr>
-                                    <!-- Row 3 -->
-                                    <tr>
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <td>Tran Khanh Toan</td>
-                                        </div>
-                                        <div class="col-sm">
-                                            <td>Suck</td>
-                                        </div>
-                                        <div class="col-sm">
-                                            <td>
-                                                <div class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div> </td>
-                                        </div>
-                                    </div>
-                                    </tr>
+                                    <%}%>
                                     </tbody>
                                 </table>
                             </div>
@@ -320,7 +291,7 @@
                                     </div>
                                     </tr>
                                     <% } %>
-                                    <% if (rs.getString("secondCustomer").equals(id)) { %>
+                                    <% if (rs.getString("secondCustomer").equals(id)) {%>
                                     <tr>
                                     <div class="row">
                                         <div class="col-sm">
@@ -347,15 +318,19 @@
                                 </table>
                             </div>
                             <div class="container bg-info">
-                                <!-- nếu chưa giao dịch với người này thì thêm display: none; vô style="#"-->
-                                <form style="#" action=""> 
+                                <%
+                                    int his = tranferHistoryDAO.checkHistory(user.getIDCard(), idCard);
+
+                                %>
+                                <!-- nếu chưa giao dịch với người này hoặc xem profile của chính mình thì thêm display: none; -->
+                                <form <%if (his == 0 || idCard.equals(user.getIDCard())) {%>style="display:none"<%}%> action="/Profile?id=<%=user.getIDCard()%>" method="post"> 
                                     <h2 class="display-3 text-center">Rate this User </h2>
                                     <div class="mb-3">
                                         <label for="comment" class="form-label">Comment</label>
-                                        <input type="text" class="form-control" id="comment" aria-describedby="comment">
+                                        <input type="text" class="form-control" id="comment" aria-describedby="comment" name="txtCmt">
                                         <div id="comment" class="form-text">Give opinion about this user.</div>
                                     </div>
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" name="txtRate">
                                         <option selected>Choose stars</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
@@ -365,7 +340,7 @@
                                     </select>
 
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                        <input class="btn btn-primary" type="submit" value="Submit" name="btnRate" >
                                     </div>
 
                                 </form>

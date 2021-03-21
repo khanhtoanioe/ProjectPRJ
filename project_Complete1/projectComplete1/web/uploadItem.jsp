@@ -126,7 +126,6 @@
 
                 <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image3" >
 
-
                 <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image4" >
 
                 <label for="product-name">Product Name</label>

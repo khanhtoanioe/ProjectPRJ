@@ -302,7 +302,7 @@
                                             <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("secondItem")%>" ><%= itemDAO.getNameByID(rs.getInt("secondItem")) %></a></td>
                                         </div>
                                         <div class="col-sm">
-                                            <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("firstCustomer") %>"> <%= customerDAO.getName(rs.getString("firstCustomer")) %></a></td>
+                                            <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("firstCustomer") %>"> <%= customerDAO.getName(rs.getString("firstCustomer")) %> </a></td>
                                         </div>
                                         <div class="col-sm">
                                             <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("firstItem")%>" ><%= itemDAO.getNameByID(rs.getInt("firstItem"))%></a></td>

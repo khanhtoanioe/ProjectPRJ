@@ -123,6 +123,10 @@ public class customerController extends HttpServlet {
             itemDAO.changeItemState(recieverItem);               
             request.getRequestDispatcher("/notification.jsp").forward(request, response);
         }
+        
+        if(URI.startsWith(getServletContext().getContextPath() + "/customer/search")){
+            request.getRequestDispatcher("/mainPage.jsp?category="+request.getParameter("category")).forward(request, response);
+        }
     }
 
     /**

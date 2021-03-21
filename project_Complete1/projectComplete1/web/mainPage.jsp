@@ -7,6 +7,12 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DAO.itemDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/group_assignment" user="root"  password=""/> 
+<sql:query dataSource="${db}" var="rs" >
+    SELECT catName FROM `category`;
+</sql:query>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,49 +31,7 @@
         <div class="header">
             <div class="container">
 
-                <div class="navbar" id="mynavbar">
-                    <div class="logo">
-                        <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                    </div>
-                    <nav>
-                        <a href="chat-history.jsp" class="btn" type="button" name="accept" style="padding:10px; background: #e58679"><i class="fa fa-weixin" aria-hidden="true"></i></a>
-                        <ul id="MenuItems">
-                            <li><div class="dropdown">
-                                    <button class="dropbtn">Category</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">Electronic</a>
-                                        <a href="#">Computer 2</a>
-                                        <a href="#">Women's Fashion</a>
-                                        <a href="#">Men's Fashion</a>
-                                        <a href="#">Baby</a>
-                                        <a href="#">Toys and Games</a>
-                                        <a href="#">Tool</a>
-                                        <a href="#">Sport and Outdoor</a>
-                                        <a href="#">Home and Kitchen</a>
-                                        <a href="#">Health and Household</a>
-                                        <a href="#">Beauty and personal care</a>
-                                    </div>
-                                </div> 
-                            </li>  
-                            <li><a href="homePage.html">Home</a></li>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="/Profile/<%=(String) session.getAttribute("IDcard")%>">Account</a></li>
-                            <li><a href="compad.html">Login/Register</a></li>        
-                        </ul>
-                    </nav>
-                    <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                        <% ResultSet resultset = DAO.DealingListDAO.getReciever(); %>
-                        <% while (resultset.next()) {
-                            if (resultset.getString("reciever").equals(session.getAttribute("IDcard"))) {%>
-                    <a href="<%= getServletContext().getContextPath() %>/customer/notiDeal"><img src="../images/cart2.png" width="30px" height="30px"></a>
-
-                    <% break;
-                            }
-                        } %>
-
-                    <img src="../images/menu.png" class="menu-icon"
-                         onclick="menutoggle()">
-                </div>
+                <%@include file="navigate.jsp" %>
 
                 <div class="row">
                     <div class="col-2" >
@@ -86,10 +50,11 @@
         <div class="small-container">
             <div>
                 <h2 class="title">Top categories</h2>
+                <% if (request.getParameter("category") == null) { %>
                 <div class="row">
                     <% ResultSet rs = itemDAO.getAllItem();%>
                     <% while (rs.next()) { %>
-                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") != 1 ) {%>
+                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") != 1) {%>
                     <div class="col-4"   >
                         <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
                             <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
@@ -98,6 +63,22 @@
                     <% } %>
                     <% }%>
                 </div>
+                <% } %>
+                <% if (request.getParameter("category") != null) { %>
+                <div class="row">
+                    <% ResultSet rs = itemDAO.getAllItem();%>
+                    <% while (rs.next()) { %>
+                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") != 1 && rs.getString("category").equals(request.getParameter("category"))) {%>
+                    <div class="col-4"   >
+                        <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
+                            <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
+                        <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><strong><%= rs.getNString("name")%></strong></a><br>
+                    </div>
+                    <% } %>
+                    <% }%>
+                </div>
+                <% }%>
+
                 <h2 class="title">New item</h2>
                 <div class="row">
                     <div class="col-4">

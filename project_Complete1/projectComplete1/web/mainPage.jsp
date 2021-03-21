@@ -42,7 +42,7 @@
                                     <button class="dropbtn">Category</button>
                                     <div class="dropdown-content">
                                         <c:forEach var="category" items="${rs.rows}" >
-                                            <a href="" ><c:out value="${category.catName}" /></a>
+                                            <a href="<%= getServletContext().getContextPath() %>/customer/search?category=${category.catName}" ><c:out value="${category.catName}" /></a>
                                         </c:forEach>
                                         <a href="#">Electronic</a>
                                     </div>
@@ -85,7 +85,7 @@
         <div class="small-container">
             <div>
                 <h2 class="title">Top categories</h2>
-                <% if (request.getAttribute("category") == null) { %>
+                <% if (request.getParameter("category") == null) { %>
                 <div class="row">
                     <% ResultSet rs = itemDAO.getAllItem();%>
                     <% while (rs.next()) { %>
@@ -99,11 +99,11 @@
                     <% }%>
                 </div>
                 <% } %>
-                <% if (request.getAttribute("category") == null) { %>
+                <% if (request.getParameter("category") != null) { %>
                 <div class="row">
                     <% ResultSet rs = itemDAO.getAllItem();%>
                     <% while (rs.next()) { %>
-                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") != 1 && rs.getString("category").equals(request.getAttribute("category"))) {%>
+                    <% if (!rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") != 1 && rs.getString("category").equals(request.getParameter("category"))) {%>
                     <div class="col-4"   >
                         <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>">
                             <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>

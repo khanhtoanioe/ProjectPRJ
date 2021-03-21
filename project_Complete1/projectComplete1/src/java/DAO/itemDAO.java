@@ -177,7 +177,7 @@ public class itemDAO {
     
     public static String getNameByID(int itemID){
         try {
-            PreparedStatement st = conn.prepareStatement("SELECT name FORM iteminformation WHERE itemID=?");
+            PreparedStatement st = conn.prepareStatement("SELECT `Name` FROM `iteminformation` WHERE itemID=?");
             st.setInt(1, itemID);
             ResultSet rs = st.executeQuery();
             if(rs.next()){

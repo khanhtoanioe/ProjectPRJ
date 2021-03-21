@@ -14,6 +14,7 @@
 </sql:query>
 <html>
     <head>
+
         <title></title>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
@@ -32,19 +33,19 @@
                 $("#Form").validate({
                     rules: {
                         "image1": {
-                            required: true
+                            required: true,
                         },
                         "image2": {
-                            required: true
+                            required: true,
                         },
                         "image3": {
-                            required: true
+                            required: true,
                         },
                         "image4": {
-                            required: true
+                            required: true,
                         },
                         "name": {
-                            required: true
+                            required: true,
                             maxlength: 50
                         },
                         "description": {
@@ -54,16 +55,16 @@
                     },
                     messages: {
                         "image1": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "image2": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "image3": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "image4": {
-                            required: "You must upload 4 pictures to show your item status",
+                            required: "You must upload 4 pictures again to show your item status",
                         },
                         "name": {
                             required: "The name of item is required",

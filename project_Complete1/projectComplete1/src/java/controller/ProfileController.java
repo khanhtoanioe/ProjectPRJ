@@ -7,6 +7,7 @@ package controller;
 
 import DAO.customerDAO;
 import DAO.itemDAO;
+import DAO.rateDAO;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -24,6 +25,7 @@ import javax.servlet.http.Part;
 import javax.sql.rowset.serial.SerialBlob;
 import models.customer;
 import models.item;
+import models.rate;
 
 /**
  *
@@ -114,7 +116,7 @@ public class ProfileController extends HttpServlet {
         String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
         String itemName, des, cat;
         Blob image1, image2, image3;
-        if (request.getParameter("btnEdit") != null) {
+        if (request.getParameter("btnEditUser") != null) {
             IDCard = request.getParameter("txtID");
             passWord = request.getParameter("txtPwd");
             name = request.getParameter("txtName");
@@ -139,21 +141,21 @@ public class ProfileController extends HttpServlet {
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProfileController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + "hello" + "</h1>");
-            out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-        if (true) {
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet ProfileController</title>");
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>" + "hello" + "</h1>");
+//            out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
+//        if (true) {
 //            item item = new item();
 //
 //            item.setName(request.getParameter("name"));
@@ -207,19 +209,31 @@ public class ProfileController extends HttpServlet {
 //            }catch(Exception e){
 //                
 //            }
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet ProfileController</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>" + "hello" + "</h1>");
-                out.println("</body>");
-                out.println("</html>");
+//            response.setContentType("text/html;charset=UTF-8");
+//            try (PrintWriter out = response.getWriter()) {
+//                /* TODO output your page here. You may use following sample code. */
+//                out.println("<!DOCTYPE html>");
+//                out.println("<html>");
+//                out.println("<head>");
+//                out.println("<title>Servlet ProfileController</title>");
+//                out.println("</head>");
+//                out.println("<body>");
+//                out.println("<h1>" + "hello" + "</h1>");
+//                out.println("</body>");
+//                out.println("</html>");
+//            }
+//        }
+        if(request.getParameter("btnRate")!=null){
+            HttpSession session = request.getSession();
+            String rater = (String) session.getAttribute("IDcard");
+            rate r = new rate(request.getParameter("id"), rater, request.getParameter("txtRate"), request.getParameter("txtCmt"));
+            if (rateDAO.addComment(r)) {
+                response.sendRedirect("/Profile/" + request.getParameter("id"));
+            } else {
+                PrintWriter out = response.getWriter();
+                out.write("<h1>you have rate this trader, you can not rate again</h1>");
             }
+        
         }
     }
 

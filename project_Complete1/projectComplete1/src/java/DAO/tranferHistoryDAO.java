@@ -48,4 +48,22 @@ public class tranferHistoryDAO {
         return null;
     }
 
+    public static int checkHistory(String id1, String id2) {
+        ResultSet check = null;
+        try {
+            PreparedStatement st = conn.prepareCall("SELECT DealID FROM `tranferhistory` WHERE firstCustomer =? and secondCustomer=? or secondCustomer=? and firstCustomer=?");
+            st.setString(1, id1);
+            st.setString(2, id2);
+            st.setString(4, id1);
+            st.setString(3, id2);
+            check = st.executeQuery();
+            if (check.next()) {
+                return check.getInt("DealID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(tranferHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+       
+    }
 }

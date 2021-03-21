@@ -77,7 +77,7 @@
                 color: #999;
             }
             .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
-            
+
             .input_msg_write input {
                 background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
                 border: 2px solid black;
@@ -89,39 +89,42 @@
 
         </style>
         <div class="header">
-            <div class="navbar" id="mynavbar">
-                <div class="logo">
-                    <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                </div>
-                <nav>
-                    <ul id="MenuItems">
-                        <li><div class="dropdown">
-                                <button class="dropbtn">Category</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Electronic</a>
-                                    <a href="#">Computer 2</a>
-                                    <a href="#">Women's Fashion</a>
-                                    <a href="#">Men's Fashion</a>
-                                    <a href="#">Baby</a>
-                                    <a href="#">Toys and Games</a>
-                                    <a href="#">Tool</a>
-                                    <a href="#">Sport and Outdoor</a>
-                                    <a href="#">Home and Kitchen</a>
-                                    <a href="#">Health and Household</a>
-                                    <a href="#">Beauty and personal care</a>
+            
+                <%@include file="navigate.jsp" %>
+                <!--            <div class="navbar" id="mynavbar">
+                                <div class="logo">
+                                    <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                                 </div>
-                            </div> 
-                        </li>  
-                        <li><a href="homePage.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="account.html">Account</a></li>
-                        <li><a href="compad.html">Login/Register</a></li>        
-                    </ul>
-                </nav>
-                <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                <img src="../images/menu.png" class="menu-icon"
-                     onclick="menutoggle()">
-            </div>
+                                <nav>
+                                    <ul id="MenuItems">
+                                        <li><div class="dropdown">
+                                                <button class="dropbtn">Category</button>
+                                                <div class="dropdown-content">
+                                                    <a href="#">Electronic</a>
+                                                    <a href="#">Computer 2</a>
+                                                    <a href="#">Women's Fashion</a>
+                                                    <a href="#">Men's Fashion</a>
+                                                    <a href="#">Baby</a>
+                                                    <a href="#">Toys and Games</a>
+                                                    <a href="#">Tool</a>
+                                                    <a href="#">Sport and Outdoor</a>
+                                                    <a href="#">Home and Kitchen</a>
+                                                    <a href="#">Health and Household</a>
+                                                    <a href="#">Beauty and personal care</a>
+                                                </div>
+                                            </div> 
+                                        </li>  
+                                        <li><a href="homePage.html">Home</a></li>
+                                        <li><a href="products.html">Products</a></li>
+                                        <li><a href="account.html">Account</a></li>
+                                        <li><a href="compad.html">Login/Register</a></li>        
+                                    </ul>
+                                </nav>
+                                <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
+                                <img src="../images/menu.png" class="menu-icon"
+                                     onclick="menutoggle()">
+                            </div>-->
+            
         </div>
 
         <!-- NOTE: nếu là người gửi thì class của div là "container",class của img là rỗng, class của span là "time-right"
@@ -152,18 +155,18 @@
         </div>
         <%}%>
         <%}%>
-        
+
 
         <form action="<%= getServletContext().getContextPath()%>/Chat" method="post">
             <div class="type_msg">
                 <div class="input_msg_write">
                     <input type="text" class="write_msg" placeholder="Type a message" name="txtChat" style="width:85%;" />
-                    
+
                     <input type="submit" name="btnNewChat" class="w3-button w3-blue w3-round-small" value="Send" style="width:10%;height: 10%;float: right; border-radius: 10px;">
                 </div>
             </div>
         </form>
-        
+
         <script>
             var MenuItems = document.getElementById('MenuItems');
             MenuItems.style.maxHeight = "0px";

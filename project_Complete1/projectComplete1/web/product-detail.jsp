@@ -30,43 +30,43 @@
         </style>
         <div class="header">
             <div class="container">
-
-                <div class="navbar" id="mynavbar">
-                    <div class="logo">
-                        <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                    </div>
-                    <nav>
-                        <ul id="MenuItems">
-                            <li><div class="dropdown">
-                                    <button class="dropbtn">Category</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">Electronic</a>
-                                        <a href="#">Computer 2</a>
-                                        <a href="#">Women's Fashion</a>
-                                        <a href="#">Men's Fashion</a>
-                                        <a href="#">Baby</a>
-                                        <a href="#">Toys and Games</a>
-                                        <a href="#">Tool</a>
-                                        <a href="#">Sport and Outdoor</a>
-                                        <a href="#">Home and Kitchen</a>
-                                        <a href="#">Health and Household</a>
-                                        <a href="#">Beauty and personal care</a>
+                <%@include file="navigate.jsp" %>
+                <!--                <div class="navbar" id="mynavbar">
+                                    <div class="logo">
+                                        <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
                                     </div>
-                                </div> 
-                            </li>  
-                            <li><a href="homePage.html">Home</a></li>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="account.html">Account</a></li>
-                            <li><a href="compad.html">Login/Register</a></li>
-
-                        </ul>
-                    </nav>
-                    <a href="#"><img src="../images/cart.png" width="30px" height="30px"></a>
-                    <a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
-                    <img src="../images/menu.png" class="menu-icon"
-                         onclick="menutoggle()">
-
-                </div>
+                                    <nav>
+                                        <ul id="MenuItems">
+                                            <li><div class="dropdown">
+                                                    <button class="dropbtn">Category</button>
+                                                    <div class="dropdown-content">
+                                                        <a href="#">Electronic</a>
+                                                        <a href="#">Computer 2</a>
+                                                        <a href="#">Women's Fashion</a>
+                                                        <a href="#">Men's Fashion</a>
+                                                        <a href="#">Baby</a>
+                                                        <a href="#">Toys and Games</a>
+                                                        <a href="#">Tool</a>
+                                                        <a href="#">Sport and Outdoor</a>
+                                                        <a href="#">Home and Kitchen</a>
+                                                        <a href="#">Health and Household</a>
+                                                        <a href="#">Beauty and personal care</a>
+                                                    </div>
+                                                </div> 
+                                            </li>  
+                                            <li><a href="homePage.html">Home</a></li>
+                                            <li><a href="products.html">Products</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="compad.html">Login/Register</a></li>
+                
+                                        </ul>
+                                    </nav>
+                                    <a href="#"><img src="../images/cart.png" width="30px" height="30px"></a>
+                                    <a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
+                                    <img src="../images/menu.png" class="menu-icon"
+                                         onclick="menutoggle()">
+                
+                                </div>-->
             </div>
         </div>
 
@@ -97,7 +97,7 @@
 
                     <a href="<%=getServletContext().getContextPath()%>/Chat/<%=item.getOwnerID()%>" class="btn">Chat with owner</a> <!-- nhảy qua chat -->
                     <a href="<%=getServletContext().getContextPath()%>/Profile/<%=item.getOwnerID()%>" class="btn">User profile</a>
-                    <a href="<%= getServletContext().getContextPath() %>/customer/sendDeal?itemID=<%= item.getItemID() %>" class="btn"><strong>Status:</strong> Waiting<br>Click to begin dealing</a> <!--chuyển đổi status món hàng -->
+                    <a href="<%= getServletContext().getContextPath()%>/customer/sendDeal?itemID=<%= item.getItemID()%>" class="btn"><strong>Status:</strong> Waiting<br>Click to begin dealing</a> <!--chuyển đổi status món hàng -->
 
                     <br>
                     <!--Description-->
@@ -119,7 +119,7 @@
                         <% ResultSet rs = itemDAO.getItemByCategory(item.getCategory()); %>
                         <% int flag = 1; %>
                         <% while (flag <= 4 && rs.next()) {%>
-                        <% if (rs.getInt("itemID") != item.getItemID() && rs.getInt("status") != 1 ) {%>
+                        <% if (rs.getInt("itemID") != item.getItemID() && rs.getInt("status") != 1) {%>
                         <div class="col-4">
                             <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>"></a>
                             <a href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("itemID")%>"><h4><%= rs.getString("Name")%></h4></a>

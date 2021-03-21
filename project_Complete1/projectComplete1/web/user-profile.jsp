@@ -3,7 +3,15 @@
     Created on : Mar 18, 2021, 10:01:52 AM
     Author     : Asus Vivobook
 --%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.itemDAO"%>
 
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/group_assignment" user="root"  password=""/> 
+<sql:query dataSource="${db}" var="rs" >
+    SELECT catName FROM `category`;
+</sql:query>
 <%@page import="DAO.customerDAO"%>
 <%@page import="DAO.rateDAO"%>
 <%@page import="DAO.tranferHistoryDAO"%>

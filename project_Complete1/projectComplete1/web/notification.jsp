@@ -42,8 +42,8 @@
 
 	<div class="header">
 		<div class="container">
-
-			<div class="navbar" id="mynavbar">
+<%@include file="navigate.jsp" %>
+<!--			<div class="navbar" id="mynavbar">
 				<div class="logo">
 					<a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
 				</div>
@@ -76,7 +76,7 @@
 			<a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
 			<img src="../images/menu.png" class="menu-icon"
 			onclick="menutoggle()">
-		</div>
+		</div>-->
 	</div>
 </div>
 

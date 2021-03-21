@@ -3,7 +3,15 @@
     Created on : Mar 19, 2021, 9:48:21 PM
     Author     : Asus Vivobook
 --%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.itemDAO"%>
 
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/group_assignment" user="root"  password=""/> 
+<sql:query dataSource="${db}" var="rs" >
+    SELECT catName FROM `category`;
+</sql:query>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,8 +41,8 @@
 
 	<div class="header">
 		<div class="container">
-
-			<div class="navbar" id="mynavbar">
+<%@include file="navigate.jsp" %>
+<!--			<div class="navbar" id="mynavbar">
 				<div class="logo">
 					<a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
 				</div>
@@ -67,7 +75,7 @@
 			<a href="#"><img src="../images/cart2.png" width="30px" height="30px"></a>
 			<img src="../images/menu.png" class="menu-icon"
 			onclick="menutoggle()">
-		</div>
+		</div>-->
 	</div>
 </div>
 

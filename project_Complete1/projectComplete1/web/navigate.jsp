@@ -3,7 +3,15 @@
     Created on : Mar 21, 2021, 2:08:40 PM
     Author     : Admin
 --%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.itemDAO"%>
 
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/group_assignment" user="root"  password=""/> 
+<sql:query dataSource="${db}" var="rs" >
+    SELECT catName FROM `category`;
+</sql:query>
 <%@page import="java.sql.ResultSet"%>
 <div class="navbar" id="mynavbar">
     <div class="logo">

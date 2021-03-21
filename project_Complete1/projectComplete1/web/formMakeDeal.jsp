@@ -56,13 +56,7 @@
                             <img src="data:image/jpg;base64,<%= itemDAO.getImageString(rs.getBlob("image1"))%>">
                             <strong><%= rs.getNString("name")%></strong>
 
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
+               
                         </div>
                         <% } %>
                         <% }%>

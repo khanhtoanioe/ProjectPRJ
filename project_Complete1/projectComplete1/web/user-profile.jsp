@@ -328,10 +328,17 @@
                             <div class="container bg-info">
                                 <%
                                     int his = tranferHistoryDAO.checkHistory(user.getIDCard(), idCard);
-
+                                    int checkRated = rateDAO.checkRated(idCard, user.getIDCard());
                                 %>
                                 <!-- nếu chưa giao dịch với người này hoặc xem profile của chính mình thì thêm display: none; -->
-                                <form <%if (his == 0 || idCard.equals(user.getIDCard())) {%>style="display:none"<%}%> action="/Profile?id=<%=user.getIDCard()%>" method="post"> 
+                                
+                                <%if (idCard.equals(user.getIDCard())) {%>
+                                <%}else if (his == 0 ) {%>
+                                <h1>You haven't transfer with this user (<%= user.getIDCard()%>)</h1>
+                                <%}else if(checkRated!=0){%>
+                                <h1>You have rated this user, you cannot rate again</h1>
+                                <%}else{%>
+                                <form  action="/Profile?id=<%=user.getIDCard()%>" method="post"> 
                                     <h2 class="display-3 text-center">Rate this User </h2>
                                     <div class="mb-3">
                                         <label for="comment" class="form-label">Comment</label>
@@ -352,6 +359,7 @@
                                     </div>
 
                                 </form>
+                                    <%}%>
                             </div>
                         </div>
                         <%

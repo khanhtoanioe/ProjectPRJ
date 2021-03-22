@@ -54,8 +54,8 @@ public class tranferHistoryDAO {
             PreparedStatement st = conn.prepareCall("SELECT DealID FROM `tranferhistory` WHERE firstCustomer =? and secondCustomer=? or secondCustomer=? and firstCustomer=?");
             st.setString(1, id1);
             st.setString(2, id2);
-            st.setString(4, id1);
-            st.setString(3, id2);
+            st.setString(3, id1);
+            st.setString(4, id2);
             check = st.executeQuery();
             if (check.next()) {
                 return check.getInt("DealID");

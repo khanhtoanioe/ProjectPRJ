@@ -54,5 +54,19 @@ public class rateDAO {
         }
         return null;
     }
-    
+
+    public static int checkRated(String idRater, String idRated) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT COUNT(*) as num  FROM `rate` WHERE IDRater=? and IDRated=?");
+            st.setString(1, idRater);
+            st.setString(2, idRated);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("num");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(rateDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

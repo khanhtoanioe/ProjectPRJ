@@ -90,42 +90,62 @@ public class customerController extends HttpServlet {
         if (URI.endsWith("/customer/uploadItem")) {
             request.getRequestDispatcher("/uploadItem.jsp").forward(request, response);
         }
-        if (URI.startsWith( getServletContext().getContextPath() +"/customer/viewProduct" )){
-            request.getRequestDispatcher("/product-detail.jsp?itemID="+request.getParameter("itemID")).forward(request, response);
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/viewProduct")) {
+            request.getRequestDispatcher("/product-detail.jsp?itemID=" + request.getParameter("itemID")).forward(request, response);
         }
-        if (URI.startsWith(getServletContext().getContextPath() + "/customer/sendDeal")){
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/sendDeal")) {
             int recieverItem = Integer.parseInt(request.getParameter("itemID"));
             String reciever = itemDAO.getItemById(recieverItem).getOwnerID();
-            request.getRequestDispatcher("/formMakeDeal.jsp?recieverItem="+recieverItem+"&reciever="+reciever).forward(request, response);
+            request.getRequestDispatcher("/formMakeDeal.jsp?recieverItem=" + recieverItem + "&reciever=" + reciever).forward(request, response);
         }
-        if(URI.startsWith(getServletContext().getContextPath() + "/customer/dealSuccess")){
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/dealSuccess")) {
             request.getRequestDispatcher("/dealSent.jsp").forward(request, response);
         }
-        if(URI.startsWith(getServletContext().getContextPath() + "/customer/home")){
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/home")) {
             request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
         }
-        if(URI.startsWith(getServletContext().getContextPath() + "/customer/notiDeal")){
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/notiDeal")) {
             request.getRequestDispatcher("/notification.jsp").forward(request, response);
         }
-        if(URI.startsWith(getServletContext().getContextPath() + "/customer/RejectDeal")){
-            DAO.DealingListDAO.deleteItemReject(Integer.parseInt(request.getParameter("senderItem")), Integer.parseInt( request.getParameter("recieverItem")));
-            request.getRequestDispatcher( getServletContext().getContextPath() + "/customer/notiDeal").forward(request, response);
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/RejectDeal")) {
+            DAO.DealingListDAO.deleteItemReject(Integer.parseInt(request.getParameter("senderItem")), Integer.parseInt(request.getParameter("recieverItem")));
+            request.getRequestDispatcher(getServletContext().getContextPath() + "/customer/notiDeal").forward(request, response);
         }
-        if(URI.startsWith(getServletContext().getContextPath() + "/customer/AcceptDeal")){
-            DAO.DealingListDAO.deleteItemDealed(Integer.parseInt(request.getParameter("senderItem")), Integer.parseInt( request.getParameter("recieverItem")));
-            
-            int senderItem =Integer.parseInt(request.getParameter("senderItem"));
-            int recieverItem = Integer.parseInt( request.getParameter("recieverItem"));
-            
-            tranferHistoryDAO.addHistory(itemDAO.getItemById(senderItem).getOwnerID(), senderItem, itemDAO.getItemById(recieverItem).getOwnerID() , recieverItem); 
-            
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/AcceptDeal")) {
+            DAO.DealingListDAO.deleteItemDealed(Integer.parseInt(request.getParameter("senderItem")), Integer.parseInt(request.getParameter("recieverItem")));
+
+            int senderItem = Integer.parseInt(request.getParameter("senderItem"));
+            int recieverItem = Integer.parseInt(request.getParameter("recieverItem"));
+
+            tranferHistoryDAO.addHistory(itemDAO.getItemById(senderItem).getOwnerID(), senderItem, itemDAO.getItemById(recieverItem).getOwnerID(), recieverItem);
+
             itemDAO.changeItemState(senderItem);
-            itemDAO.changeItemState(recieverItem);               
+            itemDAO.changeItemState(recieverItem);
             request.getRequestDispatcher("/notification.jsp").forward(request, response);
         }
-        
-        if(URI.startsWith(getServletContext().getContextPath() + "/customer/search")){
-            request.getRequestDispatcher("/mainPage.jsp?category="+request.getParameter("category")).forward(request, response);
+
+        if (URI.startsWith(getServletContext().getContextPath() + "/customer/search")) {
+            request.getRequestDispatcher("/mainPage.jsp?category=" + request.getParameter("category")).forward(request, response);
+        }
+        if (URI.endsWith(getServletContext().getContextPath() + "/customer/logout")) {
+            
+
+            Cookie cookie = null;
+            Cookie[] cookies = null;
+            
+            cookies = request.getCookies();
+
+            for (int i = 0; i < cookies.length; i++) {
+                cookie = cookies[i];
+
+                cookie.setMaxAge(0);
+                cookie.setPath("/");
+                response.addCookie(cookie);
+                response.addCookie(cookie);
+
+            }
+
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
 
@@ -260,13 +280,12 @@ public class customerController extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(customerController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try{
+            try {
                 itemDAO.addItem(item);
                 request.getRequestDispatcher("/upload-successful.jsp").forward(request, response);
-            }catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
-            
 
         }
 

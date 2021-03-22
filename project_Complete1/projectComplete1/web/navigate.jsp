@@ -32,7 +32,7 @@
             <li><a href="<%=getServletContext().getContextPath()%>/customer/home">Home</a></li>
 
             <li><a href="/Profile/<%=(String) session.getAttribute("IDcard")%>">Account</a></li>
-
+            <li><a href="<%=getServletContext().getContextPath()%>/customer/logout">Logout</a></li>
         </ul>
     </nav>
     <img src="../images/cart.png" width="30px" height="30px">

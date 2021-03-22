@@ -81,29 +81,87 @@ public class ItemController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("btnEditItem") != null) {
-            item item1 = new item(Integer.parseInt(request.getParameter("itemID")), request.getParameter("name"), request.getParameter("description"), request.getParameter("category"));
-            int count = itemDAO.updateItem(item1);
-            response.sendRedirect("/Profile/1111");
-        }
+//        item item1 = new item();
+//
+//        item1.setName(request.getParameter("name"));
+//        item1.setCategory(request.getParameter("category"));
+//        item1.setDescription(request.getParameter("description"));
+//        item1.setOwnerID(request.getParameter("itemOwnerID"));
+//        item1.setItemID(Integer.parseInt(request.getParameter("itemID")));
+//        Part filePart1 = request.getPart("image1");
+//        InputStream fileContent1 = filePart1.getInputStream();
+//
+//        Part filePart2 = request.getPart("image2");
+//        InputStream fileContent2 = filePart2.getInputStream();
+//
+//        Part filePart3 = request.getPart("image3");
+//        InputStream fileContent3 = filePart3.getInputStream();
+//
+//        Part filePart4 = request.getPart("image4");
+//        InputStream fileContent4 = filePart4.getInputStream();
+//
+//        byte[] imageBytes1 = new byte[(int) filePart1.getSize()];
+//        fileContent1.read(imageBytes1, 0, imageBytes1.length);
+//        fileContent1.close();
+//
+//        byte[] imageBytes2 = new byte[(int) filePart2.getSize()];
+//        fileContent2.read(imageBytes2, 0, imageBytes2.length);
+//        fileContent2.close();
+//
+//        byte[] imageBytes3 = new byte[(int) filePart3.getSize()];
+//        fileContent3.read(imageBytes3, 0, imageBytes3.length);
+//        fileContent3.close();
+//
+//        byte[] imageBytes4 = new byte[(int) filePart4.getSize()];
+//        fileContent4.read(imageBytes4, 0, imageBytes4.length);
+//        fileContent4.close();
+//
+//        try {
+//            Blob imageBlob1 = new SerialBlob(imageBytes1);
+//            Blob imageBlob2 = new SerialBlob(imageBytes2);
+//            Blob imageBlob3 = new SerialBlob(imageBytes3);
+//            Blob imageBlob4 = new SerialBlob(imageBytes4);
+//
+//            item1.setImage1(imageBlob1);
+//            item1.setImage2(imageBlob2);
+//            item1.setImage3(imageBlob3);
+//            item1.setImage4(imageBlob4);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(customerController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        //  if (true) {
-//            response.setContentType("text/html;charset=UTF-8");
-//            try (PrintWriter out = response.getWriter()) {
-//                /* TODO output your page here. You may use following sample code. */
-//                out.println("<!DOCTYPE html>");
-//                out.println("<html>");
-//                out.println("<head>");
-//                out.println("<title>Servlet ProfileController</title>");
-//                out.println("</head>");
-//                out.println("<body>");
-//                out.println("<h1>" + "hello" + "</h1>");
-//                out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
-//                out.println("</body>");
-//                out.println("</html>");
-//            }
-        //  }
+//        try {
+//            int count = itemDAO.updateItem(item1);
+//        } catch (Exception e) {
+//        }
 
-        //                Part filePart1 = request.getPart("image1");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ProfileController</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>" + "hello" + "</h1>");
+            out.println("<h1>" + request.getParameter("name") + "</h1>");
+            out.println("<h1>" + request.getParameter("itemID") + "</h1>");
+            out.println("<h1>" + request.getParameter("itemOwnerID") + "</h1>");
+            out.println("<h1>" + request.getParameter("category") + "</h1>");
+            out.println("<h1>" + request.getParameter("description") + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+       }
+//            try {
+//                itemDAO.updateItem(item);
+//                response.sendRedirect("/Profile/"+request.getParameter("itemOwnerID"));
+//            } catch (Exception e) {
+//
+//            }
+
+         }
+//            try {
+//                Part filePart1 = request.getPart("image1");
 //                InputStream fileContent1 = filePart1.getInputStream();
 //
 //                Part filePart2 = request.getPart("image2");
@@ -136,14 +194,37 @@ public class ItemController extends HttpServlet {
 //                Blob imageBlob3 = new SerialBlob(imageBytes3);
 //                Blob imageBlob4 = new SerialBlob(imageBytes4);
 //
-//                item.setImage1(imageBlob1);
-//                item.setImage2(imageBlob2);
+//                item1.setImage1(imageBlob1);
+//                item1.setImage2(imageBlob2);
 //                item.setImage3(imageBlob3);
 //                item.setImage4(imageBlob4);
+//                item item1 = new item(Integer.parseInt(request.getParameter("itemID")), request.getParameter("name"), request.getParameter("description"), request.getParameter("category"));
+//                int count = itemDAO.updateItem(item1);
+//                response.sendRedirect("/Profile/1111");
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ItemController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
     }
+//        }
+    //  if (true) {
+//            response.setContentType("text/html;charset=UTF-8");
+//            try (PrintWriter out = response.getWriter()) {
+//                /* TODO output your page here. You may use following sample code. */
+//                out.println("<!DOCTYPE html>");
+//                out.println("<html>");
+//                out.println("<head>");
+//                out.println("<title>Servlet ProfileController</title>");
+//                out.println("</head>");
+//                out.println("<body>");
+//                out.println("<h1>" + "hello" + "</h1>");
+//                out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
+//                out.println("</body>");
+//                out.println("</html>");
+//            }
+    //  }
+
 //            itemDAO.updateItem(item);
 //            response.sendRedirect("/Profile/1234");
-
     /**
      * Returns a short description of the servlet.
      *

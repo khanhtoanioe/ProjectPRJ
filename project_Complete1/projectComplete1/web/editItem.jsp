@@ -177,8 +177,30 @@
 
 
         <div class="col-md-6 offset-md-3 mt-5">
-            <form action="<%= getServletContext().getContextPath()%>/Item" method="post" id="Form" >
-                <input type="text" class="form-control" id="product-name" readonly="" placeholder="Enter product name" name="itemID" value='<%=i.getItemID()%>' >
+            <form action="<%= getServletContext().getContextPath()%>/Item" method="post" id="Form" enctype="multipart/form-data" >
+                <label for="product-owner-id">Owner ID</label>
+                <input type="text" class="form-control" id="product-owner-id" readonly="" placeholder="Enter product owner id" name="itemOwnerID" value='<%=i.getOwnerID()%>' >
+                <label for="product-id">Product ID</label>
+                <input type="text" class="form-control" id="product-id" readonly="" placeholder="Enter product id" name="itemID" value='<%=i.getItemID()%>' >
+               <label for="customFile">Upload Your picture (you can upload 4 picture) </label>
+                <div>
+                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage1())%>" width="50" >
+                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image1">
+
+                </div>
+
+                <div>
+                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage2())%>" width="50" >
+                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image2" >
+                </div>
+                <div>
+                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage3())%>" width="50" >
+                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image3" >
+                </div>
+                <div>
+                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage4())%>" width="50" >
+                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image4" >
+                </div>
                 <label for="product-name">Product Name</label>
                 <input type="text" class="form-control" id="product-name" placeholder="Enter product name" name="name" value='<%=i.getName()%>' >
 

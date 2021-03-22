@@ -132,16 +132,15 @@ public class itemDAO {
 
     public static int updateItem(item item1) {
         try {
-            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=? where itemID=?");
+            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=?,image1=?,image2=?,image3=?,image4=? where itemID=?");
             st.setString(1, item1.getName());
             st.setString(2, item1.getDescription());
             st.setString(3, item1.getCategory());
-//            ,image1=?,image2=?,image3=?,image4=?
-//            st.setBlob(4, item.getImage1());
-//            st.setBlob(5, item.getImage2());
-//            st.setBlob(6, item.getImage3());
-//            st.setBlob(7, item.getImage4());
-            st.setInt(4, item1.getItemID());
+            st.setBlob(4, item1.getImage1());
+            st.setBlob(5, item1.getImage2());
+            st.setBlob(6, item1.getImage3());
+            st.setBlob(7, item1.getImage4());
+            st.setInt(8, item1.getItemID());
             int count = st.executeUpdate();
             if (count > 0) {
                 return count;

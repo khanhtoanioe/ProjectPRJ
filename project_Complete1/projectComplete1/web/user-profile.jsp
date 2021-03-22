@@ -294,7 +294,7 @@
                                             <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("secondCustomer") %>"> <%= customerDAO.getName(rs.getString("secondCustomer")) %></a></td>
                                         </div>
                                         <div class="col-sm">
-                                            <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("secondItem")%>" ><%= itemDAO.getNameByID(rs.getInt("secondItem"))%></a></td>
+                                            <td><%= itemDAO.getNameByID(rs.getInt("secondItem"))%></td>
                                         </div>
                                     </div>
                                     </tr>
@@ -307,13 +307,13 @@
                                         </div>
 
                                         <div class="col-sm">
-                                            <td>><%= itemDAO.getNameByID(rs.getInt("secondItem")) %></td>
+                                            <td><%= itemDAO.getNameByID(rs.getInt("secondItem")) %></td>
                                         </div>
                                         <div class="col-sm">
                                             <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("firstCustomer") %>"> <%= customerDAO.getName(rs.getString("firstCustomer")) %> </a></td>
                                         </div>
                                         <div class="col-sm">
-                                            <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("firstItem")%>" ><%= itemDAO.getNameByID(rs.getInt("firstItem"))%></a></td>
+                                            <td><%= itemDAO.getNameByID(rs.getInt("firstItem"))%></td>
                                         </div>
                                     </div>
                                     </tr>

@@ -128,6 +128,18 @@ public class ProfileController extends HttpServlet {
             customerDAO.editCustomerInfor(cus);
             response.sendRedirect("/Profile/" + IDCard);
         }
+        if (request.getParameter("btnRate") != null) {
+            HttpSession session = request.getSession();
+            String rater = (String) session.getAttribute("IDcard");
+            rate r = new rate(request.getParameter("id"), rater, request.getParameter("txtRate"), request.getParameter("txtCmt"));
+            if (rateDAO.addComment(r)) {
+                response.sendRedirect("/Profile/" + request.getParameter("id"));
+            } else {
+                PrintWriter out = response.getWriter();
+                out.write("<h1>you have rate this trader, you can not rate again</h1>");
+            }
+
+        }
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
@@ -223,18 +235,7 @@ public class ProfileController extends HttpServlet {
 //                out.println("</html>");
 //            }
 //        }
-        if (request.getParameter("btnRate") != null) {
-            HttpSession session = request.getSession();
-            String rater = (String) session.getAttribute("IDcard");
-            rate r = new rate(request.getParameter("id"), rater, request.getParameter("txtRate"), request.getParameter("txtCmt"));
-            if (rateDAO.addComment(r)) {
-                response.sendRedirect("/Profile/" + request.getParameter("id"));
-            } else {
-                PrintWriter out = response.getWriter();
-                out.write("<h1>you have rate this trader, you can not rate again</h1>");
-            }
-
-        }
+        
     }
 
     /**

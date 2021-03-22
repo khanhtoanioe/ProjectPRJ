@@ -178,25 +178,7 @@
 
         <div class="col-md-6 offset-md-3 mt-5">
             <form action="<%= getServletContext().getContextPath()%>/Item" method="post" id="Form" >
-                <label for="customFile">Upload Your picture (you can upload 4 picture) </label>
-                <div>
-                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage1())%>" width="50" >
-                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image1">
-
-                </div>
-
-                <div>
-                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage2())%>" width="50" >
-                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image2" >
-                </div>
-                <div>
-                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage3())%>" width="50" >
-                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image3" >
-                </div>
-                <div>
-                    <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage4())%>" width="50" >
-                    <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image4" >
-                </div>
+                <input type="text" class="form-control" id="product-name" readonly="" placeholder="Enter product name" name="itemID" value='<%=i.getItemID()%>' >
                 <label for="product-name">Product Name</label>
                 <input type="text" class="form-control" id="product-name" placeholder="Enter product name" name="name" value='<%=i.getName()%>' >
 
@@ -227,7 +209,7 @@
                     </div>
 
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnEditItem" value="submit"> </button>
+                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnEditItem" value="submit"></button>
                     </div>
 
                 </div>

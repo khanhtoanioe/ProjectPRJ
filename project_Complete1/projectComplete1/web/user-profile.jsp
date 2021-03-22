@@ -399,8 +399,8 @@
                                             <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image2"))%>"></td>
                                             <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image3"))%>"></td>
                                             <td><img src="data:image/jpg;base64,<%= itemDAO.getImageString(userItem.getBlob("image4"))%>"></td>
-                                            <td <%if (Integer.parseInt(idCard) != userItem.getInt("ownerID")) {%>style="display: none"<%}%>><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Delete/<%=userItem.getInt("itemID")%>" onclick="return confirm('Are you sure to delete <%=userItem.getString("Name")%>?')">Delete</a></button></td>
-                                            <td <%if (Integer.parseInt(idCard) != userItem.getInt("ownerID")) {%>style="display: none"<%}%>><button class="btn"><a href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Edit/<%=userItem.getInt("itemID")%>">Edit</a></button></td>
+                                            <td <%if (Integer.parseInt(idCard) != userItem.getInt("ownerID")) {%>style="display: none"<%}%>><a class="btn" href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Delete/<%=userItem.getInt("itemID")%>" onclick="return confirm('Are you sure to delete <%=userItem.getString("Name")%>?')">Delete</a></td>
+                                            <td <%if (Integer.parseInt(idCard) != userItem.getInt("ownerID")) {%>style="display: none"<%}%>><a class="btn" href="/Profile/<%=userItem.getInt("ownerID")%>/UserItem/Edit/<%=userItem.getInt("itemID")%>">Edit</a></td>
                                         </tr>
                                         <%}%>
                                     </tbody>

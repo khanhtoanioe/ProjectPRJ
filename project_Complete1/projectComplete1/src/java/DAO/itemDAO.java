@@ -130,18 +130,18 @@ public class itemDAO {
         return false;
     }
 
-    public static int updateItem(item item) {
+    public static int updateItem(item item1) {
         try {
-            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=? WHERE itemID=?");
-            st.setString(1, item.getName());
-            st.setString(2, item.getDescription());
-            st.setString(3, item.getCategory());
+            PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=? where itemID=?");
+            st.setString(1, item1.getName());
+            st.setString(2, item1.getDescription());
+            st.setString(3, item1.getCategory());
 //            ,image1=?,image2=?,image3=?,image4=?
 //            st.setBlob(4, item.getImage1());
 //            st.setBlob(5, item.getImage2());
 //            st.setBlob(6, item.getImage3());
 //            st.setBlob(7, item.getImage4());
-            st.setInt(4, item.getItemID());
+            st.setInt(4, item1.getItemID());
             int count = st.executeUpdate();
             if (count > 0) {
                 return count;
@@ -174,13 +174,13 @@ public class itemDAO {
         }
         return false;
     }
-    
-    public static String getNameByID(int itemID){
+
+    public static String getNameByID(int itemID) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT `Name` FROM `iteminformation` WHERE itemID=?");
             st.setInt(1, itemID);
             ResultSet rs = st.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 return rs.getString("name");
             }
         } catch (SQLException ex) {
@@ -188,5 +188,5 @@ public class itemDAO {
         }
         return "";
     }
-    
+
 }

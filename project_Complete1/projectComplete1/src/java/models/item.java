@@ -71,7 +71,8 @@ public class item {
     public item() {
     }
 
-    public item(String Name, String description, String category) {
+    public item(int itemID,String Name, String description, String category) {
+        this.itemID=itemID;
         this.Name = Name;
         this.description = description;
         this.category = category;

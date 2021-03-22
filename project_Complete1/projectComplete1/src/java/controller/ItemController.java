@@ -80,7 +80,7 @@ public class ItemController extends HttpServlet {
     //đang test cái edit, làm hoài vẫn ko đc
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        item item = new item(request.getParameter("name"),request.getParameter("description"),request.getParameter("category"));
+        item item1 = new item(Integer.parseInt(request.getParameter("itemID")),request.getParameter("name"),request.getParameter("description"),request.getParameter("category"));
 //        item.setName(request.getParameter("name"));
 //        item.setCategory(request.getParameter("category"));
 //        item.setDescription(request.getParameter("description"));
@@ -94,9 +94,14 @@ public class ItemController extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>" + "hello world" + "</h1>");
+            out.println("<h2>" + request.getParameter("itemID") + "</h2>");
             out.println("<h2>" + request.getParameter("name") + "</h2>");
             out.println("<h2>" + request.getParameter("category") + "</h2>");
             out.println("<h2>" + request.getParameter("description") + "</h2>");
+            out.println("<h2>" + item1.getName()+ "</h2>");
+            out.println("<h2>" + item1.getCategory() + "</h2>");
+            out.println("<h2>" + item1.getDescription() + "</h2>");
+            out.println("<h2>" + item1.getItemID()+ "</h2>");
 //            boolean check = request.getParameter("btnEditItem") != null;
 //            out.println("<h1>" + check + "</h1>");
 //
@@ -104,7 +109,7 @@ public class ItemController extends HttpServlet {
 //                out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
 //
 //            }
-            int count = itemDAO.updateItem(item);
+            int count = itemDAO.updateItem(item1);
             out.println("<h2>" + count + "</h2>");
             out.println("</body>");
             out.println("</html>");

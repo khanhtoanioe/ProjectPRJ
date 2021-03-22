@@ -80,41 +80,13 @@ public class ItemController extends HttpServlet {
     //đang test cái edit, làm hoài vẫn ko đc
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        item item1 = new item(Integer.parseInt(request.getParameter("itemID")),request.getParameter("name"),request.getParameter("description"),request.getParameter("category"));
-//        item.setName(request.getParameter("name"));
-//        item.setCategory(request.getParameter("category"));
-//        item.setDescription(request.getParameter("description"));
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProfileController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + "hello world" + "</h1>");
-            out.println("<h2>" + request.getParameter("itemID") + "</h2>");
-            out.println("<h2>" + request.getParameter("name") + "</h2>");
-            out.println("<h2>" + request.getParameter("category") + "</h2>");
-            out.println("<h2>" + request.getParameter("description") + "</h2>");
-            out.println("<h2>" + item1.getName()+ "</h2>");
-            out.println("<h2>" + item1.getCategory() + "</h2>");
-            out.println("<h2>" + item1.getDescription() + "</h2>");
-            out.println("<h2>" + item1.getItemID()+ "</h2>");
-//            boolean check = request.getParameter("btnEditItem") != null;
-//            out.println("<h1>" + check + "</h1>");
-//
-//            if (check==false) {
-//                out.println("<h1>" + request.getParameter("btnEditItem") != null + "</h1>");
-//
-//            }
+        if (request.getParameter("btnEditItem") != null) {
+            item item1 = new item(Integer.parseInt(request.getParameter("itemID")), request.getParameter("name"), request.getParameter("description"), request.getParameter("category"));
             int count = itemDAO.updateItem(item1);
-            out.println("<h2>" + count + "</h2>");
-            out.println("</body>");
-            out.println("</html>");
+            response.sendRedirect("/Profile/1111");
+        }
 //        }
-            //  if (true) {
+        //  if (true) {
 //            response.setContentType("text/html;charset=UTF-8");
 //            try (PrintWriter out = response.getWriter()) {
 //                /* TODO output your page here. You may use following sample code. */
@@ -129,9 +101,9 @@ public class ItemController extends HttpServlet {
 //                out.println("</body>");
 //                out.println("</html>");
 //            }
-            //  }
+        //  }
 
-            //                Part filePart1 = request.getPart("image1");
+        //                Part filePart1 = request.getPart("image1");
 //                InputStream fileContent1 = filePart1.getInputStream();
 //
 //                Part filePart2 = request.getPart("image2");
@@ -168,11 +140,9 @@ public class ItemController extends HttpServlet {
 //                item.setImage2(imageBlob2);
 //                item.setImage3(imageBlob3);
 //                item.setImage4(imageBlob4);
-        }
+    }
 //            itemDAO.updateItem(item);
 //            response.sendRedirect("/Profile/1234");
-
-    }
 
     /**
      * Returns a short description of the servlet.

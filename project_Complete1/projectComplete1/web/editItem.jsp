@@ -205,7 +205,7 @@
                 <div class="btn-toolbar" role="toolbar" >
 
                     <div class="btn-group me-2" role="group" >
-                        <button type="button" class="btn btn-secondary btn-lg active"><i class="fa fa-backward" aria-hidden="true"></i> Back</button>
+                        <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-backward" aria-hidden="true"></i><a class="btn" href="<%=getServletContext().getContextPath()%>/customer/home"> Back</a></button>
                     </div>
 
                     <div class="btn-group" role="group" aria-label="Third group">

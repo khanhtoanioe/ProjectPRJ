@@ -170,13 +170,13 @@
                                         <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%>>
                                             <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="password" value="<%=user.getPassWord()%>" name="txtPwd">
+                                                <input class="form-control" type="password" value="" name="txtPwd">
                                             </div>
                                         </div>
                                         <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%> >
                                             <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="password" value="<%=user.getPassWord()%>" name="txtPwdConfirm">
+                                                <input class="form-control" type="password" value="" name="txtPwdConfirm">
                                             </div>
                                         </div>
                                         <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%>>

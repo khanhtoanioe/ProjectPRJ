@@ -72,7 +72,7 @@ public class customerDAO {
 
     public static boolean editCustomerInfor(customer cus) {
         try {
-            PreparedStatement st = conn.prepareStatement("UPDATE customer SET passWord=?,name=?,phoneNumber=?,address=?,dateOfBirth=?,email=? where IDCard=?");
+            PreparedStatement st = conn.prepareStatement("UPDATE customer SET passWord=md5(?),name=?,phoneNumber=?,address=?,dateOfBirth=?,email=? where IDCard=?");
             st.setString(1, cus.getPassWord());
             st.setString(2, cus.getName());
             st.setString(3, cus.getPhoneNumber());

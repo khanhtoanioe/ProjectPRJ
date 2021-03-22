@@ -47,7 +47,7 @@
                     <div class="row">
                         <% ResultSet rs = itemDAO.getAllItem();%>
                         <% while (rs.next()) { %>
-                        <% if (rs.getString("ownerID").equals(session.getAttribute("IDcard"))) {%>
+                        <% if (rs.getString("ownerID").equals(session.getAttribute("IDcard")) && rs.getInt("status") == 0 ) {%>
                         <div class="col-4"   >
                             <label for="senderItem"></label>
                             <input type="radio" name="senderItem" id="senderItem" value="<%= rs.getInt("itemID")%>">

@@ -8,6 +8,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <%
+    if(request.getParameter("out") == null){
     Cookie cookie = null;
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
@@ -16,7 +17,7 @@
                 response.sendRedirect(getServletContext().getContextPath() + "/customer?IDcard=" + cookies[i].getValue());
             }
         }
-    }
+    }}
 %>
 
 

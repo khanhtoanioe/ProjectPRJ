@@ -129,7 +129,7 @@ public class customerController extends HttpServlet {
         }
         if (URI.endsWith(getServletContext().getContextPath() + "/customer/logout")) {
             
-
+            
             Cookie cookie = null;
             Cookie[] cookies = null;
             
@@ -137,15 +137,14 @@ public class customerController extends HttpServlet {
 
             for (int i = 0; i < cookies.length; i++) {
                 cookie = cookies[i];
-
+                
+                cookie.setValue("");
                 cookie.setMaxAge(0);
                 cookie.setPath("/");
                 response.addCookie(cookie);
-                response.addCookie(cookie);
-
             }
-
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            
+            request.getRequestDispatcher("/login.jsp?out=true").forward(request, response);
         }
     }
 

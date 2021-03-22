@@ -288,7 +288,7 @@
                                         </div>
 
                                         <div class="col-sm">
-                                            <td><a style="color: #0b5ed7" href="<%= getServletContext().getContextPath()%>/customer/viewProduct?itemID=<%= rs.getInt("firstItem")%>" ><%= itemDAO.getNameByID(rs.getInt("firstItem"))%></a></td>
+                                            <td><%= itemDAO.getNameByID(rs.getInt("firstItem"))%></td>
                                         </div>
                                         <div class="col-sm">
                                             <td><a style="color: #0b5ed7" href="<%=getServletContext().getContextPath()%>/Profile/<%= rs.getString("secondCustomer") %>"> <%= customerDAO.getName(rs.getString("secondCustomer")) %></a></td>

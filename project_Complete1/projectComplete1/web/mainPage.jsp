@@ -36,9 +36,9 @@
 
                 <div class="row">
                     <div class="col-2" >
-                        <h1>Trao đổi<br>Hàng hóa!</h1>
-                        <p>Bạn đang có một món nào đó nhưng vì một lí do nào đó mà mình không dùng đến? Hãy đăng lên Mitto và gợi ý một sản phẩm mà mình muốn trao đổi.<br>Bạn sẽ có cơ hội giao lưu sản phẩm với nhừng người có cùng sở thích.</p>
-                        <a href="${pageContext.request.contextPath}/customer/uploadItem" class="btn">Bắt đầu ngay &#8594;</a>
+                        <h1>Trading<br>Platform!</h1>
+                        <p>When you have an item that never use. Let's post on Mitto and suggest items that you want to exchange.<br>You will have more opportunities to contact people with same interest!</p>
+                        <a href="${pageContext.request.contextPath}/customer/uploadItem" class="btn">Click to upload &#8594;</a>
                     </div>
                     <div class="col-2" >
                         <img src="../images/front-page.png" alt="" width="555px" height="600px" >

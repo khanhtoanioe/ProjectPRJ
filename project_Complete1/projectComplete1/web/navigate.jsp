@@ -15,7 +15,7 @@
 <%@page import="java.sql.ResultSet"%>
 <div class="navbar" id="mynavbar">
     <div class="logo">
-        <a href="<%=getServletContext().getContextPath()%>/customer/home"><img src="../images/logo.png" width="225px"></a>
+        <a href="<%=getServletContext().getContextPath()%>/customer/home"><img src="http://localhost:8080/images/logo.png" width="225px"></a>
     </div>
     <nav>
         <a href="/chat-history.jsp" class="btn" type="button" name="accept" style="padding:10px; background: #e58679"><i class="fa fa-weixin" aria-hidden="true"></i></a>
@@ -35,11 +35,10 @@
             <li><a href="<%=getServletContext().getContextPath()%>/customer/logout">Logout</a></li>
         </ul>
     </nav>
-    <img src="../images/cart.png" width="30px" height="30px">
         <% ResultSet resultset = DAO.DealingListDAO.getReciever(); %>
         <% while (resultset.next()) {
                         if (resultset.getString("reciever").equals(session.getAttribute("IDcard"))) {%>
-    <a href="<%= getServletContext().getContextPath()%>/customer/notiDeal"><img src="../images/cart2.png" width="30px" height="30px"></a>
+    <a href="<%= getServletContext().getContextPath()%>/customer/notiDeal"><img src="http://localhost:8080/images/cart2.png" width="30px" height="30px"></a>
 
     <% break;
             }

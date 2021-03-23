@@ -94,95 +94,21 @@
     <body>
         <div class="header">
             <%@include file="navigate.jsp" %>
-<!--            <div class="navbar" id="mynavbar">
-                <div class="logo">
-                    <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                </div>
-                <nav>
-                    <ul id="MenuItems">
-                        <li><div class="dropdown">
-                                <button class="dropbtn">Category</button>
-                                <div class="dropdown-content">
-                                    <c:forEach var="category" items="${rs.rows}" >
-                                        <a><c:out value="${category.catName}" /></a>
-                                    </c:forEach>
-                                </div>
-                            </div> 
-                        </li>  
-                        <li><a href="homePage.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="account.html">Account</a></li>
-                        <li><a href="compad.html">Login/Register</a></li>         
-                    </ul>
-                </nav>
-                <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                <img src="../images/menu.png" class="menu-icon"
-                     onclick="menutoggle()">
-            </div>-->
+
         </div>
-        <%
-//            if (request.getParameter("btnEditItem") != null) {
-//                item item = new item();
-//
-//                item.setName(request.getParameter("name"));
-//                item.setCategory(request.getParameter("category"));
-//                item.setDescription(request.getParameter("description"));
-//
-//                Part filePart1 = request.getPart("image1");
-//                InputStream fileContent1 = filePart1.getInputStream();
-//
-//                Part filePart2 = request.getPart("image2");
-//                InputStream fileContent2 = filePart2.getInputStream();
-//
-//                Part filePart3 = request.getPart("image3");
-//                InputStream fileContent3 = filePart3.getInputStream();
-//
-//                Part filePart4 = request.getPart("image4");
-//                InputStream fileContent4 = filePart4.getInputStream();
-//
-//                byte[] imageBytes1 = new byte[(int) filePart1.getSize()];
-//                fileContent1.read(imageBytes1, 0, imageBytes1.length);
-//                fileContent1.close();
-//
-//                byte[] imageBytes2 = new byte[(int) filePart2.getSize()];
-//                fileContent2.read(imageBytes2, 0, imageBytes2.length);
-//                fileContent2.close();
-//
-//                byte[] imageBytes3 = new byte[(int) filePart3.getSize()];
-//                fileContent3.read(imageBytes3, 0, imageBytes3.length);
-//                fileContent3.close();
-//
-//                byte[] imageBytes4 = new byte[(int) filePart4.getSize()];
-//                fileContent4.read(imageBytes4, 0, imageBytes4.length);
-//                fileContent4.close();
-//
-//                Blob imageBlob1 = new SerialBlob(imageBytes1);
-//                Blob imageBlob2 = new SerialBlob(imageBytes2);
-//                Blob imageBlob3 = new SerialBlob(imageBytes3);
-//                Blob imageBlob4 = new SerialBlob(imageBytes4);
-//
-//                item.setImage1(imageBlob1);
-//                item.setImage2(imageBlob2);
-//                item.setImage3(imageBlob3);
-//                item.setImage4(imageBlob4);
-//
-//                itemDAO.updateItem(item);
-//                request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
-//
-//            }
-        %>
+
         <%            item i = (item) session.getAttribute("item");
 
         %>
 
 
         <div class="col-md-6 offset-md-3 mt-5">
-            <form action="<%= getServletContext().getContextPath()%>/Item" method="post" id="Form" enctype="multipart/form-data" >
+            <form action="<%= getServletContext().getContextPath()%>/Profile" method="post" id="Form" enctype="multipart/form-data" >
                 <label for="product-owner-id">Owner ID</label>
                 <input type="text" class="form-control" id="product-owner-id" readonly="" placeholder="Enter product owner id" name="itemOwnerID" value='<%=i.getOwnerID()%>' >
                 <label for="product-id">Product ID</label>
                 <input type="text" class="form-control" id="product-id" readonly="" placeholder="Enter product id" name="itemID" value='<%=i.getItemID()%>' >
-               <label for="customFile">Upload Your picture (you can upload 4 picture) </label>
+                <label for="customFile">Upload Your picture (you can upload 4 picture) </label>
                 <div>
                     <img src="data:image/jpg;base64,<%=itemDAO.getImageString(i.getImage1())%>" width="50" >
                     <input type="file" class="form-control" id="customFile" style="height: auto;"  name="image1">
@@ -227,13 +153,11 @@
                 <div class="btn-toolbar" role="toolbar" >
 
                     <div class="btn-group me-2" role="group" >
-                        <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-backward" aria-hidden="true"></i><a class="btn" href="<%=getServletContext().getContextPath()%>/customer/home"> Back</a></button>
+                        <button type="button" class="btn btn-secondary btn-lg active"><i class="fa fa-backward" aria-hidden="true"></i> <a class="btn btn-secondary btn-lg active" href="<%=getServletContext().getContextPath()%>/Profile/<%=i.getOwnerID()%>"> Back</a></button>
                     </div>
-
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnEditItem" value="submit"></button>
+                        <button type="button" class="btn btn-primary btn-lg active"><i class="fa fa-upload" aria-hidden="true"></i><input type="submit" name="btnEditItem" value="submit"> </button>
                     </div>
-
                 </div>
             </form>
         </div> 

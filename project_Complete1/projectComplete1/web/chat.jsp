@@ -4,6 +4,7 @@
     Author     : Asus Vivobook
 --%>
 
+<%@page import="DAO.customerDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -150,7 +151,7 @@
 
         <%} else {%>
         <div class="container">
-            <p><%= content.getString("content")%> </p>
+            <p><%=customerDAO.getName(sendFrom)%>: <%= content.getString("content")%> </p>
             <span class="time-left"><%= content.getString("timeSendChat")%> </span>
         </div>
         <%}%>

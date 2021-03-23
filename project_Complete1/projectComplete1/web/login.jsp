@@ -82,6 +82,9 @@
                     font-size: 3.5rem;
                 }
             }
+            .error{
+                color:red;
+            }
         </style>
 
 

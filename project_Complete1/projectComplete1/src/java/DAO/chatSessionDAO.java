@@ -13,13 +13,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Class control chat session
  *
- * @author Asus
+ * @author Mitto
  */
 public class chatSessionDAO {
 
     private static Connection conn = DB.DBconnection.getConnection();
 
+    /**
+     * Method to add new chat session with user to the database
+     *
+     * @param id1
+     * @param id2
+     * @return variable count to check
+     */
     public static int addNewChat(String id1, String id2) {
         try {
             PreparedStatement st = conn.prepareStatement("Insert into chatsession (IDCard1,IDCard2) values (?,?)");
@@ -33,6 +41,14 @@ public class chatSessionDAO {
         return 0;
     }
 
+    /**
+     * Me thod to check if user 1 have ever talk to user 2 in order to add new
+     * chat session
+     *
+     * @param id1
+     * @param id2
+     * @return session id of user 1 and user 2
+     */
     public static int checkChatExist(String id1, String id2) {
         ResultSet check = null;
         try {

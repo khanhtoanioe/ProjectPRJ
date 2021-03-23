@@ -21,8 +21,17 @@ import models.customer;
  */
 public class customerDAO {
 
+    /**
+     *
+     */
     public static Connection conn = DBconnection.getConnection();
 
+    /**
+     * Method to insert new customer information to the database
+     *
+     * @param cus
+     * @return boolean value
+     */
     public static boolean addCustomer(customer cus) {
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?)");
@@ -42,6 +51,12 @@ public class customerDAO {
         return false;
     }
 
+    /**
+     * Method to select one customer information by s/he ID
+     *
+     * @param id
+     * @return object of the customer
+     */
     public static customer getCustomerByID(String id) {
         try {
             PreparedStatement st = conn.prepareStatement("Select passWord,name,phoneNumber,address,dateOfBirth,email from customer where IDCard=?");
@@ -59,6 +74,11 @@ public class customerDAO {
         return null;
     }
 
+    /**
+     * Method to get all the customer
+     *
+     * @return Result set of the customers
+     */
     public static ResultSet getAllCustomer() {
         try {
             Statement st = conn.createStatement();
@@ -70,6 +90,12 @@ public class customerDAO {
         return null;
     }
 
+    /**
+     * Method to edit customer information base on the id card
+     *
+     * @param cus
+     * @return boolean value
+     */
     public static boolean editCustomerInfor(customer cus) {
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE customer SET passWord=md5(?),name=?,phoneNumber=?,address=?,dateOfBirth=?,email=? where IDCard=?");
@@ -88,6 +114,12 @@ public class customerDAO {
         return false;
     }
 
+    /**
+     * Method to get name of the customer base on the id card
+     *
+     * @param IDCard
+     * @return name of the customer
+     */
     public static String getName(String IDCard) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT name from customer where IDCard=?");

@@ -21,13 +21,20 @@ import java.util.logging.Logger;
 import models.item;
 
 /**
- *
- * @author Admin
+ *  Class to manage Item
+ * @author Mitto
  */
 public class itemDAO {
 
     public static Connection conn = DBconnection.getConnection();
 
+    /**
+     *
+     * @param blob
+     * @return
+     * @throws IOException
+     * @throws SQLException
+     */
     public static String getImageString(Blob blob) throws IOException, SQLException {
         InputStream inputStream = blob.getBinaryStream();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -43,6 +50,11 @@ public class itemDAO {
         return base64Image;
     }
 
+    /**
+     * Method to get all the item in the database
+     *
+     * @return Result set of item information
+     */
     public static ResultSet getAllItem() {
         try {
             Statement st = conn.createStatement();
@@ -54,6 +66,12 @@ public class itemDAO {
         return null;
     }
 
+    /**
+     * Method to get all the a item belong to a certain category
+     *
+     * @param cat
+     * @return Result set of item
+     */
     public static ResultSet getItemByCategory(String cat) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category, image1,image2,image3,image4 FROM iteminformation WHERE category=?");
@@ -68,6 +86,12 @@ public class itemDAO {
         return null;
     }
 
+    /**
+     * Method to get all the item belong to a certain user
+     *
+     * @param userId
+     * @return Result set of item
+     */
     public static ResultSet getUserItem(int userId) {
         try {
             PreparedStatement st = conn.prepareStatement("Select itemID,ownerID, Name,status, description, category, image1,image2,image3,image4 from iteminformation where ownerID =? and status = 0 ");
@@ -80,6 +104,12 @@ public class itemDAO {
         return null;
     }
 
+    /**
+     * Method to get the item with certain id
+     *
+     * @param id
+     * @return the item
+     */
     public static item getItemById(int id) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT itemID, ownerID, Name, status, description, category, image1,image2,image3,image4 FROM iteminformation WHERE itemID=?");
@@ -97,6 +127,12 @@ public class itemDAO {
         return null;
     }
 
+    /**
+     * Method to add new item into the database
+     *
+     * @param item
+     * @return boolean value
+     */
     public static boolean addItem(item item) {
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO iteminformation VALUES(?,?,?,?,?,?,?,?,?,?)");
@@ -118,6 +154,12 @@ public class itemDAO {
         return false;
     }
 
+    /**
+     * Method to delete an item by id
+     *
+     * @param id
+     * @return boolean value
+     */
     public static boolean deleteById(int id) {
         try {
             PreparedStatement st = conn.prepareStatement("DELETE FROM iteminformation WHERE itemID=?");
@@ -130,6 +172,12 @@ public class itemDAO {
         return false;
     }
 
+    /**
+     * Method to update information of an item by id
+     *
+     * @param item1
+     * @return count variable to check
+     */
     public static int updateItem(item item1) {
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET Name=?, description=?, category=?,image1=?,image2=?,image3=?,image4=? where itemID=?");
@@ -151,6 +199,11 @@ public class itemDAO {
         return 36;
     }
 
+    /**
+     * Method to get all the category name
+     *
+     * @return Result set of category name
+     */
     public static ResultSet getAllCategory() {
         try {
             Statement st = conn.createStatement();
@@ -162,6 +215,12 @@ public class itemDAO {
         return null;
     }
 
+    /**
+     * Method to change the item status
+     *
+     * @param itemID
+     * @return boolean value
+     */
     public static boolean changeItemState(int itemID) {
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE iteminformation SET status = 1 WHERE iteminformation.itemID = ? ");
@@ -174,6 +233,12 @@ public class itemDAO {
         return false;
     }
 
+    /**
+     * Method to get name of the item by item id
+     *
+     * @param itemID
+     * @return name of the item
+     */
     public static String getNameByID(int itemID) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT `Name` FROM `iteminformation` WHERE itemID=?");

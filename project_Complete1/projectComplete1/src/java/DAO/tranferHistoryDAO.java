@@ -15,13 +15,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Class control transfer history
  *
- * @author Admin
+ * @author Mitto
  */
 public class tranferHistoryDAO {
 
+    /**
+     *
+     */
     public static Connection conn = DBconnection.getConnection();
 
+    /**
+     * Method to add new transaction to the transfer history
+     *
+     * @param firstCus
+     * @param firsItem
+     * @param secondCus
+     * @param secondItem
+     * @return boolean value
+     */
     public static boolean addHistory(String firstCus, int firsItem, String secondCus, int secondItem) {
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO tranferhistory (firstCustomer, secondCustomer, firstItem, secondItem) VALUES(?,?,?,?) ");
@@ -37,6 +50,12 @@ public class tranferHistoryDAO {
         return false;
     }
 
+    /**
+     * Method to get all the transfer history
+     *
+     * @return Result set of Deal ID, time Deal, first Customer, second
+     * Customer, first Item, second Item
+     */
     public static ResultSet getAllHistory() {
         try {
             Statement st = conn.createStatement();
@@ -48,6 +67,13 @@ public class tranferHistoryDAO {
         return null;
     }
 
+    /**
+     * Method to get deal id
+     *
+     * @param id1
+     * @param id2
+     * @return deal id
+     */
     public static int checkHistory(String id1, String id2) {
         ResultSet check = null;
         try {
@@ -64,6 +90,6 @@ public class tranferHistoryDAO {
             Logger.getLogger(tranferHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-       
+
     }
 }

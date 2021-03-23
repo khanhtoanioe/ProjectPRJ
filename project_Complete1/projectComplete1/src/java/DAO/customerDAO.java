@@ -16,8 +16,9 @@ import java.util.logging.Logger;
 import models.customer;
 
 /**
+ * Class control customer
  *
- * @author Admin
+ * @author Mitto
  */
 public class customerDAO {
 

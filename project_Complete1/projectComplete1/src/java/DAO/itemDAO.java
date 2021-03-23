@@ -21,7 +21,8 @@ import java.util.logging.Logger;
 import models.item;
 
 /**
- *  Class to manage Item
+ * Class to manage Item
+ *
  * @author Mitto
  */
 public class itemDAO {

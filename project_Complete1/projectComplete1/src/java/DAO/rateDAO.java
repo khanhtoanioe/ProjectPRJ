@@ -15,13 +15,23 @@ import java.util.logging.Logger;
 import models.rate;
 
 /**
+ * Class to control the rating
  *
- * @author Admin
+ * @author Mitto
  */
 public class rateDAO {
 
+    /**
+     *
+     */
     public static Connection conn = DBconnection.getConnection();
 
+    /**
+     * Method to add new comment from user
+     *
+     * @param r
+     * @return boolean value
+     */
     public static boolean addComment(rate r) {
         try {
             if (r.getIDRated().equals(r.getIDRater())) { //tranh truong hop rate cho chinh minh
@@ -43,6 +53,13 @@ public class rateDAO {
         return false;
     }
 
+    /**
+     * Method to get the user who rate and all the information of the rating by
+     * the user who are rated
+     *
+     * @param id
+     * @return Result set of rating
+     */
     public static ResultSet getAllInforByIDRated(String id) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT IDRater,rateStar, rateComment,dateComment from rate where IDRated=?");
@@ -55,6 +72,13 @@ public class rateDAO {
         return null;
     }
 
+    /**
+     * Method to check if user 1 has ever rate for user 2
+     *
+     * @param idRater
+     * @param idRated
+     * @return the number
+     */
     public static int checkRated(String idRater, String idRated) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT COUNT(*) as num  FROM `rate` WHERE IDRater=? and IDRated=?");

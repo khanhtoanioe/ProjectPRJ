@@ -334,7 +334,7 @@
                                 
                                 <%if (idCard.equals(user.getIDCard())) {%>
                                 <%}else if (his == 0 ) {%>
-                                <h1>You haven't transfer with this user (<%= user.getIDCard()%>)</h1>
+                                <h1>You haven't transfer with this user </h1>
                                 <%}else if(checkRated!=0){%>
                                 <h1>You have rated this user, you cannot rate again</h1>
                                 <%}else{%>
@@ -346,12 +346,11 @@
                                         <div id="comment" class="form-text">Give opinion about this user.</div>
                                     </div>
                                     <select class="form-select" aria-label="Default select example" name="txtRate">
-                                        <option selected>Choose stars</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
+                                        <option value="1">One star</option>
+                                        <option value="2">Two star</option>
+                                        <option value="3">Three star</option>
+                                        <option value="4">Four star</option>
+                                        <option value="5">Five star</option>
                                     </select>
 
                                     <div class="d-grid gap-2 col-6 mx-auto">
@@ -381,8 +380,8 @@
                                             <th>Image 2</th>
                                             <th>Image 3</th>
                                             <th>Image 4</th>
-                                            <!--                                        <th></th>
-                                                                                    <th></th>-->
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>

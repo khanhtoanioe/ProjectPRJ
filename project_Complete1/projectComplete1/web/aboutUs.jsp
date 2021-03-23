@@ -173,7 +173,7 @@
         <div class="col-md-4 col-sm-4">
             <div class="team-member">
                 <div class="team-img">
-                    <img src="images/send.jpg" alt="team member" class="img-responsive"> <!-- Hình ở đây -->
+                    <img src="images/CE150019.jpg" alt="team member" class="img-responsive"> <!-- Hình ở đây -->
                 </div>
                 <div class="team-hover">
                     <div class="desk">

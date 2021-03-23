@@ -123,7 +123,7 @@
                     <div class="footer-col-2">
                         <h3>Useful links</h3>
                         <ul>
-                            <li><a href="aboutUs.jsp" style="color:white;">About us</a></li>
+                            <li><a href="/aboutUs.jsp" style="color:white;">About us</a></li>
                         </ul>
                     </div>
                     <div class="footer-col-3">

@@ -178,7 +178,7 @@
                 <div class="team-hover">
                     <div class="desk">
                         <h4>Hello World</h4>
-                        <p>Don't follow your dream, follow me on Instagram.</p>
+                        <p>Don't follow your dream, follow me on Instagram.<br>@khaminh.ho</p>
                     </div>
                 </div>
             </div>

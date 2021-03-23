@@ -22,8 +22,8 @@ public class DealingListDAO {
     private static Connection conn = DB.DBconnection.getConnection();
 
     /**
-     *
-     * @return
+     *  Method to get receiver
+     * @return result set(receiver row)
      */
     public static ResultSet getReciever() {
         try {
@@ -37,9 +37,9 @@ public class DealingListDAO {
     }
 
     /**
-     *
+     *  Method to get deal by receiver id
      * @param reciever
-     * @return
+     * @return result set (deal row)
      */
     public static ResultSet getDealByReciever(String reciever) {
         try {
@@ -54,10 +54,10 @@ public class DealingListDAO {
     }
 
     /**
-     *
+     *  Method to delete deal 
      * @param senderItem
      * @param recieverItem
-     * @return
+     * @return success or fail
      */
     public static boolean deleteItemDealed(int senderItem, int recieverItem) {
         try {
@@ -73,10 +73,10 @@ public class DealingListDAO {
     }
 
     /**
-     *
+     *  Method to delete item when rejected
      * @param senderItem
      * @param recieverItem
-     * @return
+     * @return true or false
      */
     public static boolean deleteItemReject(int senderItem, int recieverItem) {
         try {

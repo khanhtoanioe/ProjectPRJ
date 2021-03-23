@@ -88,35 +88,7 @@
     <body>
         <div class="header">
             <%@include file="navigate.jsp" %>
-<!--            <div class="navbar" id="mynavbar">
-                <div class="logo">
-                    <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                </div>
-                <nav>
-                    <ul id="MenuItems">
-                        <li><div class="dropdown">
-                                <button class="dropbtn">Category</button>
-                                <div class="dropdown-content">
-                                    <c:forEach var="category" items="${rs.rows}" >
-                                        <a><c:out value="${category.catName}" /></a>
-                                    </c:forEach>
-                                </div>
-                            </div> 
-                        </li>  
-                        <li><a href="homePage.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="account.html">Account</a></li>
-                        <li><a href="compad.html">Login/Register</a></li>         
-                    </ul>
-                </nav>
-                <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                <img src="../images/menu.png" class="menu-icon"
-                     onclick="menutoggle()">
-            </div>-->
         </div>
-
-
-
         <div class="col-md-6 offset-md-3 mt-5">
             <form action="<%= getServletContext().getContextPath()%>/customer" method="post" id="Form" enctype="multipart/form-data">
                 <label for="customFile">Upload Your picture (you can upload 4 picture) </label>
@@ -143,7 +115,6 @@
                 </div>
                 <div class="form-group">
                     <label for="description" required="required">Description</label>
-                    <!-- <input type="text"  class="form-control" id="description" placeholder="Enter description" name="description"> -->
                     <textarea rows="4" cols="50" id="description" class="form-control" form="Form" placeholder="Enter description" name="description"></textarea>
                 </div>
 

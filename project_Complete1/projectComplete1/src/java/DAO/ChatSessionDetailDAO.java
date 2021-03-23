@@ -21,19 +21,6 @@ public class ChatSessionDetailDAO {
 
     private static Connection conn = DB.DBconnection.getConnection();
 
-//    public static int addNewChatContent(ChatSessionDetail c) {
-//        try {
-//            PreparedStatement st = conn.prepareStatement("Insert into chatsessiondetail(sessionID,content,sendFrom) values (?,?,?)");
-//            st.setInt(1, c.getChatID());
-//            st.setString(2, c.getContent());
-//            st.setString(3, c.getSendFrom());
-//            int count = st.executeUpdate();
-//            return count;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ChatSessionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return 35;
-//    }
     /**
      * Add new chat message into the chat session in database
      *

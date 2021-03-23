@@ -20,10 +20,6 @@
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
     </head>
     <body>
-<!--        <h1>Deal has been sent</h1>
-        <a href="/customer/home"> Click here to back to home page</a>-->
-
-
 
         <header class="site-header" id="header">
 		<h1 class="site-header__title" data-lead-id="site-header-title">DEAL HAS BEEN SENT!</h1>

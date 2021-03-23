@@ -90,50 +90,8 @@
 
         </style>
         <div class="header">
-            
-                <%@include file="navigate.jsp" %>
-                <!--            <div class="navbar" id="mynavbar">
-                                <div class="logo">
-                                    <a href="homePage.html"><img src="../images/logo.png" width="225px"></a>
-                                </div>
-                                <nav>
-                                    <ul id="MenuItems">
-                                        <li><div class="dropdown">
-                                                <button class="dropbtn">Category</button>
-                                                <div class="dropdown-content">
-                                                    <a href="#">Electronic</a>
-                                                    <a href="#">Computer 2</a>
-                                                    <a href="#">Women's Fashion</a>
-                                                    <a href="#">Men's Fashion</a>
-                                                    <a href="#">Baby</a>
-                                                    <a href="#">Toys and Games</a>
-                                                    <a href="#">Tool</a>
-                                                    <a href="#">Sport and Outdoor</a>
-                                                    <a href="#">Home and Kitchen</a>
-                                                    <a href="#">Health and Household</a>
-                                                    <a href="#">Beauty and personal care</a>
-                                                </div>
-                                            </div> 
-                                        </li>  
-                                        <li><a href="homePage.html">Home</a></li>
-                                        <li><a href="products.html">Products</a></li>
-                                        <li><a href="account.html">Account</a></li>
-                                        <li><a href="compad.html">Login/Register</a></li>        
-                                    </ul>
-                                </nav>
-                                <a href="cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
-                                <img src="../images/menu.png" class="menu-icon"
-                                     onclick="menutoggle()">
-                            </div>-->
-            
+            <%@include file="navigate.jsp" %>
         </div>
-
-        <!-- NOTE: nếu là người gửi thì class của div là "container",class của img là rỗng, class của span là "time-right"
-        Còn của người nhận thì class là "container darker", class của img là right, class của span là "time-left" -->
-
-
-
-
         <%
             ResultSet content = (ResultSet) session.getAttribute("content");
             // String sendFrom = (String) content.getString("sendFrom");

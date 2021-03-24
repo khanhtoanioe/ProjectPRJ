@@ -195,7 +195,7 @@ public class customerController extends HttpServlet {
 
                     if (request.getParameter("remember") != null && request.getParameter("remember").equals("remember-me")) {
                         Cookie cookie = new Cookie("IDcard", IDcard);
-                        cookie.setMaxAge(60);
+                        cookie.setMaxAge(600);
                         response.addCookie(cookie);
                     }
                     HttpSession session = request.getSession();

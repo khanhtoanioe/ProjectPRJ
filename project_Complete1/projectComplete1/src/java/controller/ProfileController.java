@@ -96,11 +96,15 @@ public class ProfileController extends HttpServlet {
             String URISplit[] = URI.split("/");
             String id = URISplit[URISplit.length - 1];
             customer user = customerDAO.getCustomerByID(id);
-            ss2 = request.getSession();
-            ss2.setAttribute("user", user);
-            request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+            if (user == null) {
+                response.sendRedirect("/");
+            } else {
+                ss2 = request.getSession();
+                ss2.setAttribute("user", user);
+                request.getRequestDispatcher("/user-profile.jsp").forward(request, response);
+            }
         }
-
+        
     }
 
     /**
@@ -115,14 +119,14 @@ public class ProfileController extends HttpServlet {
     //đang test cái edit, làm hoài vẫn ko đc
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String IDCard, passWord, name, phoneNumber, address, dateOfBirth, email;
         String itemName, des, cat;
         Blob image1, image2, image3;
         if (request.getParameter("btnEditUser") != null) {
             customer cus = null;
             IDCard = request.getParameter("txtID");
-
+            
             name = request.getParameter("txtName");
             phoneNumber = request.getParameter("txtPhone");
             address = request.getParameter("txtAddress");
@@ -132,8 +136,8 @@ public class ProfileController extends HttpServlet {
             if (passWord.isEmpty()) {
                 cus = new customer(IDCard, name, phoneNumber, address, dateOfBirth, email);
                 customerDAO.editCustomerInforNoPass(cus);
-            }else{
-                cus = new customer(IDCard,passWord, name, phoneNumber, address, dateOfBirth, email);
+            } else {
+                cus = new customer(IDCard, passWord, name, phoneNumber, address, dateOfBirth, email);
                 customerDAO.editCustomerInfor(cus);
             }
             
@@ -149,9 +153,9 @@ public class ProfileController extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 out.write("<h1>you have rate this trader, you can not rate again</h1>");
             }
-
+            
         }
-
+        
         if (request.getParameter("btnEditItem") != null) {
             item item1 = new item();
             item1.setName(request.getParameter("name"));
@@ -161,38 +165,38 @@ public class ProfileController extends HttpServlet {
             item1.setItemID(Integer.parseInt(request.getParameter("itemID")));
             Part filePart1 = request.getPart("image1");
             InputStream fileContent1 = filePart1.getInputStream();
-
+            
             Part filePart2 = request.getPart("image2");
             InputStream fileContent2 = filePart2.getInputStream();
-
+            
             Part filePart3 = request.getPart("image3");
             InputStream fileContent3 = filePart3.getInputStream();
-
+            
             Part filePart4 = request.getPart("image4");
             InputStream fileContent4 = filePart4.getInputStream();
-
+            
             byte[] imageBytes1 = new byte[(int) filePart1.getSize()];
             fileContent1.read(imageBytes1, 0, imageBytes1.length);
             fileContent1.close();
-
+            
             byte[] imageBytes2 = new byte[(int) filePart2.getSize()];
             fileContent2.read(imageBytes2, 0, imageBytes2.length);
             fileContent2.close();
-
+            
             byte[] imageBytes3 = new byte[(int) filePart3.getSize()];
             fileContent3.read(imageBytes3, 0, imageBytes3.length);
             fileContent3.close();
-
+            
             byte[] imageBytes4 = new byte[(int) filePart4.getSize()];
             fileContent4.read(imageBytes4, 0, imageBytes4.length);
             fileContent4.close();
-
+            
             try {
                 Blob imageBlob1 = new SerialBlob(imageBytes1);
                 Blob imageBlob2 = new SerialBlob(imageBytes2);
                 Blob imageBlob3 = new SerialBlob(imageBytes3);
                 Blob imageBlob4 = new SerialBlob(imageBytes4);
-
+                
                 item1.setImage1(imageBlob1);
                 item1.setImage2(imageBlob2);
                 item1.setImage3(imageBlob3);
@@ -205,9 +209,9 @@ public class ProfileController extends HttpServlet {
                 response.sendRedirect("/Profile/" + request.getParameter("itemOwnerID"));
             } catch (Exception e) {
             }
-
+            
         }
-
+        
     }
 
     /**

@@ -120,15 +120,23 @@ public class ProfileController extends HttpServlet {
         String itemName, des, cat;
         Blob image1, image2, image3;
         if (request.getParameter("btnEditUser") != null) {
+            customer cus = null;
             IDCard = request.getParameter("txtID");
-            passWord = request.getParameter("txtPwd");
+
             name = request.getParameter("txtName");
             phoneNumber = request.getParameter("txtPhone");
             address = request.getParameter("txtAddress");
             dateOfBirth = request.getParameter("txtBirth");
             email = request.getParameter("txtEmail");
-            customer cus = new customer(IDCard, passWord, name, phoneNumber, address, dateOfBirth, email);
-            customerDAO.editCustomerInfor(cus);
+            passWord = request.getParameter("txtPwd");
+            if (passWord.isEmpty()) {
+                cus = new customer(IDCard, name, phoneNumber, address, dateOfBirth, email);
+                customerDAO.editCustomerInforNoPass(cus);
+            }else{
+                cus = new customer(IDCard,passWord, name, phoneNumber, address, dateOfBirth, email);
+                customerDAO.editCustomerInfor(cus);
+            }
+            
             response.sendRedirect("/Profile/" + IDCard);
         }
         if (request.getParameter("btnRate") != null) {

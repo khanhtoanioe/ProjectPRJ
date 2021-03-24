@@ -128,22 +128,21 @@ public class customerController extends HttpServlet {
             request.getRequestDispatcher("/mainPage.jsp?category=" + request.getParameter("category")).forward(request, response);
         }
         if (URI.endsWith(getServletContext().getContextPath() + "/customer/logout")) {
-            
-            
+
             Cookie cookie = null;
             Cookie[] cookies = null;
-            
+
             cookies = request.getCookies();
 
             for (int i = 0; i < cookies.length; i++) {
                 cookie = cookies[i];
-                
+
                 cookie.setValue("");
                 cookie.setMaxAge(0);
                 cookie.setPath("/");
                 response.addCookie(cookie);
             }
-            
+
             request.getRequestDispatcher("/login.jsp?out=true").forward(request, response);
         }
     }
@@ -217,15 +216,27 @@ public class customerController extends HttpServlet {
             cus.setPhoneNumber(request.getParameter("phoneNumber"));
             cus.setPassWord(getMd5(request.getParameter("passWord")));
             cus.setName(request.getParameter("name"));
-
-            try {
-                customerDAO.addCustomer(cus);
+            boolean check = customerDAO.addCustomer(cus);
+            if (check) {
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
-            } catch (Exception e) {
-                request.getRequestDispatcher("/signUp.jsp").include(request, response);
+
+            } else {
                 PrintWriter out = response.getWriter();
-                out.write("<h1>ID card has been used, please use another</h1>");
+                out.write("<h1 style='text-align:center'>ID card has been used, please use another</h1>");
+                request.getRequestDispatcher("/signUp.jsp").include(request, response);
+                
+
             }
+//            try {
+//                 boolean check= customerDAO.addCustomer(cus);
+//                request.getRequestDispatcher("/login.jsp").forward(request, response);
+//            } catch (Exception e) {
+//                
+//                request.getRequestDispatcher("/signUp.jsp").include(request, response);
+//                PrintWriter out = response.getWriter();
+//                out.write("<h1>ID card has been used, please use another</h1>");
+//                
+//            }
 
         }
         //doan nay de upload item

@@ -24,6 +24,7 @@
         <style>
             <%@include file="css/createaccount.css"%>
         </style>
+
         <script type="text/javascript">
             var check = function () {
                 if (document.getElementById('password').value ==
@@ -70,7 +71,8 @@
                         },
                         "passWordConfirm": {
                             required: true,
-                            maxlength: 32
+                            maxlength: 32,
+                            equalTo: '#password'
                         }
                     },
                     messages: {
@@ -106,12 +108,19 @@
                         },
                         "passWordConfirm": {
                             required: "Confirm password is required",
-                            maxlength: "Confirm password is too long"
+                            maxlength: "Confirm password is too long",
+                            equalTo: "Confirm password is not match"
                         }
                     }
                 });
             });
+
         </script>
+        <style>
+            .error{
+                color:red;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -169,7 +178,7 @@
                                     <span id='message'></span>
                                 </div>
 
-                                <button class="btn btn-lg btn-primary btn-block text-uppercase" name="btnSignUp" type="submit">Register</button></a>
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase" name="btnSignUp" type="submit" id="btnSignUp">Register</button>
 
                                 <a class="d-block text-center mt-2 small" href="${pageContext.request.contextPath}/">Sign In</a>
 

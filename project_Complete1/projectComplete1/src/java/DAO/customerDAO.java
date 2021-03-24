@@ -116,6 +116,28 @@ public class customerDAO {
     }
 
     /**
+     * Method to edit customer information base on the id card
+     *
+     * @param cus
+     * @return boolean value
+     */
+    public static boolean editCustomerInforNoPass(customer cus) {
+        try {
+            PreparedStatement st = conn.prepareStatement("UPDATE customer SET name=?,phoneNumber=?,address=?,dateOfBirth=?,email=? where IDCard=?");
+            st.setString(1, cus.getName());
+            st.setString(2, cus.getPhoneNumber());
+            st.setString(3, cus.getAddress());
+            st.setString(4, cus.getDateOfBirth());
+            st.setString(5, cus.getEmail());
+            st.setString(6, cus.getIDCard());
+            st.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(customerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    /**
      * Method to get name of the customer base on the id card
      *
      * @param IDCard

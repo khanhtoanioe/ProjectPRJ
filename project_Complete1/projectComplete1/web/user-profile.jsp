@@ -24,7 +24,8 @@
 <html>
     <head>
         <title>User Profile</title>
-
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
 
         <!-- Bootstrap navbar -->
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
@@ -46,9 +47,30 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
         <script type="text/javascript">
+            var check = function () {
+                if (document.getElementById('password').value ==
+                        document.getElementById('confirm_password').value) {
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerHTML = 'matching';
+                } else {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerHTML = 'not matching';
+                }
+            };
             $(document).ready(function () {
                 $('#example').DataTable();
             });
+            $(function () {
+        $("#btnEditUser").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
         </script>
         <style>
             td a {
@@ -135,21 +157,22 @@
                                         <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%>>
                                             <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="password" value="" name="txtPwd">
+                                                <input class="form-control" id="password" type="password" value="" name="txtPwd" onkeyup='check();'>
                                             </div>
                                         </div>
                                         <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%> >
                                             <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="password" value="" name="txtPwdConfirm">
+                                                <input class="form-control" id="confirm_password" type="password" value="" name="txtPwdConfirm" onkeyup='check();'>
                                             </div>
+                                            <span id='message'></span>
                                         </div>
                                         <div class="form-group row" <%if (!idCard.equals(user.getIDCard())) {%>style="display: none"<%}%>>
                                             <label class="col-lg-3 col-form-label form-control-label"></label>
                                             <div class="col-lg-9">
                                                 <!-- SUBMIT -->
                                                 <input type="reset" class="btn btn-secondary" value="Reset">
-                                                <input type="submit" class="btn btn-primary" value="Save Changes" name="btnEditUser">
+                                                <input type="submit" class="btn btn-primary" value="Save Changes" name="btnEditUser" id="btnEditUser">
                                             </div>
                                         </div>
                                     </form>

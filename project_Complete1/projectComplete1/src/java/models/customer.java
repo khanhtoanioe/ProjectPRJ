@@ -53,6 +53,15 @@ public class customer {
         this.email = email;
     }
 
+    public customer(String IDCard, String name, String phoneNumber, String address, String dateOfBirth, String email) {
+        this.IDCard = IDCard;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+    }
+
     /**
      * Get ID Card
      *
